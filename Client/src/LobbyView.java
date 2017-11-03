@@ -104,14 +104,14 @@ public class LobbyView implements Initializable {
         chosenButton.setOnAction(e -> checkPlayers(three, four));
         //textfield
         Label nameinputLabel = new Label("Give a name for the game");
-         nameGameInput = new TextField();
+        nameGameInput = new TextField();
 
         //layout
         VBox secondaryLayout = new VBox(10);
-        secondaryLayout.getChildren().addAll(aantalSpelerLabel, three, four, chosenButton);
+        secondaryLayout.getChildren().addAll(aantalSpelerLabel, three, four, nameinputLabel, nameGameInput, chosenButton);
         
         //set "popup" if clicked on new game...
-        secondScene = new Scene(secondaryLayout, 220, 170);
+        secondScene = new Scene(secondaryLayout, 300, 230);
         secondStage = new Stage();
         secondStage.setTitle("Initiate game");
         secondStage.setScene(secondScene);
@@ -141,13 +141,13 @@ public class LobbyView implements Initializable {
             if(three.isSelected()){
                 System.out.println(333);
 
-                lobbyController.startGame(3);
+                lobbyController.startGame(3, nameGameInput.getText());
                 playGame();
                 secondStage.close();
             }
             if(four.isSelected()){
                 //initiage game with 4
-                lobbyController.startGame(3);
+                lobbyController.startGame(4, nameGameInput.getText());
                 playGame();
                 secondStage.close();
 
