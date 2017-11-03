@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
 
@@ -19,6 +22,7 @@ public class LobbyController {
 
     static ApplicationServerController applicationServerController;
     LobbyView lobbyview;
+
     public LobbyController(ApplicationServerController applicationServerController) {
         this.applicationServerController = applicationServerController;
         Runnable updateGames = new Runnable() {
@@ -27,9 +31,8 @@ public class LobbyController {
                 while (true) {
                     try {
                         List<UnoGame> unoGameList = applicationServerController.subscribe();
-                        for(UnoGame u : unoGameList){
-                            System.out.println(u.getGameName());
-                        }
+                        System.out.println("something new happend! --> game updaten");
+                        lobbyview.setCurrentUnoGames(FXCollections.observableList(unoGameList));
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
@@ -37,6 +40,18 @@ public class LobbyController {
             }
         };
         new Thread(updateGames).start();
+        System.out.println("Thread started");
+    }
+
+    public ObservableList<UnoGame> getUnoGames(){
+        List<UnoGame> unoGameList = null;
+        try {
+            System.out.println("ophalen");
+            unoGameList = applicationServerController.getAllUnoGames();
+        } catch (RemoteException e) {
+            System.out.println("de error bij getunogame: " + e );
+        }
+        return FXCollections.observableList(unoGameList);
     }
 
     public static void startGame(int i, String name)  {
@@ -57,6 +72,7 @@ public class LobbyController {
         try {
             System.out.println("lobbyview" + lobbyview);
             lobbyview.start();
+//            lobbyview.loadGames();
         } catch (IOException e) {
             e.printStackTrace();
         }

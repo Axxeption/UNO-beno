@@ -49,6 +49,7 @@ import javafx.stage.Stage;
 public class GameView implements Initializable {
     private Parent root;
     private static Stage stage;
+    GameController gameController;
     @FXML
     private HBox backgroundBox;
 
@@ -64,6 +65,10 @@ public class GameView implements Initializable {
     @FXML
     private HBox otherPlayerBox;
 
+    public GameView() {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //achtergrond zetten van het spel
@@ -77,6 +82,10 @@ public class GameView implements Initializable {
             System.out.println("Clicked!"); // change functionality
         });
         stage.setTitle("UNO game");
+    }
+
+    public GameView(GameController g){
+        this.gameController = g;
     }
 
     public void setStage(Stage stage, Parent root) {
@@ -103,6 +112,16 @@ public class GameView implements Initializable {
           for (int i = 0; i < 2; i++) {
             backgroundBox.getChildren().add(new Label("test"));
         }
+    }
+
+    public void start()  {
+        try {
+            root = FXMLLoader.load(getClass().getResource("GameRoom.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
 }
