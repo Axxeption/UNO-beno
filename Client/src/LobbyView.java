@@ -111,7 +111,7 @@ public class LobbyView implements Initializable {
         //layout
         VBox secondaryLayout = new VBox(10);
         secondaryLayout.getChildren().addAll(aantalSpelerLabel, three, four, nameinputLabel, nameGameInput, chosenButton);
-        
+
         //set "popup" if clicked on new game...
         secondScene = new Scene(secondaryLayout, 300, 230);
         secondStage = new Stage();
@@ -142,7 +142,7 @@ public class LobbyView implements Initializable {
         }else{
             if(three.isSelected()){
                 lobbyController.startGame(3, nameGameInput.getText());
-                playGame();
+
                 secondStage.close();
             }
             if(four.isSelected()){
@@ -162,7 +162,7 @@ public class LobbyView implements Initializable {
     public void setCurrentUnoGames(ObservableList<UnoGame> unogamescurrent){
         System.out.println("opgeroepen: " + unogamescurrent);
         System.out.println("wiatinggames: " + this.waitingGames);
-        this.waitingGames.setItems(unogamescurrent);
+//        this.waitingGames.setItems(unogamescurrent);
     }
 
     public void loadGames() {

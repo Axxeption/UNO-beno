@@ -17,9 +17,10 @@ public class ApplicationServerGameImp implements ApplicationServerGameInterface{
     }
 
     @Override
-    public Message subscribe(Player player) throws RemoteException {
-        
+    public Message subscribe(UnoGame unoGame) throws RemoteException {
+        return null;
     }
+
 
     @Override
     public Card drawCard() throws RemoteException {

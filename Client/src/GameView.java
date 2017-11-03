@@ -6,6 +6,8 @@
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,7 +51,8 @@ import javafx.stage.Stage;
 public class GameView implements Initializable {
     private Parent root;
     private static Stage stage;
-    GameController gameController;
+    static GameController gameController;
+
     @FXML
     private HBox backgroundBox;
 
@@ -61,7 +64,7 @@ public class GameView implements Initializable {
 
     @FXML
     ImageView middleCard;
-    
+
     @FXML
     private HBox otherPlayerBox;
 
@@ -82,9 +85,12 @@ public class GameView implements Initializable {
             System.out.println("Clicked!"); // change functionality
         });
         stage.setTitle("UNO game");
+        Button b = new Button("click me to view your cards");
+
     }
 
-    public GameView(GameController g){
+    public GameView(GameController g) {
+        System.out.println("gamecontroller setted");
         this.gameController = g;
     }
 
@@ -95,26 +101,30 @@ public class GameView implements Initializable {
 
     public void tmpButton(ActionEvent event) throws IOException {
         System.out.println("clicked on button");
-        root = FXMLLoader.load(getClass().getResource("Lobby.fxml"));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+//        root = FXMLLoader.load(getClass().getResource("Lobby.fxml"));
+//        Scene scene = new Scene(root);
+//        stage.setScene(scene);
+        gameController.updateYourCards();
     }
-    
-    public void updateMiddleCard(Integer id){
+
+    public void updateMiddleCard(Integer id) {
         //if integer == ies dan afhankelijk de jusite kaart nemen
         Image image = new Image("/Cards/EIGHT_BLUE.png");
         middleCard.setImage(image);
     }
-    
+
+
     @FXML
-    public void updateOtherPlayer(){
+    public void updateOtherPlayer() {
         //hier krijg je update van de andere kaarten
-          for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 2; i++) {
             backgroundBox.getChildren().add(new Label("test"));
         }
     }
 
-    public void start()  {
+    public void start() {
+        System.out.println("root " + root);
+        System.out.println("stage: " + stage);
         try {
             root = FXMLLoader.load(getClass().getResource("GameRoom.fxml"));
         } catch (IOException e) {
@@ -124,4 +134,15 @@ public class GameView implements Initializable {
         stage.setScene(scene);
     }
 
+    public void showCards(List<NumberCard> list) {
+        updateOtherPlayer();
+//        for(NumberCard card : list){
+//            System.out.println(card);
+//            backgroundBox.getChildren().add(new ImageView(card.getPath()));
+//        }
+    }
+
+    public void setController(GameController controller) {
+        this.gameController = controller;
+    }
 }

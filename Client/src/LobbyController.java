@@ -22,6 +22,7 @@ public class LobbyController {
 
     static ApplicationServerController applicationServerController;
     LobbyView lobbyview;
+    GameController gameController = new GameController(applicationServerController);
 
     public LobbyController(ApplicationServerController applicationServerController) {
         this.applicationServerController = applicationServerController;
@@ -54,25 +55,29 @@ public class LobbyController {
         return FXCollections.observableList(unoGameList);
     }
 
-    public static void startGame(int i, String name)  {
+    public void startGame(int i, String name)  {
         UnoGame unoGame = new UnoGame(i, name);
         try {
             applicationServerController.addUnoGame(unoGame);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+        gameController.startGame();
     }
 
     public void setStage(Stage stage, Parent root){
         lobbyview = new LobbyView(this);
         lobbyview.setStage(stage,root);
+        gameController.setStage(stage, root);
     }
 
     public void startLobby(){
         try {
             System.out.println("lobbyview" + lobbyview);
+
             lobbyview.start();
 //            lobbyview.loadGames();
+
         } catch (IOException e) {
             e.printStackTrace();
         }

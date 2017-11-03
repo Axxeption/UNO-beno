@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,6 +33,7 @@ public class GameController {
         };
         new Thread(updateGames).start();
         System.out.println("Thread started");
+
     }
 
     public void updateMiddleCard(){
@@ -40,12 +42,28 @@ public class GameController {
     }
 
     public void setStage(Stage stage, Parent root){
-        gameview = new GameView(this);
+        System.out.println("gameview setten");
+        this.gameview = new GameView(this);
         gameview.setStage(stage,root);
     }
 
     public void startGame(){
+        System.out.println("gameview: " + gameview);
         gameview.start();
+        gameview.setController(this);
+    }
+
+    public void updateYourCards() {
+        List<NumberCard> list = new ArrayList<>();
+        list.add(new NumberCard(3, 5));
+        list.add(new NumberCard(2, 5));
+        list.add(new NumberCard(1, 5));
+        list.add(new NumberCard(4, 5));
+        list.add(new NumberCard(3, 2));
+        gameview.showCards(list);
+        //nu doorgeven naar ui
+
+
     }
 
     public void updateOtherPlayers(){
