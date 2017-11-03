@@ -24,6 +24,7 @@ public class LobbyView implements Initializable {
     Stage secondStage;
     GameView g = new GameView();
     LobbyController lobbyController;
+    TextField nameGameInput;
 
     Scene secondScene;
     /**
@@ -101,7 +102,10 @@ public class LobbyView implements Initializable {
         //Button
         Button chosenButton = new Button("Let's go!");
         chosenButton.setOnAction(e -> checkPlayers(three, four));
-        
+        //textfield
+        Label nameinputLabel = new Label("Give a name for the game");
+         nameGameInput = new TextField();
+
         //layout
         VBox secondaryLayout = new VBox(10);
         secondaryLayout.getChildren().addAll(aantalSpelerLabel, three, four, chosenButton);
