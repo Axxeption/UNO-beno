@@ -26,9 +26,10 @@ public class LobbyController {
             public void run() {
                 while (true) {
                     try {
-                        System.out.println("blalqksjf");
                         List<UnoGame> unoGameList = applicationServerController.subscribe();
-                        System.out.println("lijst: " + unoGameList);
+                        for(UnoGame u : unoGameList){
+                            System.out.println(u.getGameName());
+                        }
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
@@ -38,8 +39,8 @@ public class LobbyController {
         new Thread(updateGames).start();
     }
 
-    public static void startGame(int i)  {
-        UnoGame unoGame = new UnoGame(i);
+    public static void startGame(int i, String name)  {
+        UnoGame unoGame = new UnoGame(i, name);
         try {
             applicationServerController.addUnoGame(unoGame);
         } catch (RemoteException e) {
