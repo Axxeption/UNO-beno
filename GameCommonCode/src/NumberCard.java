@@ -9,7 +9,8 @@ public class NumberCard extends Card{
     }
 
     public NumberCard(int colour, int number){
-        super(colour);
+        String id = Card.COLOUR_NAMES[colour] + number;
+        super(colour,id);
         this.number = number;
     }
 
