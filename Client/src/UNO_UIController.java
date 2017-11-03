@@ -74,9 +74,6 @@ public class UNO_UIController implements Initializable {
             if (applicationServerController.login(input_username.getText(), input_password.getText())) {
                 outputLabel.setText("Succesfully logged in.");
                 lobbyController.startLobby();
-//                root = FXMLLoader.load(getClass().getResource("Lobby.fxml"));
-//                scene = new Scene(root);
-//                window.setScene(scene);
 
             } else {
                 outputLabel.setText("Wrong username or pass, try again!");

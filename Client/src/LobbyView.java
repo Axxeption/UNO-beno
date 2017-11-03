@@ -3,12 +3,16 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.sun.xml.internal.bind.v2.runtime.property.PropertyFactory;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -23,24 +27,14 @@ public class LobbyView implements Initializable {
     private static Stage stage;
     Stage secondStage;
     GameView g = new GameView();
-    LobbyController lobbyController;
+    static LobbyController lobbyController;
     TextField nameGameInput;
-
     Scene secondScene;
     /**
      * Initializes the controller class.
      */
-    @FXML
-    private TableView waitingGames;
-
-    @FXML
-    private TableColumn firstPlayer;
-
-    @FXML
-    private TableColumn secondPlayer;
-
-    @FXML
-    private TableColumn thirdPlayer;
+   @FXML
+   private TableView waitingGames;
 
     @FXML
     private TableView lastPlayedGames;
@@ -51,13 +45,14 @@ public class LobbyView implements Initializable {
     @FXML
     private AnchorPane anchor;
 
+    @FXML
+    private Button newGame;
+
     public LobbyView(LobbyController lobbyController) {
+        System.out.println("lobbycontroller gezet");
         this.lobbyController = lobbyController;
     }
-
-    public LobbyView() {
-
-    }
+    public LobbyView(){};
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -68,15 +63,27 @@ public class LobbyView implements Initializable {
         anchor.setBackground(new Background(myBI));
         stage.setTitle("Lobby");
         //alle kolommen goed zetten
-        waitingGames = new TableView();
-        waitingGames.setEditable(true);
+
+        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Name");
+        nameColumn.setMinWidth(250);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+
+        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("current users");
+        nameColumn.setMinWidth(175);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("currentNumberOfPlayers"));
+
+        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Max users");
+        nameColumn.setMinWidth(175);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPlayers"));
+
+        loadGames();
+        waitingGames.getColumns().addAll(nameColumn, currentUsersColumn, maxUsersColumn);
+
     }
 
     public void start() throws IOException {
-        System.out.println("root" + root);
         root = FXMLLoader.load(getClass().getResource("Lobby.fxml"));
         Scene scene = new Scene(root);
-        System.out.println("stge: " + stage);
         stage.setScene(scene);
     }
 
@@ -86,11 +93,6 @@ public class LobbyView implements Initializable {
         this.root = root;
         g.setStage(stage, root);
     }
-
-    //deze methode moet vervangen worden door als je op een bepaald spel klikt om mee te doen, of fowel een nieuw aanmaakt...
-//    public void tmpButton(ActionEvent event) {
-//
-//    }
 
     public void tmpButton(){
         //Label
@@ -139,8 +141,6 @@ public class LobbyView implements Initializable {
 
         }else{
             if(three.isSelected()){
-                System.out.println(333);
-
                 lobbyController.startGame(3, nameGameInput.getText());
                 playGame();
                 secondStage.close();
@@ -148,9 +148,8 @@ public class LobbyView implements Initializable {
             if(four.isSelected()){
                 //initiage game with 4
                 lobbyController.startGame(4, nameGameInput.getText());
-                playGame();
+//                playGame();
                 secondStage.close();
-
             }
         }
 
@@ -158,9 +157,18 @@ public class LobbyView implements Initializable {
             System.out.println("doe iets meje leven, stommekloot");
 
         }
-
-
     }
 
+    public void setCurrentUnoGames(ObservableList<UnoGame> unogamescurrent){
+        System.out.println("opgeroepen: " + unogamescurrent);
+        System.out.println("wiatinggames: " + this.waitingGames);
+        this.waitingGames.setItems(unogamescurrent);
+    }
 
+    public void loadGames() {
+        System.out.println("waitinggamestable: " + waitingGames);
+        System.out.println(lobbyController.getUnoGames());
+        waitingGames.setItems(lobbyController.getUnoGames());
+
+    }
 }
