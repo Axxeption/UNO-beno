@@ -26,7 +26,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
         Class.forName("org.sqlite.JDBC");
         String path = System.getProperty("user.dir");
         String fileSeparator = System.getProperty("file.separator");
-        con = DriverManager.getConnection("jdbc:sqlite:" + path+ fileSeparator + "DatabaseServer" + fileSeparator +"userdb.sqlite"); //name of db make here
+        con = DriverManager.getConnection("jdbc:sqlite:" + path + fileSeparator + "DatabaseServer" + fileSeparator +"userdb.sqlite"); //name of db make here
     }
 
     @Override
