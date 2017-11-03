@@ -26,11 +26,6 @@ public class UnoGame implements Serializable
     private String gameName;
 
 
-    /**
-     * Create a new game with a standard deck of cards
-     *
-     * @param nPlayers The number of players
-     */
     public UnoGame(int nPlayers, String name) {
         gameName = name;
         myDeck = new ArrayList<Card>();
@@ -79,6 +74,7 @@ public class UnoGame implements Serializable
         else{
             myPlayers.add(player);
             currentNumberOfPlayers++;
+            player.setId(currentNumberOfPlayers);
             return  true;
         }
     }

@@ -9,9 +9,12 @@ public class NumberCard extends Card{
     }
 
     public NumberCard(int colour, int number){
+        super(colour);
         String id = Card.COLOUR_NAMES[colour] + number;
-        super(colour,id);
+        String path = Card.COLOUR_NAMES[colour] + "_" + number + ".png";
         this.number = number;
+        setId(id);
+        setPath(path);
     }
 
     public int getNumber() {

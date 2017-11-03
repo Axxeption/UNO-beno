@@ -10,52 +10,40 @@ import java.util.ArrayList;
 public class Player implements Serializable
 {
     private String myName;
+
+    private int id;
     private ArrayList<Card> myCards;
 
-    /**
-     * Create a player. The player's hand is initially empty.
-     *
-     * @params The player's name
-     */
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Player(String name) {
         myName = name;
         myCards = new ArrayList<Card>();
     }
 
-    /**
-     * Access the player's name
-     */
     public String getName() {
         return myName;
     }
 
-    /**
-     * Access the player's hand
-     */
     public ArrayList<Card> getCards() {
         return myCards;
     }
 
-    /**
-     * Clear the player's hand
-     */
     public void clearCards() {
         myCards.clear();
     }
 
-    /**
-     * Add a card to the player's hand
-     *
-     * @param card The card to add.
-     */
     public void gainCard(Card card) {
         myCards.add(card);
     }
 
-
-    /**
-     * The string representation of the player
-     */
     public String toString() {
         return myName;
     }

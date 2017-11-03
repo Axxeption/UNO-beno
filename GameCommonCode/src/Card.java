@@ -10,6 +10,18 @@ public class Card implements Serializable {
 
     private String id;
 
+    private String path;
+
+
+    // An array of names indexed by the colours above
+    public static final String[] COLOUR_NAMES = {"", "green", "blue", "red", "yellow"};
+    protected int myColour;
+
+
+    public Card(int colour) {
+        myColour = colour;
+    }
+
     public String getId() {
         return id;
     }
@@ -18,14 +30,12 @@ public class Card implements Serializable {
         this.id = id;
     }
 
-    // An array of names indexed by the colours above
-    public static final String[] COLOUR_NAMES = {"", "Green", "Blue", "Red", "Yellow"};
-    protected int myColour;
+    public String getPath() {
+        return path;
+    }
 
-
-    public Card(int colour, String id) {
-        myColour = colour;
-        this.id = id;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public int getColour() {
