@@ -1,9 +1,11 @@
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Benoit on 3/11/17.
  */
-public class Message {
+public class Message implements Serializable{
     private int nextPlayerId;
     private int[] numberOfCards;
     private List<Card> thisPlayersCards;
@@ -18,5 +20,15 @@ public class Message {
         }
         thisPlayersCards = player.getCards();
         topCard = unoGame.getTopCard();
+    }
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "nextPlayerId=" + nextPlayerId +
+                ", numberOfCards=" + Arrays.toString(numberOfCards) +
+                ", thisPlayersCards=" + thisPlayersCards +
+                ", topCard=" + topCard +
+                '}';
     }
 }

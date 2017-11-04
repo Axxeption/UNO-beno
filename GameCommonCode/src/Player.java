@@ -49,12 +49,12 @@ public class Player implements Serializable
         return myName;
     }
 
-    public boolean removeCard(Card card) {
-        Card card1 = Arrays.stream(myCards.iterator())
-                .filter(x -> (x.getId()))
-                .findFirst()
-                .orElse(null);
-    }
+//    /public boolean removeCard(Card card) {
+//        Card card1 = Arrays.stream(myCards.iterator())
+//                .filter(x -> (x.getId()))
+//                .findFirst()
+//                .orElse(null);
+//    }
 }
 
 

@@ -1,10 +1,11 @@
 import java.rmi.RemoteException;
 import java.rmi.server.RemoteObject;
+import java.rmi.server.UnicastRemoteObject;
 
 /**
  * Created by Benoit on 3/11/17.
  */
-public class ApplicationServerGameImp extends RemoteObject implements ApplicationServerGameInterface{
+public class ApplicationServerGameImp extends UnicastRemoteObject implements ApplicationServerGameInterface{
 
     UnoGame unoGame;
 
@@ -22,7 +23,7 @@ public class ApplicationServerGameImp extends RemoteObject implements Applicatio
         return new Message(unoGame, realPlayer);
     }
 
-    public ApplicationServerGameImp(UnoGame unoGame) {
+    public ApplicationServerGameImp(UnoGame unoGame) throws RemoteException {
         this.unoGame = unoGame;
     }
 

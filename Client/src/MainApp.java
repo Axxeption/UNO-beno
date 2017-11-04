@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -26,7 +27,9 @@ public class MainApp extends Application {
     private LobbyController lobbyController;
     private gameroomController gameroomController;
     private String username;
-
+    private int playerId;
+    private long unoGameId;
+    ApplicationServerGameInterface applicationServerGameInterface;
 
 
     @Override
@@ -105,7 +108,14 @@ public class MainApp extends Application {
             AnchorPane gameroompane = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
             rootLayout.setCenter(gameroompane);
-            applicationServerController.joinGame(new Player("axel"), unoGame);
+            playerId = applicationServerController.joinGame(new Player("axel"), unoGame.getId());
+            unoGameId = unoGame.getId();
+            try {
+                applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
+                System.out.println(applicationServerGameInterface.startMessage(playerId));
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -175,7 +185,7 @@ public class MainApp extends Application {
     public void startGame(int i, String name) {
         UnoGame unoGame = new UnoGame(i, name);
         try {
-            applicationServerController.addUnoGame(unoGame);
+            applicationServerController.addUnoGame(name,i);
         } catch (RemoteException e) {
             e.printStackTrace();
         }

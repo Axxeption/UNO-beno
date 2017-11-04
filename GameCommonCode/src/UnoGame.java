@@ -51,7 +51,7 @@ public class UnoGame implements Serializable
             if (card.canPlayOn(getTopCard())) {
                 myPile.add(card);
                 card.play();
-                player.removeCard(card);
+//                player.removeCard(card);
                 System.out.println("card played");
                 return true;
             }
