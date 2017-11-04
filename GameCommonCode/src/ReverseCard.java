@@ -17,4 +17,10 @@ public class ReverseCard extends Card{
             unoGame.switchPlayDirection();
         }
 
+        public boolean canPlayOn(Card card){
+            if(getColour() == card.getColour()) return true;
+            if(card instanceof ReverseCard) return true;
+            return false;
+        }
+
 }

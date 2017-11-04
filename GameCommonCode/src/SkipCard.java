@@ -16,4 +16,10 @@ public class SkipCard extends Card {
     public void playCard(){
         unoGame.goToNextPlayer();
     }
+
+    public boolean canPlayOn(Card card){
+        if(getColour() == card.getColour()) return true;
+        if(card instanceof SkipCard) return true;
+        return false;
+    }
 }

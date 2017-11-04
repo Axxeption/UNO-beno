@@ -25,5 +25,14 @@ public class NumberCard extends Card{
         //Does nothing
     }
 
+    @Override
+    public boolean canPlayOn(Card card){
+        if(getColour() == card.getColour()) return true;
+        if(card instanceof NumberCard){
+            if(number == ((NumberCard) card).getNumber()) return true;
+        }
+        return false;
+    }
+
 
 }

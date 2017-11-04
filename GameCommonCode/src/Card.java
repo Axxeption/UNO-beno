@@ -50,7 +50,7 @@ public class Card implements Serializable {
         return (card.myColour == myColour);
     }
 
-    public void play(UnoGame game) {
+    public void play() {
         // Default: has no effect
     }
 

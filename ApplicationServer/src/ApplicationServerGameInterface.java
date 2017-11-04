@@ -6,6 +6,6 @@ import java.rmi.RemoteException;
  */
 public interface ApplicationServerGameInterface extends Remote {
     public boolean playCard(Player player, Card card) throws RemoteException;
-    public Message subscribe(UnoGame unoGame) throws RemoteException;
-    public Card drawCard() throws RemoteException;
+    public Message subscribe(Player player) throws RemoteException;
+    public boolean drawCard(Player player) throws RemoteException;
 }

@@ -25,6 +25,9 @@
         <Text fill="#f4f4f4" layoutX="830.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="Best players"/>
         <TableView fx:id="waitingGames" layoutX="36.0" layoutY="201.0" prefHeight="533.0" prefWidth="443.0">
+            <TableColumn prefWidth="75.0" text="UserId" fx:id="gameName" />
+            <TableColumn prefWidth="75.0" text="UserName" fx:id="currentPlayers" />
+            <TableColumn prefWidth="75.0" text="Active" fx:id="maxNumber" />
         </TableView>
         <TableView fx:id="lastPlayedGames" layoutX="581.0" layoutY="201.0" prefHeight="256.0" prefWidth="600.0">
             <columns>
