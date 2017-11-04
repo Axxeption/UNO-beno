@@ -8,18 +8,18 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Button fx:id="logInButton" layoutX="204.0" layoutY="170.0" onAction="#login" text="Log in" />
-        <PasswordField fx:id="input_password" layoutX="207.0" layoutY="121.0" promptText="Password" />
-        <TextField fx:id="input_username" layoutX="207.0" layoutY="72.0" promptText="Username" />
-        <Label layoutX="234.0" layoutY="14.0" text="Welcome!" AnchorPane.bottomAnchor="341.0" AnchorPane.leftAnchor="234.0" AnchorPane.rightAnchor="233.0" AnchorPane.topAnchor="14.0">
-            <font>
-                <Font size="30.0" />
-            </font>
-        </Label>
-        <Button fx:id="RegisterButton" layoutX="320.0" layoutY="170.0" mnemonicParsing="false" onAction="#register" text="Register" />
+        <Button fx:id="logInButton" layoutX="507.0" layoutY="369.0" onAction="#login" text="Log in" />
+        <PasswordField fx:id="input_password" layoutX="507.0" layoutY="323.0" promptText="Password" />
+        <TextField fx:id="input_username" layoutX="507.0" layoutY="270.0" promptText="Username" />
+        <Button fx:id="RegisterButton" layoutX="620.0" layoutY="369.0" mnemonicParsing="false" onAction="#register" text="Register" />
         <Label fx:id="outputLabel" layoutX="229.0" layoutY="216.0" prefHeight="21.0" prefWidth="144.0" />
+      <Label layoutX="527.0" layoutY="213.0" text="Welcome!" textFill="#d7d5d5">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
     </children>
 
 </AnchorPane>

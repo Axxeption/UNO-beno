@@ -2,16 +2,21 @@
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import sun.applet.Main;
 
 import java.io.IOException;
+import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class loginController {
+public class loginController{
     //maak connectie met mainapp
     MainApp mainApp;
 
@@ -27,6 +32,9 @@ public class loginController {
 
     @FXML
     private TextField input_password;
+
+    @FXML
+    private AnchorPane anchor;
 
     public void login(ActionEvent event) throws IOException {
         //            connect();
@@ -45,5 +53,13 @@ public class loginController {
             outputLabel.setText("Sorry, something went wrong.");
         }
 
+    }
+
+    public void background() {
+        //achtergrond zetten van het spel
+        BackgroundImage myBI = new BackgroundImage(new Image("loginbackground.jpg", 1200, 800, false, true),
+                BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        anchor.setBackground(new Background(myBI));
     }
 }

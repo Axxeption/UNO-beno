@@ -25,6 +25,9 @@ public class MainApp extends Application {
     Registry myRegistry;
     private LobbyController lobbyController;
     private gameroomController gameroomController;
+    private String username;
+
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -71,6 +74,7 @@ public class MainApp extends Application {
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
+            controller.background();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,6 +134,7 @@ public class MainApp extends Application {
         try {
             if (applicationServerController.login(username, pass)) {
                 //ga naar de lobby en start de polling op
+                this.username = username;
                 showLobby();
                 return true;
             } else {
@@ -177,8 +182,14 @@ public class MainApp extends Application {
         //nog overgaan naar het spel nu
     }
 
-    public static void main(String[] args) {
-        launch(args);
+
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
 
@@ -200,6 +211,11 @@ public class MainApp extends Application {
             }
         }
     };
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
 
 }
