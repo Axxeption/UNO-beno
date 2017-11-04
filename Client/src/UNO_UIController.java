@@ -63,8 +63,7 @@ public class UNO_UIController implements Initializable {
         this.window.setScene(scene);
         this.window.show();
         stage.setTitle("Login");
-        lobbyController = new LobbyController(applicationServerController);
-        lobbyController.setStage(stage, root);
+        lobbyController = LobbyController.create(applicationServerController, stage, root);
     }
 
     public void login(ActionEvent event) throws IOException {

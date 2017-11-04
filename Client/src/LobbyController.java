@@ -23,8 +23,23 @@ public class LobbyController {
     static ApplicationServerController applicationServerController;
     LobbyView lobbyview;
 
+    public static LobbyController create(ApplicationServerController applicationServerController, Stage stage, Parent root){
+        LobbyController lobbyController = new LobbyController(applicationServerController);
+        lobbyController.init(stage, root);
+        return lobbyController;
+    }
+
+    private void init(Stage stage, Parent root){
+        lobbyview = new LobbyView(this);
+        lobbyview.setStage(stage,root);
+    }
+
     public LobbyController(ApplicationServerController applicationServerController) {
         this.applicationServerController = applicationServerController;
+
+    }
+
+    public void startListener(){
         Runnable updateGames = new Runnable() {
             @Override
             public void run() {
@@ -61,11 +76,6 @@ public class LobbyController {
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setStage(Stage stage, Parent root){
-        lobbyview = new LobbyView(this);
-        lobbyview.setStage(stage,root);
     }
 
     public void startLobby(){

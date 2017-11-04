@@ -2,9 +2,12 @@
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.sun.xml.internal.bind.v2.runtime.property.PropertyFactory;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,8 +36,13 @@ public class LobbyView implements Initializable {
     /**
      * Initializes the controller class.
      */
-   @FXML
-   private TableView waitingGames;
+    @FXML
+    private TableView<UnoGame> waitingGames;
+
+    @FXML private TableColumn<UnoGame, String> gameName;
+    @FXML private TableColumn<UnoGame, String> currentPlayers;
+    @FXML private TableColumn<UnoGame, String> maxNumber;
+
 
     @FXML
     private TableView lastPlayedGames;
@@ -62,22 +70,12 @@ public class LobbyView implements Initializable {
                 BackgroundSize.DEFAULT);
         anchor.setBackground(new Background(myBI));
         stage.setTitle("Lobby");
-        //alle kolommen goed zetten
 
-        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(250);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+        gameName.setCellValueFactory(new PropertyValueFactory<UnoGame, String>("nameGame"));
+        currentPlayers.setCellValueFactory(new PropertyValueFactory<UnoGame, String>("currentNumberOfPlayers"));
+        maxNumber.setCellValueFactory(new PropertyValueFactory<UnoGame, String>("maxNumberOfPlayers"));
 
-        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("current users");
-        nameColumn.setMinWidth(175);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("currentNumberOfPlayers"));
-
-        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Max users");
-        nameColumn.setMinWidth(175);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPlayers"));
-
-        loadGames();
-        waitingGames.getColumns().addAll(nameColumn, currentUsersColumn, maxUsersColumn);
+        //loadGames();
 
     }
 
@@ -85,6 +83,28 @@ public class LobbyView implements Initializable {
         root = FXMLLoader.load(getClass().getResource("Lobby.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+
+        /*TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Name");
+        nameColumn.setMinWidth(250);
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+
+        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("current users");
+        currentUsersColumn.setMinWidth(175);
+        currentUsersColumn.setCellValueFactory(new PropertyValueFactory<>("currentNumberOfPlayers"));
+
+        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Max users");
+        maxUsersColumn.setMinWidth(175);
+        maxUsersColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPlayers"));
+
+        ObservableList<UnoGame> unoGames = FXCollections.observableArrayList();*/
+        UnoGame unoGame = new UnoGame(4, "lalala");
+        List<UnoGame> unoGames = new ArrayList<>();
+        unoGames.add(unoGame);
+        waitingGames = new TableView<>();
+        waitingGames.getItems().setAll(unoGames);
+        //waitingGames.getColumns().addAll(nameColumn, currentUsersColumn, maxUsersColumn);
+
+
     }
 
     public void setStage(Stage stage, Parent root){

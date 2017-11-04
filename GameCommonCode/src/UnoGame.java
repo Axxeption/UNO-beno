@@ -22,9 +22,47 @@ public class UnoGame implements Serializable
 
     private Player myCurrentPlayer;
     private int myPlayDirection;
-
     private String gameName;
 
+    public int getMaxNumberOfPlayers() {
+        return maxNumberOfPlayers;
+    }
+
+    public void setMaxNumberOfPlayers(int maxNumberOfPlayers) {
+        this.maxNumberOfPlayers = maxNumberOfPlayers;
+    }
+
+    public int getCurrentNumberOfPlayers() {
+        return currentNumberOfPlayers;
+    }
+
+    public void setCurrentNumberOfPlayers(int currentNumberOfPlayers) {
+        this.currentNumberOfPlayers = currentNumberOfPlayers;
+    }
+
+
+    public Card getTopCard(){
+        return myPile.get(myPile.size() - 1);
+    }
+
+    public boolean playCard(Card card, Player player){
+        System.out.println(player.getName() + " tries to play card " + card.getId());
+        if(myCurrentPlayer.equals(player)) {
+            if (card.canPlayOn(getTopCard())) {
+                myPile.add(card);
+                card.play();
+                player.removeCard(card);
+                System.out.println("card played");
+                return true;
+            }
+        }
+        else{
+            System.out.println("Cards don't match or it isn't this players turn");
+            return false;
+        }
+        return false;
+
+    }
 
     public UnoGame(int nPlayers, String name) {
         gameName = name;
@@ -73,8 +111,8 @@ public class UnoGame implements Serializable
         }
         else{
             myPlayers.add(player);
-            currentNumberOfPlayers++;
             player.setId(currentNumberOfPlayers);
+            currentNumberOfPlayers++;
             return  true;
         }
     }
@@ -189,4 +227,11 @@ public class UnoGame implements Serializable
     }
 
 
+    public boolean drawAndGoToNextPlayer(Player player) {
+        if(player.equals(myCurrentPlayer)){
+            draw(player,1);
+            return true;
+        }
+        return false;
+    }
 }

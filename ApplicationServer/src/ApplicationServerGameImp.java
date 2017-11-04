@@ -13,16 +13,25 @@ public class ApplicationServerGameImp implements ApplicationServerGameInterface{
 
     @Override
     public boolean playCard(Player player, Card card) throws RemoteException {
-        return false;
+        Player realPlayer = unoGame.getPlayers().get(player.getId());
+        return unoGame.playCard(card, realPlayer);
     }
 
     @Override
-    public Message subscribe(Player player) throws RemoteException {
-        
+    public synchronized Message subscribe(Player player) throws RemoteException {
+        try {
+            wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        Player realPlayer = unoGame.getPlayers().get(player.getId());
+        return new Message(unoGame, realPlayer);
     }
 
     @Override
-    public Card drawCard() throws RemoteException {
-        return null;
+    public synchronized boolean drawCard(Player player) throws RemoteException {
+        Player realPlayer = unoGame.getPlayers().get(player.getId());
+        notifyAll();
+        return unoGame.drawAndGoToNextPlayer(realPlayer);;
     }
 }

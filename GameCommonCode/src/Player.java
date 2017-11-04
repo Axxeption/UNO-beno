@@ -47,6 +47,9 @@ public class Player implements Serializable
     public String toString() {
         return myName;
     }
+
+    public boolean removeCard(Card card) {
+    }
 }
 
 
