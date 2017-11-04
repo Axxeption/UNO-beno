@@ -61,23 +61,7 @@ public class LobbyController implements Initializable{
         mainapp.startCheckingGamesThread();
     }
 
-    public void tmpbutton() {
-        System.out.println("gedrukt!");
-        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Name");
-        nameColumn.setMinWidth(250);
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
-
-        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("current users");
-        currentUsersColumn.setMinWidth(175);
-        currentUsersColumn.setCellValueFactory(new PropertyValueFactory<>("currentNumberOfPlayers"));
-
-        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Max users");
-        maxUsersColumn.setMinWidth(175);
-        maxUsersColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPlayers"));
-
-        loadGames();
-        waitingGames.getColumns().addAll(nameColumn, currentUsersColumn, maxUsersColumn);
-    }
+//
 
     public void loadGames() {
         waitingGames.setItems(mainapp.getUnoGames());
@@ -137,7 +121,32 @@ public class LobbyController implements Initializable{
         //https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/table-view.htm
     }
 
+    public void startbutton(){
+        UnoGame unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
+        //go into the gameroom with this selectedgame
+        System.out.println(unoGame);
+        mainapp.showGameroom(unoGame);
+    }
+
 
     public void setCurrentUnoGames(ObservableList<UnoGame> currentUnoGames) {
         waitingGames.setItems(currentUnoGames);    }
+
+//    public void tmpbutton() {
+//        System.out.println("gedrukt!");
+//        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Name");
+//        nameColumn.setMinWidth(250);
+//        nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
+//
+//        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("current users");
+//        currentUsersColumn.setMinWidth(175);
+//        currentUsersColumn.setCellValueFactory(new PropertyValueFactory<>("currentNumberOfPlayers"));
+//
+//        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Max users");
+//        maxUsersColumn.setMinWidth(175);
+//        maxUsersColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPlayers"));
+//
+//        loadGames();
+//        waitingGames.getColumns().addAll(nameColumn, currentUsersColumn, maxUsersColumn);
+//    }
 }
