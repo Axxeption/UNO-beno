@@ -105,15 +105,19 @@ public class UnoGame implements Serializable
         return myPlayers;
     }
 
-    public boolean addPlayer(Player player){
+    public int addPlayer(Player player){
         if(currentNumberOfPlayers >= maxNumberOfPlayers){
-            return false;
+            return -1;
         }
         else{
             myPlayers.add(player);
             player.setId(currentNumberOfPlayers);
             currentNumberOfPlayers++;
-            return  true;
+            if(currentNumberOfPlayers == maxNumberOfPlayers){
+                startGame();
+                System.out.println("A new game is started.");
+            }
+            return  player.getId();
         }
     }
 
@@ -210,13 +214,13 @@ public class UnoGame implements Serializable
     /**
      * Deal out cards and start a new game
      */
-    public void dealCards() {
+    public void startGame() {
         // Everyone draws five cards to start
         for (Player p : myPlayers) {
 
             draw(p, 5);
         }
-
+        System.out.println("Cards are distributed");
         // turn over the top card
         Card card = myDeck.remove(0);
         myPile.add(0, card);

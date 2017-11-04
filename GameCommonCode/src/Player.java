@@ -1,5 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A Player in the Uno Game.
@@ -49,7 +50,10 @@ public class Player implements Serializable
     }
 
     public boolean removeCard(Card card) {
-        return true;
+        Card card1 = Arrays.stream(myCards.iterator())
+                .filter(x -> (x.getId()))
+                .findFirst()
+                .orElse(null);
     }
 }
 

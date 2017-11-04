@@ -1,27 +1,27 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Benoit on 2/11/17.
  */
 public class Lobby {
-    List<UnoGame> unoGameList;
+    HashMap<Long,UnoGame> unoGameHashMap;
 
     public Lobby(){
-        unoGameList = new ArrayList<>();
+        unoGameHashMap = new HashMap<>();
     }
 
     public List<UnoGame> getUnoGameList() {
-        return unoGameList;
+        return new ArrayList<>(unoGameHashMap.values());
     }
 
-    public void setUnoGameList(List<UnoGame> unoGameList) {
-        this.unoGameList = unoGameList;
+    public UnoGame getUnoGame(long id){
+        return unoGameHashMap.get(id);
     }
 
     public void addUnoGameToList(UnoGame unoGame){
-        unoGameList.add(unoGame);
+        unoGameHashMap.put(unoGame.getId(),unoGame);
     }
 }
