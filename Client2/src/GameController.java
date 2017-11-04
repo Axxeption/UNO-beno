@@ -23,6 +23,7 @@ public class GameController {
 
     public GameController(ApplicationServerController applicationServerController) {
         this.applicationServerController = applicationServerController;
+        //initiate the thread
         Runnable updateGames = new Runnable() {
             @Override
             public void run() {
@@ -35,14 +36,13 @@ public class GameController {
         System.out.println("Thread started");
 
     }
-
+    //not used
     public void updateMiddleCard(){
         //Deze methode moet aangesproken worden als je de middelstekaart aanpast
         gameview.updateMiddleCard(4);
     }
 
     public void setStage(Stage stage, Parent root){
-        System.out.println("gameview setten");
         this.gameview = new GameView(this);
         gameview.setStage(stage,root);
     }
@@ -52,7 +52,7 @@ public class GameController {
         gameview.start();
         gameview.setController(this);
     }
-
+    //om de kaarten te testen
     public void updateYourCards() {
         List<NumberCard> list = new ArrayList<>();
         list.add(new NumberCard(3, 5));

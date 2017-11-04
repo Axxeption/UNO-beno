@@ -44,7 +44,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * FXML controller class
  *
  * @author vulst
  */
@@ -85,8 +85,6 @@ public class GameView implements Initializable {
             System.out.println("Clicked!"); // change functionality
         });
         stage.setTitle("UNO game");
-        Button b = new Button("click me to view your cards");
-
     }
 
     public GameView(GameController g) {
@@ -101,9 +99,9 @@ public class GameView implements Initializable {
 
     public void tmpButton(ActionEvent event) throws IOException {
         System.out.println("clicked on button");
-//        root = FXMLLoader.load(getClass().getResource("Lobby.fxml"));
-//        Scene scene = new Scene(root);
-//        stage.setScene(scene);
+        root = FXMLLoader.load(getClass().getResource("Lobby.fxml"));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
         gameController.updateYourCards();
     }
 
@@ -117,8 +115,13 @@ public class GameView implements Initializable {
     @FXML
     public void updateOtherPlayer() {
         //hier krijg je update van de andere kaarten
-        for (int i = 0; i < 2; i++) {
-            backgroundBox.getChildren().add(new Label("test"));
+        try {
+            for (int i = 0; i < 2; i++) {
+                System.out.println("bckground: " + backgroundBox);
+                backgroundBox.getChildren().add(new Label("test"));
+            }
+        }catch(Exception e){
+            System.out.println("error: " + e);
         }
     }
 

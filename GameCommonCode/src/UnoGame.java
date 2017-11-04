@@ -160,12 +160,37 @@ public class UnoGame implements Serializable
         }
     }
 
+    public int getMaxNumberOfPlayers() {
+        return maxNumberOfPlayers;
+    }
+
+    public void setMaxNumberOfPlayers(int maxNumberOfPlayers) {
+        this.maxNumberOfPlayers = maxNumberOfPlayers;
+    }
+
+    public int getCurrentNumberOfPlayers() {
+        return currentNumberOfPlayers;
+    }
+
+    public void setCurrentNumberOfPlayers(int currentNumberOfPlayers) {
+        this.currentNumberOfPlayers = currentNumberOfPlayers;
+    }
+
+    public Player getMyCurrentPlayer() {
+        return myCurrentPlayer;
+    }
+
+    public void setMyCurrentPlayer(Player myCurrentPlayer) {
+        this.myCurrentPlayer = myCurrentPlayer;
+    }
+
     /**
      * Deal out cards and start a new game
      */
     public void dealCards() {
         // Everyone draws five cards to start
         for (Player p : myPlayers) {
+
             draw(p, 5);
         }
 

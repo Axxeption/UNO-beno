@@ -18,7 +18,7 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
+ * FXML controller class
  *
  * @author vulst
  */
@@ -33,8 +33,8 @@ public class LobbyView implements Initializable {
     /**
      * Initializes the controller class.
      */
-   @FXML
-   private TableView waitingGames;
+    @FXML
+    private TableView waitingGames;
 
     @FXML
     private TableView lastPlayedGames;
@@ -49,10 +49,11 @@ public class LobbyView implements Initializable {
     private Button newGame;
 
     public LobbyView(LobbyController lobbyController) {
-        System.out.println("lobbycontroller gezet");
         this.lobbyController = lobbyController;
     }
-    public LobbyView(){};
+
+    public LobbyView() {
+    };
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -87,14 +88,14 @@ public class LobbyView implements Initializable {
         stage.setScene(scene);
     }
 
-    public void setStage(Stage stage, Parent root){
+    public void setStage(Stage stage, Parent root) {
         //om stage en parten te hebben
         this.stage = stage;
         this.root = root;
         g.setStage(stage, root);
     }
 
-    public void tmpButton(){
+    public void tmpButton() {
         //Label
         Label aantalSpelerLabel = new Label("Choose number of players.");
         //Checkboxes
@@ -122,7 +123,7 @@ public class LobbyView implements Initializable {
         //https://docs.oracle.com/javase/8/javafx/user-interface-tutorial/table-view.htm
     }
 
-    public void playGame(){
+    public void playGame() {
         try {
             root = FXMLLoader.load(getClass().getResource("GameRoom.fxml"));
         } catch (IOException e) {
@@ -136,16 +137,16 @@ public class LobbyView implements Initializable {
     private void checkPlayers(CheckBox three, CheckBox four) {
         //make new game!
         String message = "";
-        if(three.isSelected() && four.isSelected()){
+        if (three.isSelected() && four.isSelected()) {
             System.out.println("doe iets meje leven, stommekloot");
 
-        }else{
-            if(three.isSelected()){
+        } else {
+            if (three.isSelected()) {
                 lobbyController.startGame(3, nameGameInput.getText());
 
                 secondStage.close();
             }
-            if(four.isSelected()){
+            if (four.isSelected()) {
                 //initiage game with 4
                 lobbyController.startGame(4, nameGameInput.getText());
 //                playGame();
@@ -153,13 +154,13 @@ public class LobbyView implements Initializable {
             }
         }
 
-        if(!three.isSelected() && !four.isSelected()){
+        if (!three.isSelected() && !four.isSelected()) {
             System.out.println("doe iets meje leven, stommekloot");
 
         }
     }
 
-    public void setCurrentUnoGames(ObservableList<UnoGame> unogamescurrent){
+    public void setCurrentUnoGames(ObservableList<UnoGame> unogamescurrent) {
         System.out.println("opgeroepen: " + unogamescurrent);
         System.out.println("wiatinggames: " + this.waitingGames);
 //        this.waitingGames.setItems(unogamescurrent);
