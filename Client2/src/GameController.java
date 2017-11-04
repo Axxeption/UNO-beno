@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class GameController {
 
     public GameController(ApplicationServerController applicationServerController) {
         this.applicationServerController = applicationServerController;
+        //initiate the thread
         Runnable updateGames = new Runnable() {
             @Override
             public void run() {
@@ -32,20 +34,36 @@ public class GameController {
         };
         new Thread(updateGames).start();
         System.out.println("Thread started");
-    }
 
+    }
+    //not used
     public void updateMiddleCard(){
         //Deze methode moet aangesproken worden als je de middelstekaart aanpast
         gameview.updateMiddleCard(4);
     }
 
     public void setStage(Stage stage, Parent root){
-        gameview = new GameView(this);
+        this.gameview = new GameView(this);
         gameview.setStage(stage,root);
     }
 
     public void startGame(){
+        System.out.println("gameview: " + gameview);
         gameview.start();
+        gameview.setController(this);
+    }
+    //om de kaarten te testen
+    public void updateYourCards() {
+        List<NumberCard> list = new ArrayList<>();
+        list.add(new NumberCard(3, 5));
+        list.add(new NumberCard(2, 5));
+        list.add(new NumberCard(1, 5));
+        list.add(new NumberCard(4, 5));
+        list.add(new NumberCard(3, 2));
+        gameview.showCards(list);
+        //nu doorgeven naar ui
+
+
     }
 
     public void updateOtherPlayers(){

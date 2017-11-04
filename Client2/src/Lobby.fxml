@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 
 <AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" >
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="LobbyView">
     <children>
         <Text fill="#f4f4f4" layoutX="136.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="Welcome, please choose a game at the left to play UNO!" textAlignment="CENTER"
@@ -25,9 +25,6 @@
         <Text fill="#f4f4f4" layoutX="830.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0"
               text="Best players"/>
         <TableView fx:id="waitingGames" layoutX="36.0" layoutY="201.0" prefHeight="533.0" prefWidth="443.0">
-            <TableColumn prefWidth="75.0" text="UserId" fx:id="gameName" />
-            <TableColumn prefWidth="75.0" text="UserName" fx:id="currentPlayers" />
-            <TableColumn prefWidth="75.0" text="Active" fx:id="maxNumber" />
         </TableView>
         <TableView fx:id="lastPlayedGames" layoutX="581.0" layoutY="201.0" prefHeight="256.0" prefWidth="600.0">
             <columns>
@@ -41,9 +38,7 @@
                 <TableColumn prefWidth="75.0" text="C2"/>
             </columns>
         </TableView>
-        <Button fx:id="newGame" layoutX="52.0" layoutY="114.0" mnemonicParsing="false" onAction="#addgame"
+        <Button fx:id="newGame" layoutX="52.0" layoutY="114.0" mnemonicParsing="false" onAction="#tmpButton"
                 text="Start a new game"/>
-        <Button fx:id="load" layoutX="200.0" layoutY="114.0" mnemonicParsing="false" onAction="#tmpbutton"
-                text="Load games"/>
     </children>
 </AnchorPane>

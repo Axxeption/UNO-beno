@@ -32,6 +32,6 @@ public class ApplicationServerGameImp implements ApplicationServerGameInterface{
     public synchronized boolean drawCard(Player player) throws RemoteException {
         Player realPlayer = unoGame.getPlayers().get(player.getId());
         notifyAll();
-        return unoGame.drawAndGoToNextPlayer(realPlayer);;
+        return unoGame.drawAndGoToNextPlayer(realPlayer);
     }
 }

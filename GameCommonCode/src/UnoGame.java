@@ -198,12 +198,22 @@ public class UnoGame implements Serializable
         }
     }
 
+
+    public Player getMyCurrentPlayer() {
+        return myCurrentPlayer;
+    }
+
+    public void setMyCurrentPlayer(Player myCurrentPlayer) {
+        this.myCurrentPlayer = myCurrentPlayer;
+    }
+
     /**
      * Deal out cards and start a new game
      */
     public void dealCards() {
         // Everyone draws five cards to start
         for (Player p : myPlayers) {
+
             draw(p, 5);
         }
 
