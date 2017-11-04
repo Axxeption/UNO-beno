@@ -101,6 +101,7 @@ public class MainApp extends Application {
             AnchorPane gameroompane = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
             rootLayout.setCenter(gameroompane);
+            applicationServerController.joinGame(new Player("axel"), unoGame);
         } catch (IOException e) {
             e.printStackTrace();
         }

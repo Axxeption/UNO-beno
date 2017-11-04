@@ -49,6 +49,7 @@ public class Player implements Serializable
     }
 
     public boolean removeCard(Card card) {
+        return true;
     }
 }
 
