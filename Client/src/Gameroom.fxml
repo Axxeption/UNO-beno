@@ -13,7 +13,7 @@
         <HBox fx:id="backgroundBox" layoutX="70.0" layoutY="525.0" opacity="0.5" prefHeight="216.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" />
         <HBox layoutX="128.0" layoutY="86.0" opacity="0.1" prefHeight="189.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0" />
         <ImageView fx:id="middleCard" fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true" />
-        <Button fx:id="button" layoutX="815.0" layoutY="352.0" mnemonicParsing="false" onAction="#getcards" text="Button" />
+        <Button fx:id="showCards" layoutX="815.0" layoutY="352.0" mnemonicParsing="false" onAction="#showcards" text="Show your cards!" />
 
     </children>
 </AnchorPane>
