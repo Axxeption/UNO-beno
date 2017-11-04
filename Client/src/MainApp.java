@@ -40,8 +40,6 @@ public class MainApp extends Application {
         initRootLayout();
 
         showLogin();
-
-
     }
 
     /**
@@ -121,6 +119,7 @@ public class MainApp extends Application {
         }
     }
 
+
     /**
      * Returns the main stage.
      *
@@ -193,7 +192,6 @@ public class MainApp extends Application {
     }
 
 
-
     public String getUsername() {
         return username;
     }
@@ -202,7 +200,7 @@ public class MainApp extends Application {
         this.username = username;
     }
 
-
+    //thread starten
     public void startCheckingGamesThread() {
         new Thread(updateGames).start();
     }
@@ -221,6 +219,8 @@ public class MainApp extends Application {
             }
         }
     };
+
+
 
 
     public static void main(String[] args) {

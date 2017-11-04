@@ -6,12 +6,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import sun.applet.Main;
 
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.sql.DriverManager;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +39,7 @@ public class loginController{
     private AnchorPane anchor;
 
     public void login(ActionEvent event) throws IOException {
+
         //            connect();
         if (mainApp.login(input_username.getText(), input_password.getText())) {
             outputLabel.setText("Succesfully logged in.");
