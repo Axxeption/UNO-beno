@@ -14,6 +14,7 @@ public class Message implements Serializable{
     public Message(UnoGame unoGame, Player player) {
         nextPlayerId = unoGame.getCurrentPlayer().getId();
         int i = 0;
+        numberOfCards = new int[unoGame.getMaxNumberOfPlayers()];
         for(Player p: unoGame.getPlayers()){
             numberOfCards[i] = p.getCards().size();
             i++;

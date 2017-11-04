@@ -12,7 +12,7 @@ public class ApplicationServerMain {
         Lobby lobby = new Lobby();
         try {
             // create on port 1099
-            Registry registry = LocateRegistry.createRegistry(9450);
+            Registry registry = LocateRegistry.createRegistry(7280);
             // create a new service named ClientApplicationService
             registry.rebind("ClientApplicationService", new ApplicationServerControllerImpl(lobby));
         } catch (Exception e) {

@@ -19,7 +19,8 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     private Hashing pswd = new Hashing();
     SQLiteController impl;
-    Registry myRegistry;
+    Registry databaseRegistry;
+    Registry applicationRegistry;
     ResultSet rs;
     User user;
     Lobby lobby;
@@ -27,8 +28,8 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     private void connectDbServer() {
         System.out.println("Connect from applicationserver to db");
         try {
-            myRegistry = LocateRegistry.getRegistry("localhost", 9430);
-            impl = (SQLiteController) myRegistry.lookup("DatabaseService");
+            databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
+            impl = (SQLiteController) databaseRegistry.lookup("DatabaseService");
             System.out.println("Connected to db");
         } catch (NotBoundException ex) {
             Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,6 +43,19 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     public ApplicationServerControllerImpl(Lobby lobby) throws RemoteException {
         this.lobby = lobby;
+        System.out.println("Connect from applicationserver to db");
+        try {
+            applicationRegistry = LocateRegistry.getRegistry("localhost", 7280);
+            databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
+            impl = (SQLiteController) databaseRegistry.lookup("DatabaseService");
+            System.out.println("Connected to db");
+        } catch (NotBoundException ex) {
+            Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (AccessException ex) {
+            Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (RemoteException ex) {
+            Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -95,11 +109,15 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     @Override
     public synchronized void addUnoGame(String name, int numberOfPlayers){
         UnoGame unoGame = new UnoGame(numberOfPlayers, name);
-        System.out.println("We hebben een nieuwe unoGame met id: " + unoGame.id);
+        System.out.println("We hebben een nieuwe unoGame met id: " + unoGame.getId());
         try {
-            myRegistry.rebind("UnoGame" + unoGame.id, new ApplicationServerGameImp(unoGame));
+            String nameRemoteObject = "UnoGame" + unoGame.getId();
+            System.out.println("De naam is: " + nameRemoteObject);
+            applicationRegistry.rebind("lala", new ApplicationServerGameImp(unoGame));
+            System.out.println("succes!");
         } catch (RemoteException e) {
             e.printStackTrace();
+
         }
         lobby.addUnoGameToList(unoGame);
         notifyAll();

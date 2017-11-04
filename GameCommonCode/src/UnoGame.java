@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class UnoGame implements Serializable
 {
     static final AtomicLong NEXT_ID = new AtomicLong(0);
-    final long id = NEXT_ID.getAndIncrement();
+    private final long id = NEXT_ID.getAndIncrement();
 
     private ArrayList<Card> myDeck;
     private ArrayList<Card> myPile;
