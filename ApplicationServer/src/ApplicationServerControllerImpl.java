@@ -79,10 +79,10 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     @Override
-    public synchronized boolean joinGame(Player player,UnoGame unoGame) throws RemoteException {
+    public synchronized int joinGame(Player player,long unoGameId) throws RemoteException {
 
         System.out.println("A new player joined: " + player.getName());
-        lobby.getUnoGameList();
+        UnoGame unoGame = lobby.getUnoGame(unoGameId);
         notifyAll();
         return unoGame.addPlayer(player);
     }
@@ -93,13 +93,20 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     @Override
-    public synchronized void addUnoGame(UnoGame unoGame){
+    public synchronized void addUnoGame(String name, int numberOfPlayers){
+        UnoGame unoGame = new UnoGame(numberOfPlayers, name);
+        System.out.println("We hebben een nieuwe unoGame met id: " + unoGame.id);
+        try {
+            myRegistry.rebind("UnoGame" + unoGame.id, new ApplicationServerGameImp(unoGame));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         lobby.addUnoGameToList(unoGame);
         notifyAll();
     }
 
     @Override
-    public synchronized List<UnoGame>  subscribe(){
+    public synchronized List<UnoGame> subscribe(){
         try {
             wait();
         } catch (InterruptedException e) {
