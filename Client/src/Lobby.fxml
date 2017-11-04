@@ -43,7 +43,7 @@
         </TableView>
         <Button fx:id="newGame" layoutX="52.0" layoutY="114.0" mnemonicParsing="false" onAction="#addgame"
                 text="Start a new game"/>
-        <Button fx:id="load" layoutX="200.0" layoutY="114.0" mnemonicParsing="false" onAction="#tmpbutton"
-                text="Load games"/>
+        <Button fx:id="play" layoutX="200.0" layoutY="114.0" mnemonicParsing="false" onAction="#startbutton"
+                text="Play this game"/>
     </children>
 </AnchorPane>

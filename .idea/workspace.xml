@@ -2,92 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c57a5a1f-1b7d-47fe-af44-a202c81ec7aa" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client2/src/background.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/Login.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/MainApp.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/RootLayout.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/loginController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client2/Client2.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client2/src/Lobby.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client2/src/LobbyController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestClient/manifest.mf" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestClient/nbproject/configs/Run_as_WebStart.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestClient/nbproject/configs/Run_in_Browser.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestClient/nbproject/genfiles.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestClient/nbproject/project.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/TestClient/src/testclient/TestClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Client/Login.fxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/production/Client/RootLayout.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Client/GameRoom.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/Client/UNO_UI.fxml" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/background.jpg" afterPath="$PROJECT_DIR$/Client2/Cards/background.jpg" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_0.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_1.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_2.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_3.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_4.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_5.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_6.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_7.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_7.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_8.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_8.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_9.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_reverse.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_reverse.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/blue_skip.png" afterPath="$PROJECT_DIR$/Client2/Cards/blue_skip.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/card_back.png" afterPath="$PROJECT_DIR$/Client2/Cards/card_back.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/card_back_alt.png" afterPath="$PROJECT_DIR$/Client2/Cards/card_back_alt.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_0.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_1.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_2.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_3.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_4.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_5.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_6.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_7.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_7.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_8.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_8.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_9.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_reverse.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_reverse.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/green_skip.png" afterPath="$PROJECT_DIR$/Client2/Cards/green_skip.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_0.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_1.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_2.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_3.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_4.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_5.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_6.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_7.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_7.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_8.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_8.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_9.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_reverse.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_reverse.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/red_skip.png" afterPath="$PROJECT_DIR$/Client2/Cards/red_skip.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_0.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_0.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_1.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_1.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_2.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_2.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_3.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_3.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_4.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_4.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_5.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_5.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_6.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_6.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_7.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_7.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_8.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_8.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_9.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_9.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_reverse.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_reverse.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/Cards/yellow_skip.png" afterPath="$PROJECT_DIR$/Client2/Cards/yellow_skip.png" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/ClientMain.java" afterPath="$PROJECT_DIR$/Client2/src/ClientMain.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/GameController.java" afterPath="$PROJECT_DIR$/Client2/src/GameController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/GameRoom.fxml" afterPath="$PROJECT_DIR$/Client2/src/GameRoom.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/GameView.java" afterPath="$PROJECT_DIR$/Client2/src/GameView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/LobbyView.java" afterPath="$PROJECT_DIR$/Client2/src/LobbyView.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/UNO_UI.fxml" afterPath="$PROJECT_DIR$/Client2/src/UNO_UI.fxml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Client/src/UNO_UIController.java" afterPath="$PROJECT_DIR$/Client2/src/UNO_UIController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/Gameroom.fxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Client/src/gameroomController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DatabaseServer/userdb.sqlite" afterPath="$PROJECT_DIR$/DatabaseServer/userdb.sqlite" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameImp.java" afterPath="$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameImp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/Client.iml" afterPath="$PROJECT_DIR$/Client/Client.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/Lobby.fxml" afterPath="$PROJECT_DIR$/Client/src/Lobby.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/LobbyController.java" afterPath="$PROJECT_DIR$/Client/src/LobbyController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DatabaseServer/userdb.sqlite" afterPath="$PROJECT_DIR$/DatabaseServer/userdb.sqlite" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GameCommonCode/src/UnoGame.java" afterPath="$PROJECT_DIR$/GameCommonCode/src/UnoGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client/src/MainApp.java" afterPath="$PROJECT_DIR$/Client/src/MainApp.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Client/Lobby.fxml" afterPath="$PROJECT_DIR$/out/production/Client/Lobby.fxml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -99,137 +20,128 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/Uno$ClientMain.coverage" NAME="ClientMain Coverage Results" MODIFIED="1509715795967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/UNO_beno$ClientMain.coverage" NAME="ClientMain Coverage Results" MODIFIED="1509725700443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Uno$ClientMain.coverage" NAME="ClientMain Coverage Results" MODIFIED="1509715795967" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/MainApp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2445">
-              <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
-              <folding>
-                <element signature="e#2915#2916#0" expanded="true" />
-                <element signature="e#2950#2951#0" expanded="true" />
-                <element signature="e#4988#4989#0" expanded="true" />
-                <element signature="e#5016#5017#0" expanded="true" />
-                <element signature="e#5063#5064#0" expanded="true" />
-                <element signature="e#5110#5111#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LobbyView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client2/src/LobbyView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-              <folding>
-                <marker date="1509802256000" expanded="true" signature="2708:2714" ph="{...}" />
-                <marker date="1509802256000" expanded="true" signature="2767:2900" ph="{...}" />
-                <marker date="1509802256000" expanded="true" signature="2930:4066" ph="{...}" />
-                <marker date="1509802256000" expanded="true" signature="3910:4060" ph="//..." />
-                <marker date="1509802256000" expanded="true" signature="4095:4340" ph="{...}" />
-                <marker date="1509802256000" expanded="true" signature="4429:5167" ph="{...}" />
-                <marker date="1509802256000" expanded="true" signature="5245:5435" ph="{...}" />
-                <marker date="1509802256000" expanded="true" signature="5465:5660" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationServerGameImp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameImp.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="34" column="57" lean-forward="false" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApplicationServerControllerImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ApplicationServer/src/ApplicationServerControllerImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="90" column="39" lean-forward="false" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/loginController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LobbyController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Client/src/LobbyController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="485">
-              <caret line="103" column="13" lean-forward="false" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1509802254000" expanded="true" signature="2950:2961" ph=" { " />
-                <marker date="1509802254000" expanded="true" signature="3006:3012" ph=" }" />
-                <marker date="1509802254000" expanded="true" signature="3101:3855" ph="{...}" />
-                <marker date="1509802254000" expanded="true" signature="3882:5018" ph="{...}" />
-                <marker date="1509802254000" expanded="true" signature="4862:5012" ph="//..." />
-                <marker date="1509802254000" expanded="true" signature="5097:5151" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UnoGame.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/GameCommonCode/src/UnoGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="128" column="5" lean-forward="true" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
-              <folding>
-                <element signature="docComment;class#UnoGame#0" expanded="false" />
-                <element signature="method#setCurrentNumberOfPlayers#0;class#UnoGame#0" expanded="false" />
-                <element signature="method#playCard#0;class#UnoGame#0" expanded="false" />
-                <element signature="method#UnoGame#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#getDeck#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#getPile#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#getPlayers#0;class#UnoGame#0" expanded="false" />
-                <element signature="method#addPlayer#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#getCurrentPlayer#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#getNextPlayer#0;class#UnoGame#0" expanded="false" />
-                <element signature="method#getNextPlayer#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#getPlayDirection#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#switchPlayDirection#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#goToNextPlayer#0;class#UnoGame#0" expanded="false" />
-                <element signature="docComment;method#draw#0;class#UnoGame#0" expanded="false" />
-                <element signature="method#draw#0;class#UnoGame#0" expanded="false" />
-                <element signature="e#4828#4869#0" expanded="false" />
-                <element signature="docComment;method#dealCards#0;class#UnoGame#0" expanded="false" />
-                <element signature="method#dealCards#0;class#UnoGame#0" expanded="false" />
-                <element signature="method#drawAndGoToNextPlayer#0;class#UnoGame#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="vertical" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+          <file leaf-file-name="MainApp.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Client/src/MainApp.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="88">
+                  <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#3573#3574#0" expanded="true" />
+                    <element signature="e#3608#3609#0" expanded="true" />
+                    <element signature="e#5646#5647#0" expanded="true" />
+                    <element signature="e#5674#5675#0" expanded="true" />
+                    <element signature="e#5721#5722#0" expanded="true" />
+                    <element signature="e#5768#5769#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="gameroomController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Client/src/gameroomController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="230">
+                  <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#445#446#0" expanded="true" />
+                    <element signature="e#483#484#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Gameroom.fxml" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Client/src/Gameroom.fxml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="115">
+                  <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+              <provider editor-type-id="JavaFX-Scene-Builder">
+                <state />
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="loginController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Client/src/loginController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="630">
+                  <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="LobbyController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Client/src/LobbyController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="105">
+                  <caret line="29" column="2" lean-forward="false" selection-start-line="29" selection-start-column="2" selection-end-line="30" selection-end-column="30" />
+                  <folding>
+                    <element signature="e#804#805#0" expanded="true" />
+                    <element signature="e#842#843#0" expanded="true" />
+                    <element signature="e#2108#2109#0" expanded="true" />
+                    <element signature="e#2168#2169#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="LobbyController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Client2/src/LobbyController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="227">
+                  <caret line="42" column="19" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="LobbyView.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Client2/src/LobbyView.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="135">
+                  <caret line="27" column="15" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="GameController.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Client2/src/GameController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="312">
+                  <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -246,6 +158,7 @@
       <find>games</find>
       <find>maxnum</find>
       <find>factor</find>
+      <find>tmp</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -264,6 +177,7 @@
         <option value="$PROJECT_DIR$/ApplicationServer/src/Lobby.java" />
         <option value="$PROJECT_DIR$/ApplicationServer/src/ApplicationServerControllerImpl.java" />
         <option value="$PROJECT_DIR$/Client/src/UNO_UIController.java" />
+        <option value="$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameImp.java" />
         <option value="$PROJECT_DIR$/Client/src/GameView.java" />
         <option value="$PROJECT_DIR$/Client/src/GameController.java" />
         <option value="$PROJECT_DIR$/Client/src/LobbyView.java" />
@@ -276,12 +190,12 @@
         <option value="$PROJECT_DIR$/Client/src/loginController.java" />
         <option value="$PROJECT_DIR$/Client/src/Login.fxml" />
         <option value="$PROJECT_DIR$/Client/src/RootLayout.fxml" />
-        <option value="$PROJECT_DIR$/Client/src/Lobby.fxml" />
-        <option value="$PROJECT_DIR$/Client/src/MainApp.java" />
-        <option value="$PROJECT_DIR$/Client/src/LobbyController.java" />
-        <option value="$PROJECT_DIR$/Client2/src/LobbyView.java" />
-        <option value="$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameImp.java" />
         <option value="$PROJECT_DIR$/GameCommonCode/src/UnoGame.java" />
+        <option value="$PROJECT_DIR$/Client/src/Lobby.fxml" />
+        <option value="$PROJECT_DIR$/Client/src/LobbyController.java" />
+        <option value="$PROJECT_DIR$/Client/src/MainApp.java" />
+        <option value="$PROJECT_DIR$/Client/src/Gameroom.fxml" />
+        <option value="$PROJECT_DIR$/Client/src/gameroomController.java" />
       </list>
     </option>
   </component>
@@ -291,9 +205,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="1440" />
-    <option name="y" value="-301" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="77" />
+    <option name="y" value="1" />
     <option name="width" value="1920" />
     <option name="height" value="1080" />
   </component>
@@ -315,134 +229,53 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GameCommonCode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GameCommonCode" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatabaseServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatabaseServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Client2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Client2" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ApplicationServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="UNO-beno" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ApplicationServer" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
+          <expand>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ApplicationServer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ApplicationServer" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Client2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameCommonCode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="UNO-beno" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GameCommonCode" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,67 +308,7 @@
     </option>
   </component>
   <component name="RunManager" selected="Application.MainApp (1)">
-    <configuration default="false" name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="controller.MainApp" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Client" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="test" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Client" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="MainApp (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="MainApp" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Client" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="DatabaseServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="DatabaseServerMain" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="DatabaseServer" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="ApplicationServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="ApplicationServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="ApplicationServerMain" />
       <option name="VM_PARAMETERS" />
@@ -548,69 +321,67 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="ApplicationServer" />
       <envs />
-      <method />
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    <configuration name="DatabaseServerMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="DatabaseServerMain" />
+      <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-      <method />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="DatabaseServer" />
+      <envs />
     </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
+    <configuration name="MainApp (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="MainApp" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Client" />
+      <envs />
     </configuration>
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <method />
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="controller.MainApp" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Client" />
+      <envs />
+    </configuration>
+    <configuration name="MainApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="controller.MainApp" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Client" />
+      <envs />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
@@ -618,7 +389,6 @@
       <option name="HEIGHT" value="300" />
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <module />
-      <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -633,23 +403,6 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -670,53 +423,12 @@
       </option>
       <envs />
       <patterns />
-      <method />
     </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Client2" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
+      <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -724,7 +436,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -752,7 +463,20 @@
       <envs />
       <properties />
       <listeners />
-      <method />
+    </configuration>
+    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="test" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Client" />
+      <envs />
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.MainApp" />
@@ -792,12 +516,12 @@
       <workItem from="1509717000276" duration="15235000" />
       <workItem from="1509732405351" duration="923000" />
       <workItem from="1509735468256" duration="855000" />
-      <workItem from="1509785136021" duration="13620000" />
+      <workItem from="1509785136021" duration="15128000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37582000" />
+    <option name="totallyTimeSpent" value="39090000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -809,39 +533,37 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="-301" width="1920" height="1080" extended-state="0" />
+    <frame x="-9" y="-9" width="1938" height="1098" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32008368" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20520833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24973147" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -851,49 +573,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="1" />
-    </breakpoint-manager>
+    <breakpoint-manager />
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GameCommonCode/src/UnoGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="18" column="4" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="40" />
-          <folding>
-            <element signature="docComment;class#UnoGame#0" expanded="false" />
-            <element signature="method#setCurrentNumberOfPlayers#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#playCard#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#UnoGame#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getDeck#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getPile#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getPlayers#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#addPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getCurrentPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getNextPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#getNextPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getPlayDirection#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#switchPlayDirection#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#goToNextPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#draw#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#draw#0;class#UnoGame#0" expanded="false" />
-            <element signature="e#4828#4869#0" expanded="false" />
-            <element signature="docComment;method#dealCards#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#dealCards#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#drawAndGoToNextPlayer#0;class#UnoGame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client2/src/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Client2/src/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -906,16 +589,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1848">
           <caret line="102" column="0" lean-forward="false" selection-start-line="102" selection-start-column="0" selection-end-line="102" selection-end-column="0" />
-          <folding>
-            <marker date="1509802256000" expanded="true" signature="2708:2714" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2767:2900" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2930:4066" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="3910:4060" ph="//..." />
-            <marker date="1509802256000" expanded="true" signature="4095:4340" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="4429:5167" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5245:5435" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5465:5660" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -931,7 +605,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="12" column="40" lean-forward="false" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
-          <folding />
+          <folding>
+            <element signature="e#329#330#0" expanded="false" />
+            <element signature="e#363#364#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -939,7 +616,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
           <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -947,7 +626,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -955,16 +636,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2877">
           <caret line="137" column="37" lean-forward="true" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
-          <folding>
-            <marker date="1509802256000" expanded="true" signature="2708:2714" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2767:2900" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2930:4066" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="3910:4060" ph="//..." />
-            <marker date="1509802256000" expanded="true" signature="4095:4340" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="4429:5167" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5245:5435" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5465:5660" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -996,7 +668,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,16 +686,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1113">
           <caret line="53" column="25" lean-forward="false" selection-start-line="53" selection-start-column="25" selection-end-line="53" selection-end-column="25" />
-          <folding>
-            <marker date="1509802256000" expanded="true" signature="2708:2714" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2767:2900" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2930:4066" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="3910:4060" ph="//..." />
-            <marker date="1509802256000" expanded="true" signature="4095:4340" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="4429:5167" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5245:5435" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5465:5660" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1029,7 +694,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1037,16 +704,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
           <caret line="53" column="47" lean-forward="false" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
-          <folding>
-            <marker date="1509802256000" expanded="true" signature="2708:2714" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2767:2900" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2930:4066" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="3910:4060" ph="//..." />
-            <marker date="1509802256000" expanded="true" signature="4095:4340" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="4429:5167" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5245:5435" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5465:5660" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1062,7 +720,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1070,16 +730,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <marker date="1509802256000" expanded="true" signature="2708:2714" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2767:2900" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2930:4066" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="3910:4060" ph="//..." />
-            <marker date="1509802256000" expanded="true" signature="4095:4340" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="4429:5167" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5245:5435" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5465:5660" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1097,7 +748,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/lang/Thread.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="747" column="0" lean-forward="false" selection-start-line="747" selection-start-column="0" selection-end-line="747" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -1106,15 +764,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client2/src/GameRoom.fxml">
+    <entry file="file://$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameImp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="420">
+          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/GameCommonCode/src/Card.java">
@@ -1133,7 +788,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/application/Application.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/application/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="222" column="23" lean-forward="false" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client2/src/UNO_UI.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -1149,10 +811,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/fxml/FXMLLoader.java" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="2407" column="17" lean-forward="false" selection-start-line="2407" selection-start-column="17" selection-end-line="2407" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client2/src/ClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1165,18 +835,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="9" column="46" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client2/src/GameView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-231">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/test.java" />
+    <entry file="file://$PROJECT_DIR$/Client/src/test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Client2/src/UNO_UIController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
@@ -1200,6 +870,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client2/src/LobbyView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="27" column="15" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client2/src/GameController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -1234,15 +920,32 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/Lobby.fxml">
+    <entry file="file://$PROJECT_DIR$/ApplicationServer/src/ApplicationServerControllerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+        <state relative-caret-position="70">
+          <caret line="90" column="39" lean-forward="false" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="39" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GameCommonCode/src/UnoGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#4268#4269#0" expanded="true" />
+            <element signature="e#4309#4310#0" expanded="true" />
+            <element signature="e#4374#4375#0" expanded="true" />
+            <element signature="e#4434#4435#0" expanded="true" />
+            <element signature="e#4480#4481#0" expanded="true" />
+            <element signature="e#4525#4526#0" expanded="true" />
+            <element signature="e#4708#4709#0" expanded="true" />
+            <element signature="e#4746#4747#0" expanded="true" />
+            <element signature="e#4808#4809#0" expanded="true" />
+            <element signature="e#4862#4863#0" expanded="true" />
+            <marker date="1509800680168" expanded="true" signature="1900:1943" ph="{...}" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client2/src/LobbyController.java">
@@ -1253,10 +956,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client/src/loginController.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/Lobby.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="169">
+          <caret line="42" column="27" lean-forward="false" selection-start-line="42" selection-start-column="27" selection-end-line="42" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client2/src/GameRoom.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client2/src/GameView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-439">
+          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1265,101 +990,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/MainApp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2445">
-          <caret line="178" column="0" lean-forward="false" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
+        <state relative-caret-position="88">
+          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding>
-            <element signature="e#2915#2916#0" expanded="true" />
-            <element signature="e#2950#2951#0" expanded="true" />
-            <element signature="e#4988#4989#0" expanded="true" />
-            <element signature="e#5016#5017#0" expanded="true" />
-            <element signature="e#5063#5064#0" expanded="true" />
-            <element signature="e#5110#5111#0" expanded="true" />
+            <element signature="e#3573#3574#0" expanded="true" />
+            <element signature="e#3608#3609#0" expanded="true" />
+            <element signature="e#5646#5647#0" expanded="true" />
+            <element signature="e#5674#5675#0" expanded="true" />
+            <element signature="e#5721#5722#0" expanded="true" />
+            <element signature="e#5768#5769#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Client2/src/GameController.java">
+    <entry file="file://$PROJECT_DIR$/Client/src/Gameroom.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+        <state relative-caret-position="115">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/loginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Client/src/LobbyController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="103" column="13" lean-forward="false" selection-start-line="103" selection-start-column="13" selection-end-line="103" selection-end-column="13" />
+        <state relative-caret-position="105">
+          <caret line="29" column="2" lean-forward="false" selection-start-line="29" selection-start-column="2" selection-end-line="30" selection-end-column="30" />
+          <folding>
+            <element signature="e#804#805#0" expanded="true" />
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#2108#2109#0" expanded="true" />
+            <element signature="e#2168#2169#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Client/src/gameroomController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="26" column="51" lean-forward="false" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1509802254000" expanded="true" signature="2950:2961" ph=" { " />
-            <marker date="1509802254000" expanded="true" signature="3006:3012" ph=" }" />
-            <marker date="1509802254000" expanded="true" signature="3101:3855" ph="{...}" />
-            <marker date="1509802254000" expanded="true" signature="3882:5018" ph="{...}" />
-            <marker date="1509802254000" expanded="true" signature="4862:5012" ph="//..." />
-            <marker date="1509802254000" expanded="true" signature="5097:5151" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Client2/src/LobbyView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-          <folding>
-            <marker date="1509802256000" expanded="true" signature="2708:2714" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2767:2900" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="2930:4066" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="3910:4060" ph="//..." />
-            <marker date="1509802256000" expanded="true" signature="4095:4340" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="4429:5167" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5245:5435" ph="{...}" />
-            <marker date="1509802256000" expanded="true" signature="5465:5660" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApplicationServer/src/ApplicationServerControllerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="90" column="39" lean-forward="false" selection-start-line="90" selection-start-column="34" selection-end-line="90" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ApplicationServer/src/ApplicationServerGameImp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="34" column="57" lean-forward="false" selection-start-line="34" selection-start-column="57" selection-end-line="34" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GameCommonCode/src/UnoGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="128" column="5" lean-forward="true" selection-start-line="128" selection-start-column="5" selection-end-line="128" selection-end-column="5" />
-          <folding>
-            <element signature="docComment;class#UnoGame#0" expanded="false" />
-            <element signature="method#setCurrentNumberOfPlayers#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#playCard#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#UnoGame#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getDeck#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getPile#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getPlayers#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#addPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getCurrentPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getNextPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#getNextPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#getPlayDirection#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#switchPlayDirection#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#goToNextPlayer#0;class#UnoGame#0" expanded="false" />
-            <element signature="docComment;method#draw#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#draw#0;class#UnoGame#0" expanded="false" />
-            <element signature="e#4828#4869#0" expanded="false" />
-            <element signature="docComment;method#dealCards#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#dealCards#0;class#UnoGame#0" expanded="false" />
-            <element signature="method#drawAndGoToNextPlayer#0;class#UnoGame#0" expanded="false" />
+            <element signature="e#445#446#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
           </folding>
         </state>
       </provider>

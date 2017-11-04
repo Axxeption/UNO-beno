@@ -24,6 +24,7 @@ public class MainApp extends Application {
     ApplicationServerController applicationServerController;
     Registry myRegistry;
     private LobbyController lobbyController;
+    private gameroomController gameroomController;
 
     @Override
     public void start(Stage primaryStage) {
@@ -85,6 +86,21 @@ public class MainApp extends Application {
             AnchorPane lobbypane = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
             rootLayout.setCenter(lobbypane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showGameroom(UnoGame unoGame) {
+        try {
+            gameroomController = new gameroomController(this);
+            // Load person overview.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setController(gameroomController);
+            loader.setLocation(MainApp.class.getResource("Gameroom.fxml"));
+            AnchorPane gameroompane = (AnchorPane) loader.load();
+            // Set person overview into the center of root layout.
+            rootLayout.setCenter(gameroompane);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -183,4 +199,6 @@ public class MainApp extends Application {
             }
         }
     };
+
+
 }
