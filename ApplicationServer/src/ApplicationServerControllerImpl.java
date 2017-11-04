@@ -92,6 +92,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     }
 
+
     @Override
     public synchronized int joinGame(Player player,long unoGameId) throws RemoteException {
 
@@ -113,7 +114,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         try {
             String nameRemoteObject = "UnoGame" + unoGame.getId();
             System.out.println("De naam is: " + nameRemoteObject);
-            applicationRegistry.rebind("lala", new ApplicationServerGameImp(unoGame));
+            applicationRegistry.rebind(nameRemoteObject, new ApplicationServerGameImp(unoGame));
             System.out.println("succes!");
         } catch (RemoteException e) {
             e.printStackTrace();

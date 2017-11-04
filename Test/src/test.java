@@ -32,12 +32,25 @@ public class test {
             e.printStackTrace();
         }
 
+        ApplicationServerGameInterface applicationServerGameInterface;
+        int playerId1;
+        int playerId2;
+        int playerId3;
+
         // add three players to Unogame;
         try {
-            applicationServerController.joinGame(new Player("jefke"), unoGameId);
-            applicationServerController.joinGame(new Player("joske"), unoGameId);
-            applicationServerController.joinGame(new Player("axelleke"), unoGameId);
+            applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
+            playerId1 = applicationServerController.joinGame(new Player("jefke"), unoGameId);
+            playerId2 = applicationServerController.joinGame(new Player("joske"), unoGameId);
+            playerId3 = applicationServerController.joinGame(new Player("axelleke"), unoGameId);
+
+            System.out.println(applicationServerGameInterface.startMessage(playerId1));
+            System.out.println(applicationServerGameInterface.startMessage(playerId2));
+            System.out.println(applicationServerGameInterface.startMessage(playerId3));
+
         } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
             e.printStackTrace();
         }
 

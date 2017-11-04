@@ -34,5 +34,4 @@ public class NumberCard extends Card{
         return false;
     }
 
-
 }

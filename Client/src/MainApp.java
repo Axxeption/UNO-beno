@@ -111,7 +111,7 @@ public class MainApp extends Application {
             playerId = applicationServerController.joinGame(new Player("axel"), unoGame.getId());
             unoGameId = unoGame.getId();
             try {
-                applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("lala");
+                applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
                 System.out.println(applicationServerGameInterface.startMessage(playerId));
             } catch (NotBoundException e) {
                 e.printStackTrace();
