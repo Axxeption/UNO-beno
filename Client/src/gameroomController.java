@@ -1,16 +1,11 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class gameroomController implements Initializable {
@@ -48,13 +43,14 @@ public class gameroomController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //achtergrond zetten van het spel
-        BackgroundImage myBI = new BackgroundImage(new Image("background.jpg", 1200, 800, false, true),
+        BackgroundImage myBI = new BackgroundImage(new Image("Images/background.jpg", 1200, 800, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         anchor.setBackground(new Background(myBI));
         fileSeparator = System.getProperty("file.separator");
         path =  System.getProperty("user.dir");
-        pathToCards =  "file:" +fileSeparator + path + fileSeparator + "Client" + fileSeparator + "Cards" + fileSeparator ;
+        System.out.println("path");
+        pathToCards =  "Images" + fileSeparator ;
         cardBack.setImage(new Image(pathToCards + "uno_back.png"));
         cardBack.setOnMouseClicked(e -> {
             if(yourTurn){
@@ -73,6 +69,7 @@ public class gameroomController implements Initializable {
     }
 
     public void setUI(Message gameState){
+        backgroundBox.setSpacing(-60);
         backgroundBox.getChildren().clear();
         otherplayersbox.getChildren().clear();
         yourTurn = false;

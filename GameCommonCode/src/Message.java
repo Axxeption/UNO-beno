@@ -10,7 +10,17 @@ public class Message implements Serializable{
     private int[] numberOfCards;
     private List<Card> thisPlayersCards;
     private Card topCard;
+    private String[] names;
+    private Integer winner;
+    private int points;
 
+    public String[] getNames() {
+        return names;
+    }
+
+    public void setNames(String[] names) {
+        this.names = names;
+    }
 
     public Message(UnoGame unoGame, Player player) {
         nextPlayerId = unoGame.getCurrentPlayer().getId();
@@ -64,5 +74,17 @@ public class Message implements Serializable{
                 ", thisPlayersCards=" + thisPlayersCards +
                 ", topCard=" + topCard +
                 '}';
+    }
+
+    public void fillPlayers(UnoGame unoGame) {
+        names = new String[unoGame.getPlayers().size()];
+        int i = 0;
+        for (Player p: unoGame.getPlayers()) {
+            names[i] = p.getName();
+        }
+    }
+
+    public void setPoints(UnoGame unoGame) {
+        points = unoGame.calculatePoints();
     }
 }
