@@ -8,6 +8,7 @@ import java.rmi.registry.Registry;
 import java.util.List;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -110,7 +111,7 @@ public class MainApp extends Application {
                 unoGameId = unoGame.getId();
                 applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
                 playerId = applicationServerController.joinGame(new Player("axel"), unoGameId);
-                stateGame =  applicationServerGameInterface.startMessage(playerId);
+                stateGame = applicationServerGameInterface.startMessage(playerId);
                 gameroomController.setPlayerId(playerId);
                 gameroomController.setUI(stateGame);
                 startThreadGameState();
@@ -122,9 +123,9 @@ public class MainApp extends Application {
         }
     }
 
-    public void playCard(Card card){
+    public void playCard(Card card) {
         try {
-            if(applicationServerGameInterface.playCard(playerId, card)){
+            if (applicationServerGameInterface.playCard(playerId, card)) {
                 System.out.println("card played");
             }
         } catch (RemoteException e) {
@@ -132,16 +133,15 @@ public class MainApp extends Application {
         }
     }
 
-    public void drawCard(){
+    public void drawCard() {
         try {
-            if(applicationServerGameInterface.drawCard(playerId)){
+            if (applicationServerGameInterface.drawCard(playerId)) {
                 System.out.println("card drawed");
             }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
     }
-
 
 
     /**
@@ -208,7 +208,7 @@ public class MainApp extends Application {
     public void startGame(int i, String name) {
         UnoGame unoGame = new UnoGame(i, name);
         try {
-            applicationServerController.addUnoGame(name,i);
+            applicationServerController.addUnoGame(name, i);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -228,7 +228,8 @@ public class MainApp extends Application {
     public void startThreadCurrentGameList() {
         new Thread(updateCurrentGamesList).start();
     }
-    public void startThreadGameState(){
+
+    public void startThreadGameState() {
         new Thread(updateGame).start();
     }
 
@@ -254,14 +255,19 @@ public class MainApp extends Application {
                 try {
                     stateGame = applicationServerGameInterface.subscribe(playerId);
                     System.out.println("something new happend! --> game updaten");
-                    gameroomController.setUI(stateGame);
+                    //deze thread kan de thread die die ui regelt niet oproepen
+                    Platform.runLater(
+                            () -> {
+                                gameroomController.setUI(stateGame);
+                            }
+                    );
+
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
             }
         }
     };
-
 
 
     public static void main(String[] args) {
