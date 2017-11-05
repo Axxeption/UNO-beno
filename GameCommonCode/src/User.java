@@ -41,7 +41,7 @@ public class User implements Serializable{
     }
 
     public String getUsername() {
-        System.out.println("vraag usernem");return username;
+        ;return username;
     }
 
     public void setUsername(String username) {

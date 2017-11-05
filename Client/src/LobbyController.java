@@ -1,5 +1,7 @@
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +14,8 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.SplittableRandom;
 
@@ -20,6 +24,7 @@ public class LobbyController implements Initializable {
     TextField nameGameInput;
     Scene secondScene;
     Stage secondStage;
+    UnoGame unoGame;
 
     @FXML
     private TableView waitingGames;
@@ -91,6 +96,7 @@ public class LobbyController implements Initializable {
     private void checkPlayers(CheckBox three, CheckBox four, CheckBox two) {
         //maak nieuw spel afhankelijk met hoeveel
         if (two.isSelected()) {
+
             mainapp.startGame(2, nameGameInput.getText());
             secondStage.close();
         }
@@ -155,14 +161,40 @@ public class LobbyController implements Initializable {
         });
     }
 
-    public void startbutton() {
+    public synchronized void startbutton() {
         if (waitingGames.getSelectionModel().getSelectedItem() != null) {
-            UnoGame unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
+//            new Thread(waitForStartingGame).start();
             //go into the gameroom with this selectedgame
-            System.out.println(unoGame);
+            unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
             mainapp.showGameroom(unoGame);
+            secondStage.close();
         }
     }
+
+    Runnable waitForStartingGame = new Runnable() {
+        @Override
+        public void run() {
+            Platform.runLater(() -> {
+                ImageView loading = new ImageView(new Image("loading.gif"));
+                loading.setFitWidth(200);
+                loading.setFitHeight(200);
+                VBox secondaryLayout = new VBox(10);
+                Label wait = new Label("Friends need to join...");
+
+                secondaryLayout.getChildren().addAll(loading, wait);
+
+                //set "popup" if clicked on new game...
+                secondScene = new Scene(secondaryLayout, 200, 230);
+                secondStage = new Stage();
+                secondStage.setTitle("Waiting for other players");
+                secondStage.setScene(secondScene);
+                secondStage.show();
+
+            });
+
+        }
+
+    };
 
 
     public void setCurrentUnoGames(ObservableList<UnoGame> currentUnoGames) {
