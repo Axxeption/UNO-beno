@@ -20,7 +20,9 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
         }
         System.out.println("We verzenden de nieuwe games info!");
         Player realPlayer = unoGame.getPlayers().get(playerId);
-        return new Message(unoGame, realPlayer);
+        Message message = new Message(unoGame, realPlayer);
+        message.fillPlayers(unoGame);
+        return message;
     }
 
     public ApplicationServerGameImp(UnoGame unoGame) throws RemoteException {
@@ -43,7 +45,11 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
             e.printStackTrace();
         }
         Player realPlayer = unoGame.getPlayers().get(playerId);
-        return new Message(unoGame, realPlayer);
+        Message message = new Message(unoGame, realPlayer);
+        if(unoGame.checkIfWinner() != null){
+            message.setPoints(unoGame);
+        }
+        return message;
     }
 
     @Override

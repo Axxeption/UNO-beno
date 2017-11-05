@@ -39,7 +39,7 @@ public class LobbyController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         //achtergrond zetten van het spel
-        BackgroundImage myBI = new BackgroundImage(new Image("background.jpg", 1200, 800, false, true),
+        BackgroundImage myBI = new BackgroundImage(new Image("Images/background.jpg", 1200, 800, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         anchor.setBackground(new Background(myBI));

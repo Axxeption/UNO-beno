@@ -40,6 +40,14 @@ public class UnoGame implements Serializable
         this.currentNumberOfPlayers = currentNumberOfPlayers;
     }
 
+    public Player checkIfWinner(){
+        for (Player p: myPlayers){
+            if(p.getCards().size()==0){
+                return p;
+            }
+        }
+        return null;
+    }
 
     public Card getTopCard(){
         return myPile.get(myPile.size() - 1);
@@ -207,7 +215,6 @@ public class UnoGame implements Serializable
         }
     }
 
-
     public Player getMyCurrentPlayer() {
         return myCurrentPlayer;
     }
@@ -245,7 +252,6 @@ public class UnoGame implements Serializable
         this.gameName = gameName;
     }
 
-
     public boolean drawAndGoToNextPlayer(Player player) {
         if(player.equals(myCurrentPlayer)){
             draw(player,1);
@@ -253,5 +259,20 @@ public class UnoGame implements Serializable
             return true;
         }
         return false;
+    }
+
+    public int calculatePoints() {
+        int score = 0;
+        for(Player p: myPlayers){
+            for(Card c: p.getCards()){
+                if(c instanceof NumberCard){
+                    score += ((NumberCard) c).getNumber();
+                }
+                else{
+                    score += 20;
+                }
+            }
+        }
+        return score;
     }
 }
