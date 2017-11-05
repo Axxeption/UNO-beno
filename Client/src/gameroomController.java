@@ -69,16 +69,19 @@ public class gameroomController implements Initializable {
     }
 
     public void setUI(Message gameState){
+        backgroundBox.getChildren().clear();
+        otherplayersbox.getChildren().clear();
+        yourTurn = false;
         System.out.println("nieuwe gamestate: " + gameState);
         if(gameState.getNextPlayerId() == playerId){
             uwbeurt.setText("It's you turn!");
             yourTurn = true;
         }else {
+            yourTurn = false;
             uwbeurt.setText("Just wait a minute");
         }
         int i = 0;
         for(Card card : gameState.getThisPlayersCards()){
-            backgroundBox.getChildren().removeAll();
             ImageView tmp  = new ImageView(pathToCards + card.getPath());
             tmp.setId(Integer.toString(i));
             tmp.setFitHeight(194);
