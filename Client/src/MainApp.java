@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -129,6 +130,41 @@ public class MainApp extends Application {
         }
     }
 
+//    public void showGameroom() {
+//        try {
+//            this.primaryStage.setTitle("UNO game");
+//            gameroomController = new gameroomController(this);
+//            // Load person overview.
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setController(gameroomController);
+//            loader.setLocation(MainApp.class.getResource("Gameroom.fxml"));
+//            AnchorPane gameroompane = (AnchorPane) loader.load();
+//            // Set person overview into the center of root layout.
+//            rootLayout.setCenter(gameroompane);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+    public void waitForStartMessage(UnoGame unoGame) {
+        try {
+            unoGameId = unoGame.getId();
+            applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
+            playerId = applicationServerController.joinGame(new Player(username), unoGameId);
+            stateGame = applicationServerGameInterface.startMessage(playerId);
+            gameroomController.setPlayerId(playerId);
+            gameroomController.setUI(stateGame);
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        } catch (AccessException e1) {
+            e1.printStackTrace();
+        } catch (RemoteException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+
     public void playCard(Card card) {
         try {
             if (applicationServerGameInterface.playCard(playerId, card)) {
@@ -210,15 +246,16 @@ public class MainApp extends Application {
         return FXCollections.observableArrayList(unoGameList);
     }
 
-    public ObservableList<User> getBestPlayers(){
+    public ObservableList<User> getBestPlayers() {
         List<User> bestPlayersList = null;
         try {
             bestPlayersList = applicationServerController.getBestPlayers();
-            System.out.println("bestplayers: "+ bestPlayersList.get(0).getUsername());
+            System.out.println("bestplayers: " + bestPlayersList.get(0).getUsername());
         } catch (RemoteException e) {
             System.out.println("de error bij getunogame: " + e);
         }
-        return FXCollections.observableArrayList(bestPlayersList);    }
+        return FXCollections.observableArrayList(bestPlayersList);
+    }
 
     public void startGame(int i, String name) {
         UnoGame unoGame = new UnoGame(i, name);
@@ -274,12 +311,14 @@ public class MainApp extends Application {
                     stateGame = applicationServerGameInterface.subscribe(playerId);
                     System.out.println("something new happend! --> game updaten");
                     //deze thread kan de thread die die ui regelt niet oproepen
-                    if(stateGame.getWinner() != null){
-                        if(stateGame.getWinner() == playerId){
+                    if (stateGame.getWinner() != null) {
+                        if (stateGame.getWinner() == playerId) {
                             applicationServerController.setScore(stateGame.getPoints(), username);
-                            gameroomController.endGameWinner();
-                        }
-                        else {
+                            //anders zet deze thread de GUI
+                            Platform.runLater(() -> {
+                                gameroomController.endGameWinner();
+                            });
+                        } else {
                             List<String> usernames = stateGame.getNames();
                             gameroomController.endGameLoser(usernames.get(stateGame.getWinner()));
                         }
