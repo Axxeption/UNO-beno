@@ -148,7 +148,7 @@ public class gameroomController implements Initializable {
         VBox secondaryLayout = new VBox(10);
         secondaryLayout.getChildren().addAll(won, okButton);
 
-        secondScene = new Scene(secondaryLayout, 300, 150);
+        secondScene = new Scene(secondaryLayout, 400, 100);
         secondStage = new Stage();
         secondStage.setTitle("You won!");
         secondStage.setScene(secondScene);
@@ -159,12 +159,12 @@ public class gameroomController implements Initializable {
     public void endGameLoser(String winner) {
         //je hebt het spel verloren
 
-        Label lost = new Label(winner + "Just won the game!");
+        Label lost = new Label("  " + winner + "just won the game!");
         lost.setFont(Font.font("Verdana", 20));
         lost.setTextFill(Color.DARKRED);
 
         //Button
-        Button okButton = new Button("Let's try again!!");
+        Button okButton = new Button(" Let's try again!!");
         okButton.setOnAction(e -> {
             mainApp.showLobby();
             secondStage.close();
@@ -174,7 +174,7 @@ public class gameroomController implements Initializable {
         VBox secondaryLayout = new VBox(10);
         secondaryLayout.getChildren().addAll(lost, okButton);
 
-        secondScene = new Scene(secondaryLayout, 300, 150);
+        secondScene = new Scene(secondaryLayout, 400, 100);
         secondStage = new Stage();
         secondStage.setTitle("You lose!");
         secondStage.setScene(secondScene);

@@ -320,7 +320,9 @@ public class MainApp extends Application {
                             });
                         } else {
                             List<String> usernames = stateGame.getNames();
+                            Platform.runLater(() -> {
                             gameroomController.endGameLoser(usernames.get(stateGame.getWinner()));
+                            });
                         }
                     }
                     Platform.runLater(
