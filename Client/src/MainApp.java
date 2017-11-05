@@ -131,7 +131,7 @@ public class MainApp extends Application {
 
     public void connect() {
         try {
-            this.myRegistry = LocateRegistry.getRegistry("localhost", 9450);
+            this.myRegistry = LocateRegistry.getRegistry("localhost", 7280);
             this.applicationServerController = (ApplicationServerController) myRegistry.lookup("ClientApplicationService");
 //            System.out.println("TEST " + applicationServerController);
         } catch (Exception e) {

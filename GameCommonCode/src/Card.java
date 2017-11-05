@@ -55,12 +55,7 @@ public class Card implements Serializable {
     }
 
     public String toString() {
-        String result;
 
-        result = COLOUR_NAMES[myColour];
-        if (!result.isEmpty()) {
-            result += " ";
-        }
-        return result;
+        return path;
     }
 }
