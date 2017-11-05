@@ -10,7 +10,7 @@ public class Message implements Serializable{
     private int[] numberOfCards;
     private List<Card> thisPlayersCards;
     private Card topCard;
-    
+
 
     public Message(UnoGame unoGame, Player player) {
         nextPlayerId = unoGame.getCurrentPlayer().getId();
