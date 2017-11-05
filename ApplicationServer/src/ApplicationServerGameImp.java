@@ -31,7 +31,7 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
     public synchronized boolean playCard(int playerId, Card card) throws RemoteException {
         Player realPlayer = unoGame.getPlayers().get(playerId);
         boolean succeed = unoGame.playCard(card, realPlayer);
-        notifyAll();
+        if(succeed)notifyAll();
         return succeed;
     }
 
@@ -50,7 +50,7 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
     public synchronized boolean drawCard(int playerId) throws RemoteException {
         Player realPlayer = unoGame.getPlayers().get(playerId);
         boolean succeed = unoGame.drawAndGoToNextPlayer(realPlayer);
-        notifyAll();
+        if(succeed)notifyAll();
         return succeed;
     }
 }
