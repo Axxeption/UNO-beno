@@ -1,10 +1,14 @@
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,7 +20,8 @@ public class gameroomController implements Initializable {
     String fileSeparator ;
     String pathToCards;
     boolean yourTurn = false;
-
+    Scene secondScene;
+    Stage secondStage;
 
     @FXML
     private AnchorPane anchor;
@@ -121,6 +126,57 @@ public class gameroomController implements Initializable {
             }
             k++;
         }
+
+    }
+
+    public void endGameWinner() {
+        //je hebt het spel gewonnen
+        Label won = new Label("Congratulations, you won this game!");
+        won.setFont(Font.font("Verdana", 20));
+        won.setTextFill(Color.FORESTGREEN);
+
+        //Button
+        Button okButton = new Button("Let's play another game!");
+        okButton.setOnAction(e -> {
+            mainApp.showLobby();
+            secondStage.close();
+        });
+
+        //layout
+        VBox secondaryLayout = new VBox(10);
+        secondaryLayout.getChildren().addAll(won, okButton);
+
+        secondScene = new Scene(secondaryLayout, 300, 150);
+        secondStage = new Stage();
+        secondStage.setTitle("You won!");
+        secondStage.setScene(secondScene);
+        secondStage.show();
+        
+    }
+
+    public void endGameLoser(String winner) {
+        //je hebt het spel verloren
+
+        Label lost = new Label(winner + "Just won the game!");
+        lost.setFont(Font.font("Verdana", 20));
+        lost.setTextFill(Color.DARKRED);
+
+        //Button
+        Button okButton = new Button("Let's try again!!");
+        okButton.setOnAction(e -> {
+            mainApp.showLobby();
+            secondStage.close();
+        });
+
+        //layout
+        VBox secondaryLayout = new VBox(10);
+        secondaryLayout.getChildren().addAll(lost, okButton);
+
+        secondScene = new Scene(secondaryLayout, 300, 150);
+        secondStage = new Stage();
+        secondStage.setTitle("You lose!");
+        secondStage.setScene(secondScene);
+        secondStage.show();
 
     }
 }

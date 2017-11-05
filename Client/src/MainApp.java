@@ -275,10 +275,13 @@ public class MainApp extends Application {
                     System.out.println("something new happend! --> game updaten");
                     //deze thread kan de thread die die ui regelt niet oproepen
                     if(stateGame.getWinner() != null){
-                        //TODO toon de winnaar in UI
                         if(stateGame.getWinner() == playerId){
                             applicationServerController.setScore(stateGame.getPoints(), username);
-
+                            gameroomController.endGameWinner();
+                        }
+                        else {
+                            String [] usernames = stateGame.getNames();
+                            gameroomController.endGameLoser(usernames[stateGame.getWinner()]);
                         }
                     }
                     Platform.runLater(
