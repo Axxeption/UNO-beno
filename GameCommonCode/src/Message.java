@@ -12,9 +12,6 @@ public class Message implements Serializable{
     private Card topCard;
     private String[] names;
     private Integer winner;
-
-
-
     private int points;
 
     public String[] getNames() {
