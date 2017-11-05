@@ -7,18 +7,18 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fx:id="middleCard" fitHeight="150.0" fitWidth="200.0" layoutX="388.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="uwbeurt" layoutX="433.0" layoutY="199.0" text="uw beurt" textFill="#f4f4f4" />
-      <ImageView fx:id="cardBack" fitHeight="150.0" fitWidth="200.0" layoutX="600.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="298.0" />
-      <Label layoutX="436.0" layoutY="765.0" text="Created by Benoît Masschelein and Axel Vulsteke " textFill="#f4f4f4" />
-      <AnchorPane fx:id="otherPlayersPane" layoutY="-8.0" prefHeight="687.0" prefWidth="1202.0">
+      <AnchorPane fx:id="otherPlayersPane" prefHeight="800.0" prefWidth="1200.0">
          <children>
-            <HBox alignment="CENTER" layoutX="241.0" layoutY="38.0" prefHeight="193.0" prefWidth="772.0" spacing="5" />
-            <VBox alignment="CENTER" layoutX="33.0" layoutY="169.0" prefHeight="518.0" prefWidth="208.0" />
-            <VBox alignment="CENTER" layoutX="966.0" layoutY="169.0" prefHeight="518.0" prefWidth="208.0" />
+            <HBox alignment="CENTER" layoutX="300.0" layoutY="43.0" prefHeight="200.0" prefWidth="600.0" spacing="5" AnchorPane.topAnchor="40.0" />
+            <VBox alignment="CENTER" layoutX="56.0" layoutY="100.0" prefHeight="600.0" prefWidth="200.0" AnchorPane.leftAnchor="40.0" />
+            <VBox alignment="CENTER" layoutX="960.0" layoutY="100.0" prefHeight="600.0" prefWidth="200.0" AnchorPane.rightAnchor="40.0" />
+              <HBox fx:id="backgroundBox" alignment="CENTER" layoutX="300.0" layoutY="566.0" prefHeight="200.0" prefWidth="600.0" spacing="5" AnchorPane.bottomAnchor="40.0" />
+              <ImageView fx:id="middleCard" fitHeight="150.0" fitWidth="200.0" layoutX="400" layoutY="325" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="cardBack" fitHeight="150.0" fitWidth="200.0" layoutX="600.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-        <HBox fx:id="backgroundBox" alignment="CENTER" layoutX="214.0" layoutY="556.0" prefHeight="193.0" prefWidth="772.0" spacing="5" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="556.0" />
+      <Label fx:id="uwbeurt" layoutX="433.0" layoutY="199.0" text="uw beurt" textFill="#f4f4f4" />
+      <Label layoutX="436.0" layoutY="765.0" text="Created by Benoît Masschelein and Axel Vulsteke " textFill="#f4f4f4" />
 
     </children>
 </AnchorPane>

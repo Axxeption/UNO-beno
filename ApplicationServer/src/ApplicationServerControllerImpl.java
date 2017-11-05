@@ -176,5 +176,12 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     public void endOfGame(UnoGame unoGame){
         lobby.removeUnoGameFromList(unoGame);
+        try {
+            applicationRegistry.unbind("UnoGame" + unoGame.getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        }
     }
 }
