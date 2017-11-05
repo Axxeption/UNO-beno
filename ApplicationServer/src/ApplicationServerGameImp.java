@@ -1,5 +1,4 @@
 import java.rmi.RemoteException;
-import java.rmi.server.RemoteObject;
 import java.rmi.server.UnicastRemoteObject;
 
 /**
@@ -58,7 +57,7 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
     @Override
     public synchronized boolean drawCard(int playerId) throws RemoteException {
         Player realPlayer = unoGame.getPlayers().get(playerId);
-        boolean succeed = unoGame.drawAndGoToNextPlayer(realPlayer);
+        boolean succeed = unoGame.drawAndMaybeGoToNextPlayer(realPlayer);
         if(succeed)notifyAll();
         return succeed;
     }
