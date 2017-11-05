@@ -63,6 +63,7 @@ public class test {
 
         try {
             System.out.println(applicationServerGameInterface.drawCard(0));
+            System.out.println(applicationServerGameInterface.drawCard(1));
             System.out.println(applicationServerGameInterface.playCard(0, card1));
             System.out.println(applicationServerGameInterface.playCard(0, card2));
             System.out.println(applicationServerGameInterface.playCard(0, card3));

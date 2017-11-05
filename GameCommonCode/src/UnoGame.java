@@ -243,6 +243,7 @@ public class UnoGame implements Serializable
     public boolean drawAndGoToNextPlayer(Player player) {
         if(player.equals(myCurrentPlayer)){
             draw(player,1);
+            goToNextPlayer();
             return true;
         }
         return false;
