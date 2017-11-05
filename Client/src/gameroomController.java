@@ -30,13 +30,13 @@ public class gameroomController implements Initializable {
     private HBox backgroundBox;
 
     @FXML
+    private Label thisPlayer;
+
+    @FXML
     AnchorPane otherPlayersPane;
 
     @FXML
     private ImageView middleCard;
-
-    @FXML
-    private Label uwbeurt;
 
     @FXML
     private ImageView cardBack;
@@ -56,6 +56,8 @@ public class gameroomController implements Initializable {
         fileSeparator = System.getProperty("file.separator");
         path =  System.getProperty("user.dir");
         pathToCards =  "Images" + fileSeparator ;
+        thisPlayer.setText("De speler zinnen name");
+        thisPlayer.setTextFill(Color.RED);
         cardBack.setImage(new Image(pathToCards + "uno_back.png"));
         cardBack.setOnMouseClicked(e -> {
             if(yourTurn){
@@ -79,11 +81,11 @@ public class gameroomController implements Initializable {
         yourTurn = false;
         System.out.println("nieuwe gamestate: " + gameState);
         if(gameState.getNextPlayerId() == playerId){
-            uwbeurt.setText("It's you turn!");
+            thisPlayer.setTextFill(Color.GREEN);
             yourTurn = true;
         }else {
             yourTurn = false;
-            uwbeurt.setText("Just wait a minute");
+            thisPlayer.setTextFill(Color.RED);
         }
         int i = 0;
         for(Card card : gameState.getThisPlayersCards()){
