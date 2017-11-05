@@ -107,6 +107,7 @@ public class gameroomController implements Initializable {
         middleCard.setImage(new Image(pathToCards + gameState.getTopCard().getPath()));
 
         for(Integer otherPlayerCards : gameState.getNumberOfCards()){
+            //hier nieuw hbox toevoegen voor image van user en hoeveel kaarten
             otherplayersbox.getChildren().add(new Label("This player has " + otherPlayerCards + " cards to play"));
         }
 
