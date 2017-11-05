@@ -6,7 +6,7 @@ public class fullTest {
 
         DatabaseServerMain.main(args);
         ApplicationServerMain.main(args);
-
+        //qsdfq
 
 
 
