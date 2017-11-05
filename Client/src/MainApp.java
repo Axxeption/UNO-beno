@@ -110,7 +110,7 @@ public class MainApp extends Application {
             try {
                 unoGameId = unoGame.getId();
                 applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
-                playerId = applicationServerController.joinGame(new Player("axel"), unoGameId);
+                playerId = applicationServerController.joinGame(new Player(username), unoGameId);
                 stateGame = applicationServerGameInterface.startMessage(playerId);
                 gameroomController.setPlayerId(playerId);
                 gameroomController.setUI(stateGame);
@@ -142,7 +142,6 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-
 
     /**
      * Returns the main stage.
@@ -214,7 +213,6 @@ public class MainApp extends Application {
         }
         //nog overgaan naar het spel nu
     }
-
 
     public String getUsername() {
         return username;
