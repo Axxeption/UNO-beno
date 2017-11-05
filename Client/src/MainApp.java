@@ -106,6 +106,7 @@ public class MainApp extends Application {
             this.primaryStage.setTitle("UNO game");
 
             gameroomController = new gameroomController(this);
+            gameroomController.setUsername(username);
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
             loader.setController(gameroomController);

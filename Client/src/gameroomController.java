@@ -22,6 +22,9 @@ public class gameroomController implements Initializable {
     boolean yourTurn = false;
     Scene secondScene;
     Stage secondStage;
+    private String username;
+
+
 
     @FXML
     private AnchorPane anchor;
@@ -45,6 +48,9 @@ public class gameroomController implements Initializable {
         this.mainApp = mainApp;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -56,7 +62,8 @@ public class gameroomController implements Initializable {
         fileSeparator = System.getProperty("file.separator");
         path =  System.getProperty("user.dir");
         pathToCards =  "Images" + fileSeparator ;
-        thisPlayer.setText("De speler zinnen name");
+        //todo name
+        thisPlayer.setText(username);
         thisPlayer.setTextFill(Color.RED);
         cardBack.setImage(new Image(pathToCards + "uno_back.png"));
         cardBack.setOnMouseClicked(e -> {
@@ -159,12 +166,12 @@ public class gameroomController implements Initializable {
     public void endGameLoser(String winner) {
         //je hebt het spel verloren
 
-        Label lost = new Label("  " + winner + "just won the game!");
+        Label lost = new Label("  " + winner + " just won the game!");
         lost.setFont(Font.font("Verdana", 20));
         lost.setTextFill(Color.DARKRED);
 
         //Button
-        Button okButton = new Button(" Let's try again!!");
+        Button okButton = new Button(" Let's try again!");
         okButton.setOnAction(e -> {
             mainApp.showLobby();
             secondStage.close();
@@ -176,7 +183,7 @@ public class gameroomController implements Initializable {
 
         secondScene = new Scene(secondaryLayout, 400, 100);
         secondStage = new Stage();
-        secondStage.setTitle("You lose!");
+        secondStage.setTitle("You lost");
         secondStage.setScene(secondScene);
         secondStage.show();
 

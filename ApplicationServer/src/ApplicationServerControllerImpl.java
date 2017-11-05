@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author vulst
  */
 public class ApplicationServerControllerImpl extends UnicastRemoteObject implements ApplicationServerController {
@@ -95,7 +94,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
 
     @Override
-    public synchronized int joinGame(Player player,long unoGameId) throws RemoteException {
+    public synchronized int joinGame(Player player, long unoGameId) throws RemoteException {
 
         System.out.println("A new player joined: " + player.getName());
         UnoGame unoGame = lobby.getUnoGame(unoGameId);
@@ -109,7 +108,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     @Override
-    public synchronized void addUnoGame(String name, int numberOfPlayers){
+    public synchronized void addUnoGame(String name, int numberOfPlayers) {
         UnoGame unoGame = new UnoGame(numberOfPlayers, name);
         System.out.println("We hebben een nieuwe unoGame met id: " + unoGame.getId());
         try {
@@ -124,7 +123,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     @Override
-    public synchronized List<UnoGame> subscribe(){
+    public synchronized List<UnoGame> subscribe() {
         try {
             wait();
         } catch (InterruptedException e) {
@@ -148,9 +147,9 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     @Override
-    public void setScore(int score, String username) throws RemoteException{
+    public void setScore(int score, String username) throws RemoteException {
         //verhoog score
-        if(databaseRegistry == null){
+        if (databaseRegistry == null) {
             connectDbServer();
         }
 
@@ -163,21 +162,23 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     @Override
     public ArrayList<User> getBestPlayers() throws RemoteException {
-        if(databaseRegistry == null){
+        if (databaseRegistry == null) {
             connectDbServer();
         }
         try {
-            return  impl.getBestPlayers();
+            return impl.getBestPlayers();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public void endOfGame(UnoGame unoGame){
+    public void endOfGame(UnoGame unoGame) {
         lobby.removeUnoGameFromList(unoGame);
         try {
-            applicationRegistry.unbind("UnoGame" + unoGame.getId());
+            if (applicationRegistry == null) {
+                applicationRegistry.unbind("UnoGame" + unoGame.getId());
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (NotBoundException e) {
