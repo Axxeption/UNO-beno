@@ -11,10 +11,10 @@
 <AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <HBox fx:id="backgroundBox" layoutX="70.0" layoutY="525.0" opacity="0.5" prefHeight="216.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" />
-        <HBox layoutX="128.0" layoutY="86.0" opacity="0.1" prefHeight="189.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0" />
+        <HBox fx:id="otherplayersbox" layoutX="128.0" layoutY="86.0" opacity="0.77" prefHeight="189.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0" />
         <ImageView fx:id="middleCard" fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true" />
-        <Button fx:id="showCards" layoutX="815.0" layoutY="352.0" mnemonicParsing="false" onAction="#showcards" text="Show your cards!" />
-      <Label fx:id="uwbeurt" layoutX="70.0" layoutY="357.0" text="uw beurt" />
+        <Button fx:id="showCards" layoutX="815.0" layoutY="352.0" mnemonicParsing="false" onAction="#drawcard" text="Draw!" />
+      <Label fx:id="uwbeurt" layoutX="70.0" layoutY="357.0" text="uw beurt" textFill="#f4f4f4" />
 
     </children>
 </AnchorPane>

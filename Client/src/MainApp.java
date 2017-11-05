@@ -6,8 +6,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -30,6 +28,7 @@ public class MainApp extends Application {
     private int playerId;
     private long unoGameId;
     ApplicationServerGameInterface applicationServerGameInterface;
+    Message stateGame;
 
 
     @Override
@@ -106,11 +105,15 @@ public class MainApp extends Application {
             AnchorPane gameroompane = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
             rootLayout.setCenter(gameroompane);
-            playerId = applicationServerController.joinGame(new Player("axel"), unoGame.getId());
-            unoGameId = unoGame.getId();
+
             try {
+                unoGameId = unoGame.getId();
                 applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
-                System.out.println(applicationServerGameInterface.startMessage(playerId));
+                playerId = applicationServerController.joinGame(new Player("axel"), unoGameId);
+                stateGame =  applicationServerGameInterface.startMessage(playerId);
+                gameroomController.setPlayerId(playerId);
+                gameroomController.setUI(stateGame);
+                startThreadGameState();
             } catch (NotBoundException e) {
                 e.printStackTrace();
             }
@@ -118,6 +121,27 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
+
+    public void playCard(Card card){
+        try {
+            if(applicationServerGameInterface.playCard(playerId, card)){
+                System.out.println("card played");
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void drawCard(){
+        try {
+            if(applicationServerGameInterface.drawCard(playerId)){
+                System.out.println("card drawed");
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     /**
@@ -201,11 +225,14 @@ public class MainApp extends Application {
     }
 
     //thread starten
-    public void startCheckingGamesThread() {
-        new Thread(updateGames).start();
+    public void startThreadCurrentGameList() {
+        new Thread(updateCurrentGamesList).start();
+    }
+    public void startThreadGameState(){
+        new Thread(updateGame).start();
     }
 
-    Runnable updateGames = new Runnable() {
+    Runnable updateCurrentGamesList = new Runnable() {
         @Override
         public void run() {
             while (true) {
@@ -220,6 +247,20 @@ public class MainApp extends Application {
         }
     };
 
+    Runnable updateGame = new Runnable() {
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    stateGame = applicationServerGameInterface.subscribe(playerId);
+                    System.out.println("something new happend! --> game updaten");
+                    gameroomController.setUI(stateGame);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    };
 
 
 

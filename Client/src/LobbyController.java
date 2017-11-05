@@ -7,7 +7,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import sun.applet.Main;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -58,7 +57,7 @@ public class LobbyController implements Initializable{
 
         loadGames();
         waitingGames.getColumns().addAll(nameColumn, currentUsersColumn, maxUsersColumn);
-        mainapp.startCheckingGamesThread();
+        mainapp.startThreadCurrentGameList();
     }
 
 //
