@@ -25,9 +25,13 @@ public class gameroomController implements Initializable {
     @FXML
     private ImageView middleCard;
 
+    @FXML
+    private Label uwbeurt;
+
     public gameroomController(MainApp mainApp) {
         this.mainApp = mainApp;
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
