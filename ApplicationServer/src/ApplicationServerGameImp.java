@@ -47,6 +47,7 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
         Player realPlayer = unoGame.getPlayers().get(playerId);
         Message message = new Message(unoGame, realPlayer);
         if(unoGame.checkIfWinner() != null){
+
             message.setPoints(unoGame);
         }
         return message;
