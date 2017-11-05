@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -8,36 +9,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" style="-fx-min-width: 500;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Text fill="#f4f4f4" layoutX="136.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Welcome, please choose a game at the left to play UNO!" textAlignment="CENTER"
-              wrappingWidth="1010.15869140625">
+        <Text fill="#f4f4f4" layoutX="134.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome, please choose a game at the left to play UNO!" textAlignment="CENTER" wrappingWidth="1010.15869140625">
             <font>
-                <Font size="35.0"/>
+                <Font size="35.0" />
             </font>
         </Text>
-        <Text fill="#f4f4f4" layoutX="123.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="These games are currently waiting for you!"/>
-        <Text fill="#f4f4f4" layoutX="808.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Last played games"/>
-        <Text fill="#f4f4f4" layoutX="830.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0"
-              text="Best ranked players"/>
-        <TableView fx:id="waitingGames" layoutX="36.0" layoutY="201.0" prefHeight="533.0" prefWidth="450.0">
+        <Text fill="#f4f4f4" layoutX="154.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="These games are currently waiting for you!" />
+        <Text fill="#f4f4f4" layoutX="859.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Best ranked players" />
+        <Text fill="#f4f4f4" layoutX="830.0" layoutY="500.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Best ranked players" />
+        <TableView fx:id="waitingGames" layoutX="39.0" layoutY="271.0" prefHeight="500.0" prefWidth="400.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="70.0">
         </TableView>
-        <TableView fx:id="lastPlayedGames" layoutX="581.0" layoutY="201.0" prefHeight="250.0" prefWidth="600.0">
-            <columns>
-                <TableColumn prefWidth="75.0" text="C1"/>
-                <TableColumn prefWidth="75.0" text="C2"/>
-            </columns>
+        <TableView fx:id="bestPlayers" layoutX="725.0" layoutY="201.0" prefHeight="500.0" prefWidth="400.0" AnchorPane.bottomAnchor="70.0" AnchorPane.rightAnchor="70.0">
         </TableView>
-        <TableView fx:id="bestPlayers" layoutX="581.0" layoutY="517.0" prefHeight="250.0" prefWidth="600.0">
-        </TableView>
-        <Button fx:id="newGame" layoutX="52.0" layoutY="114.0" mnemonicParsing="false" onAction="#addgame"
-                text="Start a new game"/>
-        <Button fx:id="play" layoutX="200.0" layoutY="114.0" mnemonicParsing="false" onAction="#startbutton"
-                text="Play this game"/>
+        <Button fx:id="newGame" layoutX="514.0" layoutY="434.0" mnemonicParsing="false" onAction="#addgame" style="-fx-min-width: 100;" text="     Start a new game    " textAlignment="CENTER" />
+        <Button fx:id="play" contentDisplay="CENTER" layoutX="514.0" layoutY="490.0" mnemonicParsing="false" onAction="#startbutton" text="Play the selected game">
+         <effect>
+            <Blend />
+         </effect></Button>
         <Label layoutX="436.0" layoutY="765.0" text="Created by Benoît Masschelein and Axel Vulsteke " textFill="#f4f4f4" />
 
     </children>

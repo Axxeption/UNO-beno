@@ -3,6 +3,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -41,6 +42,7 @@ public class LobbyController implements Initializable {
     @FXML
     private Button newGame;
 
+
     public LobbyController(MainApp mainApp) {
         this.mainapp = mainApp;
     }
@@ -54,16 +56,16 @@ public class LobbyController implements Initializable {
         anchor.setBackground(new Background(myBI));
 
         //alles voor de huidige games te zetten
-        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Name");
+        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Username");
         nameColumn.setMinWidth(150);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
 
-        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("current users");
-        currentUsersColumn.setMinWidth(50);
+        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("Current users");
+        currentUsersColumn.setMinWidth(125);
         currentUsersColumn.setCellValueFactory(new PropertyValueFactory<>("currentNumberOfPlayers"));
 
-        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Max users");
-        maxUsersColumn.setMinWidth(50);
+        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Needed users");
+        maxUsersColumn.setMinWidth(124);
         maxUsersColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPlayers"));
 
         loadGames();
@@ -72,11 +74,11 @@ public class LobbyController implements Initializable {
 
         //alles voor de beste spelers weer te geven
         TableColumn<User, String> usernameColumn = new TableColumn<>("Username");
-        usernameColumn.setMinWidth(200);
+        usernameColumn.setMinWidth(199);
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
 
         TableColumn<User, Integer> scoreColumn = new TableColumn<>("Score");
-        scoreColumn.setMinWidth(200);
+        scoreColumn.setMinWidth(199);
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
 
         loadScore();
@@ -161,40 +163,53 @@ public class LobbyController implements Initializable {
         });
     }
 
-    public synchronized void startbutton() {
+    public void startbutton() {
         if (waitingGames.getSelectionModel().getSelectedItem() != null) {
-//            new Thread(waitForStartingGame).start();
+            UnoGame unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
             //go into the gameroom with this selectedgame
-            unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
+            System.out.println(unoGame);
             mainapp.showGameroom(unoGame);
-            secondStage.close();
         }
     }
 
-    Runnable waitForStartingGame = new Runnable() {
-        @Override
-        public void run() {
-            Platform.runLater(() -> {
-                ImageView loading = new ImageView(new Image("loading.gif"));
-                loading.setFitWidth(200);
-                loading.setFitHeight(200);
-                VBox secondaryLayout = new VBox(10);
-                Label wait = new Label("Friends need to join...");
+//    public void startbutton() {
+//
+//        if (waitingGames.getSelectionModel().getSelectedItem() != null) {
+//            unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
+//            mainapp.waitForStartMessage(unoGame);
+//            secondStage.close();
+//            mainapp.showGameroom();
+////            new Thread(waitForStartingGame).start();
+////            ImageView loading = new ImageView(new Image("loading.gif"));
+//            loading.setFitWidth(200);
+//            loading.setFitHeight(200);
+//            VBox secondaryLayout = new VBox(10);
+//            Label wait = new Label("Friends need to join...");
+//            secondaryLayout.getChildren().addAll(loading, wait);
+//            //set "popup" if clicked on new game...
+//            secondScene = new Scene(secondaryLayout, 200, 230);
+//            secondStage = new Stage();
+//            secondStage.setTitle("Waiting for other players");
+//            secondStage.setScene(secondScene);
+//            secondStage.show();
 
-                secondaryLayout.getChildren().addAll(loading, wait);
+//            //go into the gameroom with this selectedgame
+//        }
+//    }
 
-                //set "popup" if clicked on new game...
-                secondScene = new Scene(secondaryLayout, 200, 230);
-                secondStage = new Stage();
-                secondStage.setTitle("Waiting for other players");
-                secondStage.setScene(secondScene);
-                secondStage.show();
-
-            });
-
-        }
-
-    };
+//    Runnable waitForStartingGame = new Runnable() {
+//        @Override
+//        public void run() {
+//            unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
+//            mainapp.waitForStartMessage(unoGame);
+//            Platform.runLater(() -> {
+//                secondStage.close();
+//                mainapp.showGameroom();
+//            });
+//
+//        }
+//
+//    };
 
 
     public void setCurrentUnoGames(ObservableList<UnoGame> currentUnoGames) {
@@ -202,18 +217,3 @@ public class LobbyController implements Initializable {
     }
 
 }
-
-
-//    ImageView loading = new ImageView(new Image("loading.gif"));
-//            loading.setFitWidth(200);
-//                    loading.setFitHeight(200);
-//
-//
-//                    VBox secondaryLayout = new VBox(10);
-//                    secondaryLayout.getChildren().addAll(loading);
-//
-//                    //set "popup" if clicked on new game...
-//                    secondScene = new Scene(secondaryLayout, 200, 20);
-//                    secondStage = new Stage();
-//                    secondStage.setTitle("Waiting for other players");
-//                    secondStage.setScene(secondScene);
