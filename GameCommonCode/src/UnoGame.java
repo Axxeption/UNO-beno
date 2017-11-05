@@ -257,9 +257,14 @@ public class UnoGame implements Serializable
         this.gameName = gameName;
     }
 
-    public boolean drawAndGoToNextPlayer(Player player) {
+    public boolean drawAndMaybeGoToNextPlayer(Player player) {
         if(player.equals(myCurrentPlayer)){
             draw(player,1);
+            for(Card c: player.getCards()){
+                if(getTopCard().canPlayOn(c)){
+                    return true;
+                }
+            }
             goToNextPlayer();
             return true;
         }
