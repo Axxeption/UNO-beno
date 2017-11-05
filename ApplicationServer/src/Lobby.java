@@ -24,4 +24,8 @@ public class Lobby {
     public void addUnoGameToList(UnoGame unoGame){
         unoGameHashMap.put(unoGame.getId(),unoGame);
     }
+
+    public void removeUnoGameFromList(UnoGame unoGame) {
+        unoGameHashMap.remove(unoGame);
+    }
 }

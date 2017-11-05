@@ -75,7 +75,7 @@ public class gameroomController implements Initializable {
 
     public void setUI(Message gameState){
         backgroundBox.getChildren().clear();
-        backgroundBox.setSpacing(-50);
+        backgroundBox.setSpacing(-40);
         yourTurn = false;
         System.out.println("nieuwe gamestate: " + gameState);
         if(gameState.getNextPlayerId() == playerId){
@@ -89,8 +89,8 @@ public class gameroomController implements Initializable {
         for(Card card : gameState.getThisPlayersCards()){
             ImageView tmp  = new ImageView(pathToCards + card.getPath());
             tmp.setId(Integer.toString(i));
-            tmp.setFitHeight(194);
-            tmp.setFitWidth(140);
+            tmp.setFitHeight(180);
+            tmp.setFitWidth(120);
             tmp.setOnMouseClicked(e -> {
                 if(yourTurn){
                     mainApp.playCard(card);
@@ -108,7 +108,7 @@ public class gameroomController implements Initializable {
             Pane otherPlayerBox = null;
             if(otherPlayersPane.getChildren().get(k) instanceof HBox) {
                 HBox otherPlayerBoxDummy = (HBox) otherPlayersPane.getChildren().get(k);
-                otherPlayerBoxDummy.setSpacing(-50);
+                otherPlayerBoxDummy.setSpacing(-40);
                 otherPlayerBox = otherPlayerBoxDummy;
             }
             else {
@@ -116,12 +116,12 @@ public class gameroomController implements Initializable {
                 otherPlayerBoxDummmy.setSpacing(-90);
                 otherPlayerBox = otherPlayerBoxDummmy;
             }
-            System.out.println(otherPlayerBox + "we hebben een gevonden" + otherPlayerCards);
+            otherPlayerBox.getChildren().clear();
             for (int c = 0; c < otherPlayerCards; c++){
                 ImageView tmp  = new ImageView(pathToCards + "uno_back.png");
                 tmp.setId(Integer.toString(i));
-                tmp.setFitHeight(194);
-                tmp.setFitWidth(140);
+                tmp.setFitHeight(180);
+                tmp.setFitWidth(120);
                 otherPlayerBox.getChildren().add(tmp);
             }
             k++;

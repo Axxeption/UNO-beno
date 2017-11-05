@@ -114,9 +114,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         System.out.println("We hebben een nieuwe unoGame met id: " + unoGame.getId());
         try {
             String nameRemoteObject = "UnoGame" + unoGame.getId();
-            System.out.println("De naam is: " + nameRemoteObject);
-            applicationRegistry.rebind(nameRemoteObject, new ApplicationServerGameImp(unoGame));
-            System.out.println("succes!");
+            applicationRegistry.rebind(nameRemoteObject, new ApplicationServerGameImp(unoGame, this));
         } catch (RemoteException e) {
             e.printStackTrace();
 
@@ -174,5 +172,16 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void endOfGame(UnoGame unoGame){
+        lobby.removeUnoGameFromList(unoGame);
+        try {
+            applicationRegistry.unbind("UnoGame" + unoGame.getId());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        }
     }
 }
