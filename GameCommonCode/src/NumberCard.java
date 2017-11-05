@@ -21,6 +21,7 @@ public class NumberCard extends Card{
         return number;
     }
 
+    @Override
     public void playCard(){
         //Does nothing
     }
