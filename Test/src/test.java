@@ -46,7 +46,6 @@ public class test {
 
             System.out.println(applicationServerGameInterface.startMessage(playerId1));
             System.out.println(applicationServerGameInterface.startMessage(playerId2));
-            System.out.println(applicationServerGameInterface.startMessage(playerId3));
 
         } catch (RemoteException e) {
             e.printStackTrace();
