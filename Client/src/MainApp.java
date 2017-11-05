@@ -319,8 +319,8 @@ public class MainApp extends Application {
                                 gameroomController.endGameWinner();
                             });
                         } else {
-                            String[] usernames = stateGame.getNames();
-                            gameroomController.endGameLoser(usernames[stateGame.getWinner()]);
+                            List<String> usernames = stateGame.getNames();
+                            gameroomController.endGameLoser(usernames.get(stateGame.getWinner()));
                         }
                     }
                     Platform.runLater(

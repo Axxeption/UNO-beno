@@ -10,6 +10,11 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
     UnoGame unoGame;
     ApplicationServerControllerImpl applicationServerControllerImpl;
 
+    public ApplicationServerGameImp(UnoGame unoGame, ApplicationServerControllerImpl applicationServerControllerImpl) throws RemoteException {
+        this.unoGame = unoGame;
+        this.applicationServerControllerImpl = applicationServerControllerImpl;
+    }
+
     public synchronized Message startMessage(int playerId){
         notifyAll();
         while (unoGame.getCurrentNumberOfPlayers() < unoGame.getMaxNumberOfPlayers()){
@@ -22,13 +27,7 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
         System.out.println("We verzenden de nieuwe games info!");
         Player realPlayer = unoGame.getPlayers().get(playerId);
         Message message = new Message(unoGame, realPlayer);
-        message.fillPlayers(unoGame);
         return message;
-    }
-
-    public ApplicationServerGameImp(UnoGame unoGame, ApplicationServerControllerImpl applicationServerControllerImpl) throws RemoteException {
-        this.unoGame = unoGame;
-        this.applicationServerControllerImpl = applicationServerControllerImpl;
     }
 
     @Override

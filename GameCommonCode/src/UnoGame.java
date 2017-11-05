@@ -83,6 +83,11 @@ public class UnoGame implements Serializable
         for (int c = 1; c <= 4; c++) {
             myDeck.add(new ReverseCard(c,this));
             myDeck.add(new SkipCard(c, this));
+            for (int i = 0; i <= 9; i++) {
+                myDeck.add(new NumberCard(c, i));
+            }
+        }
+        for (int c = 1; c <= 4; c++) {
             for (int i = 1; i <= 9; i++) {
                 myDeck.add(new NumberCard(c, i));
             }

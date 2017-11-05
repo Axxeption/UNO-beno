@@ -11,7 +11,7 @@ public class Message implements Serializable {
     private List<Integer> numberOfCards;
     private List<Card> thisPlayersCards;
     private Card topCard;
-    private String[] names;
+    private List<String> names;
     private Integer winner;
     private int points;
 
@@ -38,13 +38,15 @@ public class Message implements Serializable {
         thisPlayersCards = player.getCards();
         topCard = unoGame.getTopCard();
         winner = null;
+        fillPlayers(unoGame);
+        reOrganizeListInteger(numberOfCards,player);
     }
 
-    public String[] getNames() {
+    public List<String> getNames() {
         return names;
     }
 
-    public void setNames(String[] names) {
+    public void setNames(List<String> names) {
         this.names = names;
     }
 
@@ -91,10 +93,19 @@ public class Message implements Serializable {
     }
 
     public void fillPlayers(UnoGame unoGame) {
-        names = new String[unoGame.getPlayers().size()];
+        names = new ArrayList<>();
         int i = 0;
         for (Player p : unoGame.getPlayers()) {
-            names[i] = p.getName();
+            names.add(p.getName());
+        }
+    }
+
+    public void reOrganizeListInteger(List<Integer> list, Player p){
+        for(int i = 0; i < p.getId(); i++){
+            list.add(list.remove(0));
+        }
+        if(list.size() > 1) {
+            list.add(0, list.remove(1));
         }
     }
 
