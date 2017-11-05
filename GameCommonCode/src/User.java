@@ -12,8 +12,8 @@ import java.sql.Timestamp;
  * @author vulst
  */
 public class User implements Serializable{
-
     String username;
+    Integer score;
     byte[] salt;
     byte[] hash;
     int sessiontoken;
@@ -27,8 +27,22 @@ public class User implements Serializable{
         this.time = time;
     }
 
+    public User(String username, Integer score) {
+        this.username = username;
+        this.score = score;
+    }
+
+    public Integer getScore() {
+        return score;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
     public String getUsername() {
-        return username;
+
+        System.out.println("vraag usernem");return username;
     }
 
     public void setUsername(String username) {

@@ -13,6 +13,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -207,6 +209,16 @@ public class MainApp extends Application {
         }
         return FXCollections.observableArrayList(unoGameList);
     }
+
+    public ObservableList<User> getBestPlayers(){
+        List<User> bestPlayersList = null;
+        try {
+            bestPlayersList = applicationServerController.getBestPlayers();
+            System.out.println("bestplayers: "+ bestPlayersList.get(0).getUsername());
+        } catch (RemoteException e) {
+            System.out.println("de error bij getunogame: " + e);
+        }
+        return FXCollections.observableArrayList(bestPlayersList);    }
 
     public void startGame(int i, String name) {
         UnoGame unoGame = new UnoGame(i, name);

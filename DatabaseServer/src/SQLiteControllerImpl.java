@@ -1,3 +1,5 @@
+import javafx.collections.ObservableList;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -5,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -151,6 +154,47 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             prep.execute();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    public ArrayList<User> getBestPlayers() throws RemoteException{
+        if (con == null) {
+            System.out.println("Connection was null, make connection");
+            try {
+                getdbConnection();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        PreparedStatement prep = null;
+        ResultSet res = null;
+        String query = "SELECT username, score FROM uno_player ORDER BY score DESC LIMIT 50 ";
+        User user;
+        ArrayList<User> bestPlayersList = new ArrayList<>();
+
+        try {
+            prep = con.prepareStatement(query);
+            res = prep.executeQuery();
+
+            while(res.next()){
+                user = new User(res.getString("username"), res.getInt("score"));
+                bestPlayersList.add(user);
+            }
+            return bestPlayersList;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        } finally {
+            try {
+                prep.close();
+                res.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

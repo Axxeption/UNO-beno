@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 public class Player implements Serializable
 {
     private String myName;
-
     private int id;
     private ArrayList<Card> myCards;
 
