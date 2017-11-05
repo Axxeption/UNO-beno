@@ -13,6 +13,5 @@ public interface SQLiteController extends Remote{
     public boolean isLogin(String username, String pass) throws SQLException, ClassNotFoundException, RemoteException;
     public boolean newUser(String username, byte[] salt, byte[] hashedpassword)throws RemoteException;
     public void createSessionToken(String username)throws RemoteException;
-
-
+    public void setScore(int score, String username) throws RemoteException;
 }

@@ -16,4 +16,5 @@ public interface ApplicationServerController extends Remote {
 
     public List<UnoGame> getAllUnoGames() throws RemoteException;
 
+    void setScore(int score, String username) throws RemoteException;
 }

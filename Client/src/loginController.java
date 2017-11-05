@@ -44,7 +44,7 @@ public class loginController{
         if (mainApp.register(input_username.getText(), input_password.getText())) {
             outputLabel.setText("Succesfully account created!");
         } else {
-            outputLabel.setText("Sorry, something went wrong.");
+            outputLabel.setText("Sorry, username already in use.");
         }
 
     }

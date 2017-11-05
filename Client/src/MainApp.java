@@ -75,6 +75,7 @@ public class MainApp extends Application {
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
             controller.background();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -90,6 +91,8 @@ public class MainApp extends Application {
             AnchorPane lobbypane = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
             rootLayout.setCenter(lobbypane);
+            this.primaryStage.setTitle("UNO lobby");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,6 +100,8 @@ public class MainApp extends Application {
 
     public void showGameroom(UnoGame unoGame) {
         try {
+            this.primaryStage.setTitle("UNO game");
+
             gameroomController = new gameroomController(this);
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -259,6 +264,13 @@ public class MainApp extends Application {
                     stateGame = applicationServerGameInterface.subscribe(playerId);
                     System.out.println("something new happend! --> game updaten");
                     //deze thread kan de thread die die ui regelt niet oproepen
+                    if(stateGame.getWinner() != null){
+                        //TODO toon de winnaar in UI
+                        if(stateGame.getWinner() == playerId){
+                            applicationServerController.setScore(stateGame.getPoints(), username);
+
+                        }
+                    }
                     Platform.runLater(
                             () -> {
                                 gameroomController.setUI(stateGame);

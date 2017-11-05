@@ -12,6 +12,9 @@ public class Message implements Serializable{
     private Card topCard;
     private String[] names;
     private Integer winner;
+
+
+
     private int points;
 
     public String[] getNames() {
@@ -20,6 +23,16 @@ public class Message implements Serializable{
 
     public void setNames(String[] names) {
         this.names = names;
+    }
+    public Integer getWinner() {
+        return winner;
+    }
+    public int getPoints() {
+        return points;
+    }
+
+    public void setWinner(Integer winner) {
+        this.winner = winner;
     }
 
     public Message(UnoGame unoGame, Player player) {

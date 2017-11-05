@@ -147,4 +147,18 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
             return false;
         }
     }
+
+    @Override
+    public void setScore(int score, String username) throws RemoteException{
+        //verhoog score
+        if(databaseRegistry == null){
+            connectDbServer();
+        }
+
+        try {
+            impl.setScore(score, username);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
 }
