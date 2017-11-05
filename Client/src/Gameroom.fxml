@@ -8,13 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" fx:id="anchor" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <HBox fx:id="backgroundBox" layoutX="70.0" layoutY="525.0" opacity="0.5" prefHeight="216.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" />
-        <HBox fx:id="otherplayersbox" layoutX="128.0" layoutY="86.0" opacity="0.77" prefHeight="189.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="70.0" />
-        <ImageView fx:id="middleCard" fitHeight="150.0" fitWidth="200.0" layoutX="500.0" layoutY="325.0" pickOnBounds="true" preserveRatio="true" />
-        <Button fx:id="showCards" layoutX="815.0" layoutY="352.0" mnemonicParsing="false" onAction="#drawcard" text="Draw!" />
-      <Label fx:id="uwbeurt" layoutX="70.0" layoutY="357.0" text="uw beurt" textFill="#f4f4f4" />
+        <HBox fx:id="backgroundBox" layoutX="70.0" layoutY="525.0" opacity="0.5" prefHeight="216.0" prefWidth="1060.0" style="-fx-background-color: #fff;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="514.0" />
+        <ImageView fx:id="middleCard" fitHeight="150.0" fitWidth="200.0" layoutX="590.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="uwbeurt" layoutX="433.0" layoutY="199.0" text="uw beurt" textFill="#f4f4f4" />
+      <VBox layoutX="70.0" layoutY="53.0" opacity="0.84" prefHeight="318.0" prefWidth="334.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0" />
+      <ImageView fx:id="cardBack" fitHeight="150.0" fitWidth="200.0" layoutX="900.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="125.0" />
 
     </children>
 </AnchorPane>
