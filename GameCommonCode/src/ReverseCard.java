@@ -14,6 +14,7 @@ public class ReverseCard extends Card{
         }
 
         public void playCard(){
+            System.out.println("We wisselen van richting");
             unoGame.switchPlayDirection();
         }
 

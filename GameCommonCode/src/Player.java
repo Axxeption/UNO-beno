@@ -52,14 +52,20 @@ public class Player implements Serializable
         return myName;
     }
 
-    public boolean removeCardWithSameId(Card card) {
-        Stream<Card> cards = myCards.stream().filter(x-> x.getId().equals(card.getId()));
-        if(cards.count() > 0){
-            myCards.remove(cards.findFirst().get());
-            return true;
+    public void removeCard(Card card){
+        myCards.remove(card);
+    }
+
+    public Card findPlayersCard(Card card) {
+        for(Card c : myCards){
+            if(c.getId().equals(card.getId())){
+
+                System.out.println("kaart gevonden in player");
+                return c;
+            }
         }
         System.out.println("This player doesn't have this card.");
-        return false;
+        return null;
     }
 }
 
