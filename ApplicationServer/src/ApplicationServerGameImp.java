@@ -8,6 +8,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class ApplicationServerGameImp extends UnicastRemoteObject implements ApplicationServerGameInterface{
 
     UnoGame unoGame;
+    ApplicationServerControllerImpl applicationServerControllerImpl;
 
     public synchronized Message startMessage(int playerId){
         notifyAll();
@@ -25,8 +26,9 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
         return message;
     }
 
-    public ApplicationServerGameImp(UnoGame unoGame) throws RemoteException {
+    public ApplicationServerGameImp(UnoGame unoGame, ApplicationServerControllerImpl applicationServerControllerImpl) throws RemoteException {
         this.unoGame = unoGame;
+        this.applicationServerControllerImpl = applicationServerControllerImpl;
     }
 
     @Override
@@ -49,6 +51,7 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
         if(unoGame.checkIfWinner() != null){
             message.setWinner(unoGame.checkIfWinner().getId());
             message.setPoints(unoGame);
+            applicationServerControllerImpl.endOfGame(unoGame);
         }
         return message;
     }
