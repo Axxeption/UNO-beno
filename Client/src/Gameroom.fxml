@@ -19,9 +19,9 @@
             </children>
         </AnchorPane>
         <AnchorPane fx:id="namesPane" prefHeight="800.0" prefWidth="1200.0">
-            <Label layoutX="573.0" layoutY="240.0" text="uw beurt" textFill="#f4f4f4"/>
-            <Label layoutX="273.0" layoutY="392.0" text="uw beurt" textFill="#f4f4f4"/>
-            <Label layoutX="873.0" layoutY="384.0" text="uw beurt" textFill="#f4f4f4"/>
+            <Label layoutX="573.0" layoutY="240.0" text="" textFill="#f4f4f4"/>
+            <Label layoutX="273.0" layoutY="392.0" text="" textFill="#f4f4f4"/>
+            <Label layoutX="873.0" layoutY="384.0" text="" textFill="#f4f4f4"/>
         </AnchorPane>
         <Label fx:id="thisPlayer" layoutX="573.0" layoutY="533.0" text="uw beurt" textFill="#f4f4f4"/>
         <HBox fx:id="backgroundBox" alignment="CENTER" layoutX="300.0" layoutY="566.0" prefHeight="200.0"
