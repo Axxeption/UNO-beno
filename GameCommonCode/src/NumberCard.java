@@ -27,10 +27,10 @@ public class NumberCard extends Card{
 
     @Override
     public boolean canPlayOn(Card card){
+        System.out.println("We kijken of deze nummerkaart op de bovenste kaart kan.");
+        System.out.println(getColour() == card.getColour());
         if(getColour() == card.getColour()) return true;
-        if(card instanceof NumberCard){
-            if(number == ((NumberCard) card).getNumber()) return true;
-        }
+        if(number == ((NumberCard) card).getNumber()) return true;
         return false;
     }
 

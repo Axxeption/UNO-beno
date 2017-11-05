@@ -47,11 +47,15 @@ public class UnoGame implements Serializable
 
     public boolean playCard(Card card, Player player){
         System.out.println(player.getName() + " tries to play card " + card.getId());
+        Card realCard = player.findPlayersCard(card);
         if(myCurrentPlayer.equals(player)) {
-            if (card.canPlayOn(getTopCard()) && player.removeCardWithSameId(card)) {
-                myPile.add(card);
-                card.play();
+            System.out.println("Het is die speler zijn beurt");
+            if (card.canPlayOn(getTopCard()) && realCard != null) {
+                myPile.add(realCard);
+                realCard.play();
                 System.out.println("card played");
+                player.removeCard(realCard);
+                goToNextPlayer();
                 return true;
             }
         }
@@ -158,7 +162,9 @@ public class UnoGame implements Serializable
      * Switch the direction of play
      */
     public void switchPlayDirection() {
+        System.out.println("De richting was: " + myPlayDirection);
         myPlayDirection = myPlayDirection == -1 ? 1 : -1;
+        System.out.println("De richting is nu: " + myPlayDirection);
     }
 
     /**
