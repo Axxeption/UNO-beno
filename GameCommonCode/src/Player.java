@@ -1,6 +1,8 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.stream.Stream;
 
 /**
  * A Player in the Uno Game.
@@ -42,6 +44,7 @@ public class Player implements Serializable
     }
 
     public void gainCard(Card card) {
+        System.out.println("Player " + myName + " draws card " + card);
         myCards.add(card);
     }
 
@@ -49,12 +52,15 @@ public class Player implements Serializable
         return myName;
     }
 
-//    /public boolean removeCard(Card card) {
-//        Card card1 = Arrays.stream(myCards.iterator())
-//                .filter(x -> (x.getId()))
-//                .findFirst()
-//                .orElse(null);
-//    }
+    public boolean removeCardWithSameId(Card card) {
+        Stream<Card> cards = myCards.stream().filter(x-> x.getId() == card.getId());
+        if(cards.count() > 0){
+            myCards.remove(cards.findFirst().get());
+            return true;
+        }
+        System.out.println("This player doesn't have this card.");
+        return false;
+    }
 }
 
 

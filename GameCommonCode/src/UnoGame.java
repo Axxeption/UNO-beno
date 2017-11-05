@@ -48,10 +48,9 @@ public class UnoGame implements Serializable
     public boolean playCard(Card card, Player player){
         System.out.println(player.getName() + " tries to play card " + card.getId());
         if(myCurrentPlayer.equals(player)) {
-            if (card.canPlayOn(getTopCard())) {
+            if (card.canPlayOn(getTopCard()) && player.removeCardWithSameId(card)) {
                 myPile.add(card);
                 card.play();
-//                player.removeCard(card);
                 System.out.println("card played");
                 return true;
             }
