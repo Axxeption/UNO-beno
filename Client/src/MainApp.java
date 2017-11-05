@@ -31,7 +31,6 @@ public class MainApp extends Application {
     ApplicationServerGameInterface applicationServerGameInterface;
     Message stateGame;
 
-
     @Override
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
