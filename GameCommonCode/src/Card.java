@@ -50,7 +50,7 @@ public class Card implements Serializable {
         return (card.myColour == myColour);
     }
 
-    public void play() {
+    public void playCard() {
         // Default: has no effect
     }
 

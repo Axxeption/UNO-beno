@@ -52,7 +52,7 @@ public class UnoGame implements Serializable
             System.out.println("Het is die speler zijn beurt");
             if (card.canPlayOn(getTopCard()) && realCard != null) {
                 myPile.add(realCard);
-                realCard.play();
+                realCard.playCard();
                 System.out.println("card played");
                 player.removeCard(realCard);
                 goToNextPlayer();
