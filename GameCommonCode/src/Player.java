@@ -53,7 +53,7 @@ public class Player implements Serializable
     }
 
     public boolean removeCardWithSameId(Card card) {
-        Stream<Card> cards = myCards.stream().filter(x-> x.getId() == card.getId());
+        Stream<Card> cards = myCards.stream().filter(x-> x.getId().equals(card.getId()));
         if(cards.count() > 0){
             myCards.remove(cards.findFirst().get());
             return true;

@@ -131,21 +131,4 @@ public class LobbyController implements Initializable{
     public void setCurrentUnoGames(ObservableList<UnoGame> currentUnoGames) {
         waitingGames.setItems(currentUnoGames);    }
 
-//    public void tmpbutton() {
-//        System.out.println("gedrukt!");
-//        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Name");
-//        nameColumn.setMinWidth(250);
-//        nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
-//
-//        TableColumn<UnoGame, String> currentUsersColumn = new TableColumn<>("current users");
-//        currentUsersColumn.setMinWidth(175);
-//        currentUsersColumn.setCellValueFactory(new PropertyValueFactory<>("currentNumberOfPlayers"));
-//
-//        TableColumn<UnoGame, String> maxUsersColumn = new TableColumn<>("Max users");
-//        maxUsersColumn.setMinWidth(175);
-//        maxUsersColumn.setCellValueFactory(new PropertyValueFactory<>("maxNumberOfPlayers"));
-//
-//        loadGames();
-//        waitingGames.getColumns().addAll(nameColumn, currentUsersColumn, maxUsersColumn);
-//    }
 }

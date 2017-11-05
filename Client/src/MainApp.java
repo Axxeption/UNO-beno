@@ -240,7 +240,11 @@ public class MainApp extends Application {
                 try {
                     List<UnoGame> unoGameList = applicationServerController.subscribe();
                     System.out.println("something new happend! --> game updaten");
-                    lobbyController.setCurrentUnoGames(FXCollections.observableList(unoGameList));
+                    Platform.runLater(
+                            () -> {
+                                lobbyController.setCurrentUnoGames(FXCollections.observableList(unoGameList));
+                            }
+                    );
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }

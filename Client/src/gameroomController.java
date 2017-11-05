@@ -88,7 +88,6 @@ public class gameroomController implements Initializable {
             tmp.setFitWidth(140);
             tmp.setOnMouseClicked(e -> {
                 System.out.println("je wilt spelen");
-                System.out.println(yourTurn);
                 if(yourTurn){
                     System.out.println("Je gaat een kaart spelen!");
                     mainApp.playCard(card);
@@ -97,7 +96,6 @@ public class gameroomController implements Initializable {
                     System.out.println("Sorry je moet je beurt afwachten");
                 }
             });
-            System.out.println("backgroundbox: " + backgroundBox);
             backgroundBox.getChildren().add(tmp);
             i++;
         }
