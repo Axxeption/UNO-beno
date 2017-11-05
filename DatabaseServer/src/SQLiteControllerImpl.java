@@ -1,3 +1,5 @@
+import javafx.collections.ObservableList;
+
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -5,12 +7,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
  * @author vulst
  */
 public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteController {
@@ -26,7 +28,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
         Class.forName("org.sqlite.JDBC");
         String path = System.getProperty("user.dir");
         String fileSeparator = System.getProperty("file.separator");
-        con = DriverManager.getConnection("jdbc:sqlite:" + path + fileSeparator + "DatabaseServer" + fileSeparator +"userdb.sqlite"); //name of db make here
+        con = DriverManager.getConnection("jdbc:sqlite:" + path + fileSeparator + "DatabaseServer" + fileSeparator + "userdb.sqlite"); //name of db make here
     }
 
     @Override
@@ -38,7 +40,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
 
         PreparedStatement prep = null;
         ResultSet res = null;
-        String query = "SELECT * FROM user where username = ?";
+        String query = "SELECT * FROM uno_player where username = ?";
         User user;
 
         try {
@@ -57,8 +59,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
         } catch (Exception e) {
             System.out.println(e);
             return null;
-        }
-        finally {
+        } finally {
             prep.close();
             res.close();
 
@@ -74,8 +75,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
 
         PreparedStatement prep = null;
         ResultSet res = null;
-        String query = "SELECT * FROM user where username = ? and password = ?";
-//        String query = "SELECT fname, lname FROM user";
+        String query = "SELECT * FROM uno_player where username = ? and password = ?";
 
         try {
             prep = con.prepareStatement(query);
@@ -105,12 +105,13 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
                 System.out.println("make connection to db");
                 getdbConnection();
             }
-            PreparedStatement prep = con.prepareStatement("INSERT INTO user values(?,?,?,?,?,?);");
+            PreparedStatement prep = con.prepareStatement("INSERT INTO uno_player values(?,?,?,?,?,?,?);");
             prep.setString(2, username);
             prep.setBytes(3, hashedpassword);
             prep.setBytes(4, salt);
             prep.setInt(5, 0);
             prep.setTimestamp(6, null);
+            prep.setInt(7, 0);
 
             prep.execute();
             return true;
@@ -129,7 +130,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
         try {
             Random rand = new Random();
             int n = rand.nextInt(50000);
-            prep = con.prepareStatement("UPDATE user SET sessiontoken = ?, time = ?  WHERE username = ?;");
+            prep = con.prepareStatement("UPDATE uno_player SET sessiontoken = ?, time = ?  WHERE username = ?;");
             prep.setInt(1, n);
             prep.setTimestamp(2, new java.sql.Timestamp(System.currentTimeMillis()));
             prep.setString(3, username);
@@ -139,6 +140,61 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             prep.execute();
         } catch (SQLException ex) {
             Logger.getLogger(SQLiteControllerImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void setScore(int score, String username) throws RemoteException{
+        //eerst de score opvragen en dan zetten
+        PreparedStatement prep = null;
+        try {
+            prep = con.prepareStatement("UPDATE uno_player SET score = score + ? WHERE username = ?; ");
+            prep.setInt(1, score);
+            prep.setString(2, username);
+            prep.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public ArrayList<User> getBestPlayers() throws RemoteException{
+        if (con == null) {
+            System.out.println("Connection was null, make connection");
+            try {
+                getdbConnection();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        PreparedStatement prep = null;
+        ResultSet res = null;
+        String query = "SELECT username, score FROM uno_player ORDER BY score DESC LIMIT 50 ";
+        User user;
+        ArrayList<User> bestPlayersList = new ArrayList<>();
+
+        try {
+            prep = con.prepareStatement(query);
+            res = prep.executeQuery();
+
+            while(res.next()){
+                user = new User(res.getString("username"), res.getInt("score"));
+                bestPlayersList.add(user);
+            }
+            return bestPlayersList;
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        } finally {
+            try {
+                prep.close();
+                res.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

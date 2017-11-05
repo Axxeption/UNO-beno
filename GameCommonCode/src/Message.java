@@ -13,7 +13,21 @@ public class Message implements Serializable {
     private Card topCard;
     private String[] names;
     private Integer winner;
+
+
+
     private int points;
+
+    public Integer getWinner() {
+        return winner;
+    }
+    public int getPoints() {
+        return points;
+    }
+
+    public void setWinner(Integer winner) {
+        this.winner = winner;
+    }
 
     public Message(UnoGame unoGame, Player player) {
         nextPlayerId = unoGame.getCurrentPlayer().getId();

@@ -13,6 +13,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -75,6 +77,7 @@ public class MainApp extends Application {
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
             controller.background();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -90,6 +93,8 @@ public class MainApp extends Application {
             AnchorPane lobbypane = (AnchorPane) loader.load();
             // Set person overview into the center of root layout.
             rootLayout.setCenter(lobbypane);
+            this.primaryStage.setTitle("UNO lobby");
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -97,6 +102,8 @@ public class MainApp extends Application {
 
     public void showGameroom(UnoGame unoGame) {
         try {
+            this.primaryStage.setTitle("UNO game");
+
             gameroomController = new gameroomController(this);
             // Load person overview.
             FXMLLoader loader = new FXMLLoader();
@@ -203,6 +210,16 @@ public class MainApp extends Application {
         return FXCollections.observableArrayList(unoGameList);
     }
 
+    public ObservableList<User> getBestPlayers(){
+        List<User> bestPlayersList = null;
+        try {
+            bestPlayersList = applicationServerController.getBestPlayers();
+            System.out.println("bestplayers: "+ bestPlayersList.get(0).getUsername());
+        } catch (RemoteException e) {
+            System.out.println("de error bij getunogame: " + e);
+        }
+        return FXCollections.observableArrayList(bestPlayersList);    }
+
     public void startGame(int i, String name) {
         UnoGame unoGame = new UnoGame(i, name);
         try {
@@ -257,6 +274,13 @@ public class MainApp extends Application {
                     stateGame = applicationServerGameInterface.subscribe(playerId);
                     System.out.println("something new happend! --> game updaten");
                     //deze thread kan de thread die die ui regelt niet oproepen
+                    if(stateGame.getWinner() != null){
+                        //TODO toon de winnaar in UI
+                        if(stateGame.getWinner() == playerId){
+                            applicationServerController.setScore(stateGame.getPoints(), username);
+
+                        }
+                    }
                     Platform.runLater(
                             () -> {
                                 gameroomController.setUI(stateGame);

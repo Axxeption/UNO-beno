@@ -1,5 +1,6 @@
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 public interface ApplicationServerController extends Remote {
@@ -15,5 +16,8 @@ public interface ApplicationServerController extends Remote {
     public int joinGame(Player player,long unoGameId) throws RemoteException;
 
     public List<UnoGame> getAllUnoGames() throws RemoteException;
+
+    void setScore(int score, String username) throws RemoteException;
+    ArrayList<User> getBestPlayers() throws RemoteException;
 
 }

@@ -14,7 +14,7 @@
         <PasswordField fx:id="input_password" layoutX="507.0" layoutY="323.0" promptText="Password" />
         <TextField fx:id="input_username" layoutX="507.0" layoutY="270.0" promptText="Username" />
         <Button fx:id="RegisterButton" layoutX="620.0" layoutY="369.0" mnemonicParsing="false" onAction="#register" text="Register" />
-        <Label fx:id="outputLabel" layoutX="229.0" layoutY="216.0" prefHeight="21.0" prefWidth="144.0" />
+        <Label fx:id="outputLabel" layoutX="507.0" layoutY="409.0" prefHeight="21.0" prefWidth="446.0" textFill="#f4f4f4" />
       <Label layoutX="527.0" layoutY="213.0" text="Welcome!" textFill="#d7d5d5">
          <font>
             <Font size="33.0" />

@@ -7,6 +7,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -146,5 +147,32 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         } else {
             return false;
         }
+    }
+
+    @Override
+    public void setScore(int score, String username) throws RemoteException{
+        //verhoog score
+        if(databaseRegistry == null){
+            connectDbServer();
+        }
+
+        try {
+            impl.setScore(score, username);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public ArrayList<User> getBestPlayers() throws RemoteException {
+        if(databaseRegistry == null){
+            connectDbServer();
+        }
+        try {
+            return  impl.getBestPlayers();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
