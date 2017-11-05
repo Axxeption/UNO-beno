@@ -46,6 +46,7 @@ public class test {
 
             System.out.println(applicationServerGameInterface.startMessage(playerId1));
             System.out.println(applicationServerGameInterface.startMessage(playerId2));
+            playerId3 = applicationServerController.joinGame(new Player("axelleke"), unoGameId);
 
         } catch (RemoteException e) {
             e.printStackTrace();
