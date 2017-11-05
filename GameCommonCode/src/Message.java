@@ -40,6 +40,7 @@ public class Message implements Serializable {
         }
         thisPlayersCards = player.getCards();
         topCard = unoGame.getTopCard();
+        winner = null;
     }
 
     public String[] getNames() {
