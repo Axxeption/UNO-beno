@@ -4,6 +4,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,9 +32,6 @@ public class gameroomController implements Initializable {
 
     @FXML
     private Label uwbeurt;
-
-    @FXML
-    private VBox otherplayersbox;
 
     @FXML
     private ImageView cardBack;
@@ -72,6 +70,7 @@ public class gameroomController implements Initializable {
 
     public void setUI(Message gameState){
         backgroundBox.getChildren().clear();
+        backgroundBox.setSpacing(-50);
         yourTurn = false;
         System.out.println("nieuwe gamestate: " + gameState);
         if(gameState.getNextPlayerId() == playerId){
@@ -88,7 +87,6 @@ public class gameroomController implements Initializable {
             tmp.setFitHeight(194);
             tmp.setFitWidth(140);
             tmp.setOnMouseClicked(e -> {
-                System.out.println("je wilt spelen");
                 if(yourTurn){
                     mainApp.playCard(card);
                 }
@@ -99,10 +97,27 @@ public class gameroomController implements Initializable {
 
         middleCard.setImage(new Image(pathToCards + gameState.getTopCard().getPath()));
         int k = 0;
+
         for(Integer otherPlayerCards : gameState.getNumberOfCards()){
-            HBox otherPlayerBox = (HBox) otherplayersbox.getChildren().get(k);
+            System.out.println(otherPlayersPane);
+            Pane otherPlayerBox = null;
+            if(otherPlayersPane.getChildren().get(k) instanceof HBox) {
+                HBox otherPlayerBoxDummy = (HBox) otherPlayersPane.getChildren().get(k);
+                otherPlayerBoxDummy.setSpacing(-50);
+                otherPlayerBox = otherPlayerBoxDummy;
+            }
+            else {
+                VBox otherPlayerBoxDummmy = (VBox) otherPlayersPane.getChildren().get(k);
+                otherPlayerBoxDummmy.setSpacing(-90);
+                otherPlayerBox = otherPlayerBoxDummmy;
+            }
+            System.out.println(otherPlayerBox + "we hebben een gevonden" + otherPlayerCards);
             for (int c = 0; c < otherPlayerCards; c++){
-                otherPlayerBox.getChildren().add(new ImageView(pathToCards + "uno_back.png"));
+                ImageView tmp  = new ImageView(pathToCards + "uno_back.png");
+                tmp.setId(Integer.toString(i));
+                tmp.setFitHeight(194);
+                tmp.setFitWidth(140);
+                otherPlayerBox.getChildren().add(tmp);
             }
             k++;
         }

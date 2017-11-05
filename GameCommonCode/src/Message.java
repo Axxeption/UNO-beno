@@ -1,18 +1,32 @@
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by Benoit on 3/11/17.
  */
-public class Message implements Serializable{
+public class Message implements Serializable {
     private int nextPlayerId;
-    private int[] numberOfCards;
+    private List<Integer> numberOfCards;
     private List<Card> thisPlayersCards;
     private Card topCard;
     private String[] names;
     private Integer winner;
     private int points;
+
+    public Message(UnoGame unoGame, Player player) {
+        nextPlayerId = unoGame.getCurrentPlayer().getId();
+        int i = 0;
+        numberOfCards = new ArrayList<>();
+        for (Player p : unoGame.getPlayers()) {
+            if (p.getId() != player.getId()) {
+                numberOfCards.add(p.getCards().size());
+            }
+        }
+        thisPlayersCards = player.getCards();
+        topCard = unoGame.getTopCard();
+    }
 
     public String[] getNames() {
         return names;
@@ -20,18 +34,6 @@ public class Message implements Serializable{
 
     public void setNames(String[] names) {
         this.names = names;
-    }
-
-    public Message(UnoGame unoGame, Player player) {
-        nextPlayerId = unoGame.getCurrentPlayer().getId();
-        int i = 0;
-        numberOfCards = new int[unoGame.getMaxNumberOfPlayers()];
-        for(Player p: unoGame.getPlayers()){
-            numberOfCards[i] = p.getCards().size();
-            i++;
-        }
-        thisPlayersCards = player.getCards();
-        topCard = unoGame.getTopCard();
     }
 
     public int getNextPlayerId() {
@@ -42,11 +44,11 @@ public class Message implements Serializable{
         this.nextPlayerId = nextPlayerId;
     }
 
-    public int[] getNumberOfCards() {
+    public List<Integer> getNumberOfCards() {
         return numberOfCards;
     }
 
-    public void setNumberOfCards(int[] numberOfCards) {
+    public void setNumberOfCards(List<Integer> numberOfCards) {
         this.numberOfCards = numberOfCards;
     }
 
@@ -70,7 +72,7 @@ public class Message implements Serializable{
     public String toString() {
         return "Message{" +
                 "nextPlayerId=" + nextPlayerId +
-                ", numberOfCards=" + Arrays.toString(numberOfCards) +
+                ", numberOfCards=" + numberOfCards +
                 ", thisPlayersCards=" + thisPlayersCards +
                 ", topCard=" + topCard +
                 '}';
@@ -79,7 +81,7 @@ public class Message implements Serializable{
     public void fillPlayers(UnoGame unoGame) {
         names = new String[unoGame.getPlayers().size()];
         int i = 0;
-        for (Player p: unoGame.getPlayers()) {
+        for (Player p : unoGame.getPlayers()) {
             names[i] = p.getName();
         }
     }
