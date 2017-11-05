@@ -35,7 +35,10 @@ public class gameroomController implements Initializable {
     private Label uwbeurt;
 
     @FXML
-    private HBox otherplayersbox;
+    private VBox otherplayersbox;
+
+    @FXML
+    private ImageView cardBack;
 
     public gameroomController(MainApp mainApp) {
         this.mainApp = mainApp;
@@ -52,17 +55,18 @@ public class gameroomController implements Initializable {
         fileSeparator = System.getProperty("file.separator");
         path =  System.getProperty("user.dir");
         pathToCards =  "file:" +fileSeparator + path + fileSeparator + "Client" + fileSeparator + "Cards" + fileSeparator ;
+        cardBack.setImage(new Image(pathToCards + "uno_back.png"));
+        cardBack.setOnMouseClicked(e -> {
+            if(yourTurn){
+                System.out.println("card draw");
+                mainApp.drawCard();
+            }
+            else {
+                System.out.println("Sorry je moet je beurt afwachten");
+            }
+        });
     }
 
-    //om de kaarten te testen
-    public void drawcard() {
-        if(yourTurn) {
-            mainApp.drawCard();
-        }
-        else {
-            System.out.println("Sorry je moet je beurt afwachten");
-        }
-    }
 
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
