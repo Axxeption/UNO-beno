@@ -56,7 +56,7 @@ public class LobbyController implements Initializable {
         anchor.setBackground(new Background(myBI));
 
         //alles voor de huidige games te zetten
-        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Username");
+        TableColumn<UnoGame, String> nameColumn = new TableColumn<>("Game name");
         nameColumn.setMinWidth(150);
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("gameName"));
 
