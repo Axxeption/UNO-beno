@@ -26,6 +26,6 @@ public class Lobby {
     }
 
     public void removeUnoGameFromList(UnoGame unoGame) {
-        unoGameHashMap.remove(unoGame);
+        unoGameHashMap.remove(unoGame.getId());
     }
 }

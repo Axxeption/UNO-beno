@@ -173,7 +173,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         return null;
     }
 
-    public void endOfGame(UnoGame unoGame) {
+    public synchronized void endOfGame(UnoGame unoGame) {
         lobby.removeUnoGameFromList(unoGame);
         try {
             if (applicationRegistry == null) {
@@ -184,5 +184,6 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         } catch (NotBoundException e) {
             e.printStackTrace();
         }
+        notifyAll();
     }
 }
