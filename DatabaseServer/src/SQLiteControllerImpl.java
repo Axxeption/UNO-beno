@@ -1,5 +1,6 @@
-import javafx.collections.ObservableList;
-
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -37,7 +38,6 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             System.out.println("make connection");
             getdbConnection();
         }
-
         PreparedStatement prep = null;
         ResultSet res = null;
         String query = "SELECT * FROM uno_player where username = ?";
@@ -49,7 +49,6 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             res = prep.executeQuery();
 
             if (res.next()) {
-                System.out.println("res: " + res);
                 user = new User(username, res.getBytes("salt"), res.getBytes("hash"), res.getInt("sessiontoken"), res.getTimestamp("time"));
                 return user;
             } else {
@@ -196,6 +195,96 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
                 e.printStackTrace();
             }
         }
+    }
+
+    public void logout(String username) throws RemoteException {
+        if (con == null) {
+            System.out.println("Connection was null, make connection");
+            try {
+                getdbConnection();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        PreparedStatement prep = null;
+        try {
+            prep = con.prepareStatement("UPDATE uno_player SET sessiontoken = ? WHERE username = ?; ");
+            prep.setInt(1, 0);
+            prep.setString(2, username);
+            prep.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Integer getSessionToken(String username)  throws RemoteException{
+        if (con == null) {
+            System.out.println("Connection was null, make connection");
+            try {
+                getdbConnection();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        PreparedStatement prep = null;
+        ResultSet res = null;
+        String query = "SELECT sessiontoken FROM uno_player WHERE username = ?  ";
+
+
+        try {
+            prep = con.prepareStatement(query);
+            prep.setString(1, username);
+            res = prep.executeQuery();
+            Integer sessiontoken;
+            while(res.next()){
+                sessiontoken = res.getInt("sessiontoken");
+                return sessiontoken;
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
+    }
+
+    @Override
+    public ArrayList<Picture> getCards(String event){
+        if (con == null) {
+            System.out.println("make connection");
+            try {
+                getdbConnection();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+        PreparedStatement prep = null;
+        ResultSet res = null;
+        String query = "SELECT * FROM pictures where event = ?";
+
+        try {
+            prep = con.prepareStatement(query);
+            prep.setString(1, event);
+            res = prep.executeQuery();
+            ArrayList<Picture> list = new ArrayList<>();
+            if (res.next()) {
+                list.add(new Picture(res.getString("name") , res.getBinaryStream("picture")));
+//                BufferedImage image = ImageIO.read(res.getBinaryStream("picture"));
+//                File outputfile = new File("saved.png");
+//                ImageIO.write(image, "png", outputfile);
+            }
+            return list;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null;
     }
 
 }

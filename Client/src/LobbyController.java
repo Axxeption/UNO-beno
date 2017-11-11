@@ -1,3 +1,4 @@
+import com.sun.org.apache.regexp.internal.RE;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -172,45 +173,6 @@ public class LobbyController implements Initializable {
         }
     }
 
-//    public void startbutton() {
-//
-//        if (waitingGames.getSelectionModel().getSelectedItem() != null) {
-//            unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
-//            mainapp.waitForStartMessage(unoGame);
-//            secondStage.close();
-//            mainapp.showGameroom();
-////            new Thread(waitForStartingGame).start();
-////            ImageView loading = new ImageView(new Image("loading.gif"));
-//            loading.setFitWidth(200);
-//            loading.setFitHeight(200);
-//            VBox secondaryLayout = new VBox(10);
-//            Label wait = new Label("Friends need to join...");
-//            secondaryLayout.getChildren().addAll(loading, wait);
-//            //set "popup" if clicked on new game...
-//            secondScene = new Scene(secondaryLayout, 200, 230);
-//            secondStage = new Stage();
-//            secondStage.setTitle("Waiting for other players");
-//            secondStage.setScene(secondScene);
-//            secondStage.show();
-
-//            //go into the gameroom with this selectedgame
-//        }
-//    }
-
-//    Runnable waitForStartingGame = new Runnable() {
-//        @Override
-//        public void run() {
-//            unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
-//            mainapp.waitForStartMessage(unoGame);
-//            Platform.runLater(() -> {
-//                secondStage.close();
-//                mainapp.showGameroom();
-//            });
-//
-//        }
-//
-//    };
-
 
     public void setCurrentUnoGames(ObservableList<UnoGame> currentUnoGames) {
         waitingGames.setItems(currentUnoGames);
@@ -234,5 +196,21 @@ public class LobbyController implements Initializable {
 
     public void stopLoading(){
         secondStage.close();
+    }
+
+    public void logout() throws RemoteException{
+        mainapp.logout();
+    }
+
+    public void sessionExpiredPopup(){
+        Label sorry = new Label("Sorry, you session is expired!");
+        VBox secondaryLayout = new VBox(10);
+        secondaryLayout.getChildren().addAll(sorry);
+
+        secondScene = new Scene(secondaryLayout, 200, 100);
+        secondStage = new Stage();
+        secondStage.setTitle("Sorry");
+        secondStage.setScene(secondScene);
+        secondStage.show();
     }
 }

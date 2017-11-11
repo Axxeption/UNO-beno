@@ -1,11 +1,14 @@
 
 
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.rmi.AccessException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
@@ -23,6 +26,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
 import javax.swing.text.StyledEditorKit;
 
 public class MainApp extends Application {
@@ -38,6 +42,8 @@ public class MainApp extends Application {
     private long unoGameId;
     ApplicationServerGameInterface applicationServerGameInterface;
     Message stateGame;
+    Integer sessionToken;
+    ArrayList<Picture> cardlist;
 
 
     @Override
@@ -74,6 +80,7 @@ public class MainApp extends Application {
      */
     public void showLogin() {
         try {
+
             // Load person overview.
             loginController controller = new loginController(this);
             FXMLLoader loader = new FXMLLoader();
@@ -101,7 +108,8 @@ public class MainApp extends Application {
             // Set person overview into the center of root layout.
             rootLayout.setCenter(lobbypane);
             this.primaryStage.setTitle("UNO lobby");
-
+            //todo remooovee
+            applicationServerController.checkSession(sessionToken, username);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -110,49 +118,58 @@ public class MainApp extends Application {
 
     public void showGameroom(UnoGame unoGame) {
         try {
-            this.primaryStage.setTitle("UNO game");
+            //check als de user is een sessiontoken heeft die niet vervallen is
+            if(applicationServerController.checkSession(sessionToken, username)) {
+                this.primaryStage.setTitle("UNO game");
 
-            gameroomController = new gameroomController(this);
-            gameroomController.setUsername(username);
-            // Load person overview.
-            FXMLLoader loader = new FXMLLoader();
-            loader.setController(gameroomController);
-            loader.setLocation(MainApp.class.getResource("Gameroom.fxml"));
-            AnchorPane gameroompane = (AnchorPane) loader.load();
-            // Set person overview into the center of root layout.
-            rootLayout.setCenter(gameroompane);
+                gameroomController = new gameroomController(this);
+                gameroomController.setUsername(username);
+                // Load person overview.
+                FXMLLoader loader = new FXMLLoader();
+                loader.setController(gameroomController);
+                loader.setLocation(MainApp.class.getResource("Gameroom.fxml"));
+                AnchorPane gameroompane = (AnchorPane) loader.load();
+                // Set person overview into the center of root layout.
+                rootLayout.setCenter(gameroompane);
 
-            try {
-                unoGameId = unoGame.getId();
-                applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
-                playerId = applicationServerController.joinGame(new Player(username), unoGameId);
 
-                Task<Boolean> task = new Task<Boolean>() {
-                    @Override
-                    public Boolean call() throws RemoteException {
-                        // process long-running computation, data retrieval, etc...
+                try {
+                    unoGameId = unoGame.getId();
+                    applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
+                    playerId = applicationServerController.joinGame(new Player(username), unoGameId);
+
+                    Task<Boolean> task = new Task<Boolean>() {
+                        @Override
+                        public Boolean call() throws RemoteException {
+                            // process long-running computation, data retrieval, etc...
                             stateGame = applicationServerGameInterface.startMessage(playerId);
-                        return true;
-                    }
-                };
+                            return true;
+                        }
+                    };
 
-                task.setOnSucceeded(e ->
-                {                       // update UI with result
-                    //verwijder die popup
-                    gameroomController.setPlayerId(playerId);
-                    gameroomController.setUI(stateGame);
-                    startThreadGameState();
-                    lobbyController.stopLoading();
-                });
-            new Thread(task).start();
-            } catch (AccessException e1) {
-                e1.printStackTrace();
-            } catch (RemoteException e1) {
-                e1.printStackTrace();
+                    task.setOnSucceeded(e ->
+                    {                       // update UI with result
+                        //verwijder die popup
+                        gameroomController.setPlayerId(playerId);
+                        gameroomController.setUI(stateGame);
+                        startThreadGameState();
+                        lobbyController.stopLoading();
+                    });
+                    new Thread(task).start();
+                } catch (AccessException e1) {
+                    e1.printStackTrace();
+                } catch (RemoteException e1) {
+                    e1.printStackTrace();
+                }
+                System.out.println("komt erin!");
+                lobbyController.setLoading();
             }
-            System.out.println("komt erin!");
-            lobbyController.setLoading();
-
+            else{
+                //log hem uit en zeg sorry...
+                applicationServerController.logout(username);
+                lobbyController.sessionExpiredPopup();
+                showLogin();
+            }
         } catch (NotBoundException e) {
             e.printStackTrace();
         } catch (RemoteException e) {
@@ -240,8 +257,11 @@ public class MainApp extends Application {
     public boolean login(String username, String pass) {
         try {
             if (applicationServerController.login(username, pass)) {
+                sessionToken = applicationServerController.getSessionToken(username);
                 //ga naar de lobby en start de polling op
                 this.username = username;
+                cardlist = applicationServerController.getCards();
+                extractCards();
                 showLobby();
                 return true;
             } else {
@@ -251,6 +271,20 @@ public class MainApp extends Application {
             System.out.println(ex);
         }
         return false;
+    }
+
+    private void extractCards() {
+        for(Picture p : cardlist){
+            BufferedImage image = null;
+            try {
+                image = ImageIO.read(p.getStream());
+                File outputfile = new File(p.getName());
+                ImageIO.write(image, "png", outputfile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
     }
 
     public boolean register(String username, String pass) {
@@ -370,6 +404,11 @@ public class MainApp extends Application {
             }
         }
     };
+
+    public void logout() throws RemoteException{
+        applicationServerController.logout(username);
+        showLogin();
+    }
 
 
     public static void main(String[] args) {

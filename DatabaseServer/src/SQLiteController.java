@@ -1,6 +1,5 @@
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,4 +15,7 @@ public interface SQLiteController extends Remote{
     public void createSessionToken(String username)throws RemoteException;
     public void setScore(int score, String username) throws RemoteException;
     ArrayList<User> getBestPlayers() throws RemoteException;
+    void logout(String username) throws RemoteException;
+    Integer getSessionToken(String username)  throws RemoteException;
+    ArrayList<Picture> getCards(String event) throws RemoteException;
 }

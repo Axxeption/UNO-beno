@@ -1,3 +1,5 @@
+import com.sun.org.apache.regexp.internal.RE;
+
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -20,4 +22,11 @@ public interface ApplicationServerController extends Remote {
     void setScore(int score, String username) throws RemoteException;
     ArrayList<User> getBestPlayers() throws RemoteException;
 
+    public void logout(String username) throws RemoteException;
+
+    Integer getSessionToken(String username)  throws RemoteException;
+
+    boolean checkSession(Integer sessionToken, String username) throws RemoteException;
+
+    public ArrayList<Picture> getCards() throws RemoteException;
 }

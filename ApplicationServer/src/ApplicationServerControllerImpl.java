@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,18 +19,19 @@ import java.util.logging.Logger;
 public class ApplicationServerControllerImpl extends UnicastRemoteObject implements ApplicationServerController {
 
     private Hashing pswd = new Hashing();
-    SQLiteController impl;
+    SQLiteController sqlitecontroller;
     Registry databaseRegistry;
     Registry applicationRegistry;
     ResultSet rs;
     User user;
     Lobby lobby;
+    private Integer sessionToken;
 
     private void connectDbServer() {
         System.out.println("Connect from applicationserver to db");
         try {
             databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
-            impl = (SQLiteController) databaseRegistry.lookup("DatabaseService");
+            sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseService");
             System.out.println("Connected to db");
         } catch (NotBoundException ex) {
             Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,7 +49,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         try {
             applicationRegistry = LocateRegistry.getRegistry("localhost", 7280);
             databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
-            impl = (SQLiteController) databaseRegistry.lookup("DatabaseService");
+            sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseService");
             System.out.println("Connected to db");
         } catch (NotBoundException ex) {
             Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
@@ -60,11 +62,11 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     @Override
     public boolean login(String username, String password) throws RemoteException {
-        if (impl == null) {
+        if (sqlitecontroller == null) {
             connectDbServer();
         }
         try {
-            user = impl.getUser(username);
+            user = sqlitecontroller.getUser(username);
             if (user == null) {
                 return false;
             }
@@ -77,7 +79,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
             System.out.println(date);
             char[] pass = password.toCharArray();
             if (pswd.isExpectedPassword(pass, saltdb, hashdb)) {
-                impl.createSessionToken(username);
+                sqlitecontroller.createSessionToken(username);
                 return true;
             } else {
                 return false;
@@ -139,7 +141,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         byte[] salt = pswd.getNextSalt();
         byte[] hashedPass = pswd.hash(pass, salt);
         //todo
-        if (impl.newUser(username, salt, hashedPass)) {
+        if (sqlitecontroller.newUser(username, salt, hashedPass)) {
             return true;
         } else {
             return false;
@@ -154,7 +156,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         }
 
         try {
-            impl.setScore(score, username);
+            sqlitecontroller.setScore(score, username);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -166,7 +168,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
             connectDbServer();
         }
         try {
-            return impl.getBestPlayers();
+            return sqlitecontroller.getBestPlayers();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -186,4 +188,55 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         }
         notifyAll();
     }
+
+    @Override
+    public void logout(String username) throws RemoteException{
+        sqlitecontroller.logout(username);
+    }
+
+    @Override
+    public Integer getSessionToken(String username)  throws RemoteException{
+        return sqlitecontroller.getSessionToken(username);
+    }
+    @Override
+    public boolean checkSession(Integer sessionToken, String username) throws RemoteException{
+        try {
+            user = sqlitecontroller.getUser(username);
+            this.sessionToken = sqlitecontroller.getSessionToken(username);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (user == null) {
+            return false;
+        }
+
+        Timestamp date = user.getTime();
+        //check sessiontoken and time
+        if(this.sessionToken == sessionToken){
+            //deze moet het zijn
+            Timestamp timestamp1 = new Timestamp(new Date().getTime() + (1000 * 60 * 60 * 24));
+//            Timestamp timestamp1 = new Timestamp(new Date().getTime());
+            System.out.println("nu");
+            System.out.println(timestamp1);
+            System.out.println(user.getTime());
+            if(user.getTime().after(timestamp1)){
+                System.out.println("jajjaja tis vanda");
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public ArrayList<Picture> getCards(){
+        //hier kan je checken al het een speciale dag is en dan de juiste kaarten opvragen
+        try {
+            return sqlitecontroller.getCards("standard");
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    return null;
+    }
+
 }
