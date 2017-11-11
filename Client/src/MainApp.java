@@ -8,17 +8,22 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.List;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import javax.swing.text.StyledEditorKit;
 
 public class MainApp extends Application {
 
@@ -33,6 +38,7 @@ public class MainApp extends Application {
     private long unoGameId;
     ApplicationServerGameInterface applicationServerGameInterface;
     Message stateGame;
+
 
     @Override
     public void start(Stage primaryStage) {
@@ -101,6 +107,7 @@ public class MainApp extends Application {
         }
     }
 
+
     public void showGameroom(UnoGame unoGame) {
         try {
             this.primaryStage.setTitle("UNO game");
@@ -119,16 +126,41 @@ public class MainApp extends Application {
                 unoGameId = unoGame.getId();
                 applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
                 playerId = applicationServerController.joinGame(new Player(username), unoGameId);
-                stateGame = applicationServerGameInterface.startMessage(playerId);
-                gameroomController.setPlayerId(playerId);
-                gameroomController.setUI(stateGame);
-                startThreadGameState();
-            } catch (NotBoundException e) {
-                e.printStackTrace();
+
+                Task<Boolean> task = new Task<Boolean>() {
+                    @Override
+                    public Boolean call() throws RemoteException {
+                        // process long-running computation, data retrieval, etc...
+                            stateGame = applicationServerGameInterface.startMessage(playerId);
+                        return true;
+                    }
+                };
+
+                task.setOnSucceeded(e ->
+                {                       // update UI with result
+                    //verwijder die popup
+                    gameroomController.setPlayerId(playerId);
+                    gameroomController.setUI(stateGame);
+                    startThreadGameState();
+                    lobbyController.stopLoading();
+                });
+            new Thread(task).start();
+            } catch (AccessException e1) {
+                e1.printStackTrace();
+            } catch (RemoteException e1) {
+                e1.printStackTrace();
             }
+            System.out.println("komt erin!");
+            lobbyController.setLoading();
+
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
 //    public void showGameroom() {
@@ -322,7 +354,7 @@ public class MainApp extends Application {
                         } else {
                             List<String> usernames = stateGame.getNames();
                             Platform.runLater(() -> {
-                            gameroomController.endGameLoser(usernames.get(stateGame.getWinner()));
+                                gameroomController.endGameLoser(usernames.get(stateGame.getWinner()));
                             });
                         }
                     }

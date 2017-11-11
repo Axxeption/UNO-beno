@@ -49,7 +49,7 @@ public class LobbyController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        //achtergrond zetten van het spel
+        //achtergrond zetten van het spel55555
         BackgroundImage myBI = new BackgroundImage(new Image("Images/background.jpg", 1200, 800, false, true),
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
@@ -216,4 +216,23 @@ public class LobbyController implements Initializable {
         waitingGames.setItems(currentUnoGames);
     }
 
+    public void setLoading() {
+
+        ImageView loadergif = new ImageView(new Image("loading.gif"));
+        loadergif.setFitHeight(400);
+        loadergif.setFitWidth(400);
+        VBox secondaryLayout = new VBox(10);
+        secondaryLayout.getChildren().addAll(loadergif);
+
+        //set "popup" if clicked on new game...
+        secondScene = new Scene(secondaryLayout, 400, 400);
+        secondStage = new Stage();
+        secondStage.setTitle("Initiate game");
+        secondStage.setScene(secondScene);
+        secondStage.show();
+    }
+
+    public void stopLoading(){
+        secondStage.close();
+    }
 }
