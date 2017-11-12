@@ -1,6 +1,7 @@
 
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.rmi.AccessException;
@@ -260,6 +261,7 @@ public class MainApp extends Application {
                 sessionToken = applicationServerController.getSessionToken(username);
                 //ga naar de lobby en start de polling op
                 this.username = username;
+                //bij het inloggen de juiste kaarten downloaden
                 cardlist = applicationServerController.getCards();
                 extractCards();
                 showLobby();
@@ -274,16 +276,19 @@ public class MainApp extends Application {
     }
 
     private void extractCards() {
+        //in de lijst zitten alle kaarten die moeten wel nog in de db gestopt worden
+        //de mogelijkheid om speciale kaarten toe te voegen rond de kerstdagen zit in de applicationserver
+        //daar moet je een string meegeven voor welke periode je de kaarten wilt
+        //de datum moet dan ook daar gechecked worden
         for(Picture p : cardlist){
             BufferedImage image = null;
             try {
-                image = ImageIO.read(p.getStream());
+                image = javax.imageio.ImageIO.read(new ByteArrayInputStream(p.getStream()));
                 File outputfile = new File(p.getName());
                 ImageIO.write(image, "png", outputfile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         }
     }
 

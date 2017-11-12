@@ -1,25 +1,34 @@
 import java.io.InputStream;
 import java.io.Serializable;
-
+import java.util.Arrays;
 
 
 public class Picture implements Serializable{
 
     private String name;
+    private byte [] stream;
 
-    public InputStream getStream() {
+
+    public byte [] getStream() {
         return stream;
     }
 
-    public void setStream(InputStream stream) {
+    public void setStream(byte [] stream) {
         this.stream = stream;
     }
 
-    private InputStream stream;
 
-    public Picture(String name, InputStream stream) {
+    public Picture(String name, byte [] stream) {
         this.name = name;
         this.stream = stream;
+    }
+
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "name='" + name + '\'' +
+                ", stream=" + Arrays.toString(stream) +
+                '}';
     }
 
     public String getName() {

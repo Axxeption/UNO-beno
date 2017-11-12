@@ -1,5 +1,6 @@
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -59,8 +60,8 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             System.out.println(e);
             return null;
         } finally {
-            prep.close();
-            res.close();
+//            prep.close();
+//            res.close();
 
         }
     }
@@ -274,8 +275,11 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             prep.setString(1, event);
             res = prep.executeQuery();
             ArrayList<Picture> list = new ArrayList<>();
-            if (res.next()) {
-                list.add(new Picture(res.getString("name") , res.getBinaryStream("picture")));
+            while (res.next()) {
+                BufferedImage image = ImageIO.read(res.getBinaryStream("picture"));
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                javax.imageio.ImageIO.write(image, "png", baos);
+                list.add(new Picture(res.getString("name") , baos.toByteArray()));
 //                BufferedImage image = ImageIO.read(res.getBinaryStream("picture"));
 //                File outputfile = new File("saved.png");
 //                ImageIO.write(image, "png", outputfile);
