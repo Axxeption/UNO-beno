@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/Client/Client.iml" filepath="$PROJECT_DIR$/Client/Client.iml" />
       <module fileurl="file://$PROJECT_DIR$/Client2/Client2.iml" filepath="$PROJECT_DIR$/Client2/Client2.iml" />
       <module fileurl="file://$PROJECT_DIR$/DatabaseServer/DatabaseServer.iml" filepath="$PROJECT_DIR$/DatabaseServer/DatabaseServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Dispatcher/Dispatcher.iml" filepath="$PROJECT_DIR$/Dispatcher/Dispatcher.iml" />
       <module fileurl="file://$PROJECT_DIR$/GameCommonCode/GameCommonCode.iml" filepath="$PROJECT_DIR$/GameCommonCode/GameCommonCode.iml" />
       <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
     </modules>
