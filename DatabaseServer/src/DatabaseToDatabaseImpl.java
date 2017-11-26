@@ -42,6 +42,12 @@ public class DatabaseToDatabaseImpl extends UnicastRemoteObject implements Datab
         sqLiteController.addNewUserSingle(username, salt, hashedpassword);
     }
 
+    @Override
+    public void setScore(int score, String username) throws RemoteException{
+        System.out.println("New player from other DatabaseServer.");
+        sqLiteController.setScoreSingle(score, username);
+    }
+
     public void initialize() {
         List<Integer> databases = null;
         try {
@@ -79,15 +85,23 @@ public class DatabaseToDatabaseImpl extends UnicastRemoteObject implements Datab
 
     }
 
-    public void updateAllDatabases(User u){
-
-    }
 
     public void updateAllDatabases(String username, byte[] salt, byte[] hashedpassword) {
         for (DatabaseToDatabase d: databaseToDatabaseList
                 ) {
             try {
                 d.addNewUser(username, salt, hashedpassword);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void updateAllDatabases(int score, String username) {
+        for (DatabaseToDatabase d: databaseToDatabaseList
+                ) {
+            try {
+                d.setScore(score, username);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

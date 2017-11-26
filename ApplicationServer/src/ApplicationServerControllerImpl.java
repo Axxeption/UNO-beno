@@ -4,7 +4,6 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -19,13 +18,15 @@ import java.util.logging.Logger;
 public class ApplicationServerControllerImpl extends UnicastRemoteObject implements ApplicationServerController {
 
     private Hashing pswd = new Hashing();
-    SQLiteController sqlitecontroller;
-    Registry databaseRegistry;
-    Registry applicationRegistry;
-    ResultSet rs;
-    User user;
-    Lobby lobby;
+    private SQLiteController sqlitecontroller;
+    private Registry databaseRegistry;
+    private Registry applicationRegistry;
+    private User user;
+    private Lobby lobby;
     private Integer sessionToken;
+    private ApplicationToApplication applicationToApplication;
+    private int thisApplicationServerPortNr;
+    private int databaseServerPortNr;
 
     private void connectDbServer() {
         try {
@@ -42,10 +43,11 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     }
 
-    public ApplicationServerControllerImpl(Lobby lobby) throws RemoteException {
+    public ApplicationServerControllerImpl(Lobby lobby, int portNr) throws RemoteException {
         this.lobby = lobby;
+        this.thisApplicationServerPortNr = portNr;
         try {
-            applicationRegistry = LocateRegistry.getRegistry("localhost", 7290);
+            applicationRegistry = LocateRegistry.getRegistry("localhost", thisApplicationServerPortNr);
             databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
             sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseServer");
             System.out.println("ApplicationServer established a connection with the DatabaseServer.");
@@ -113,6 +115,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         try {
             String nameRemoteObject = "UnoGame" + unoGame.getId();
             applicationRegistry.rebind(nameRemoteObject, new ApplicationServerGameImp(unoGame, this));
+            applicationToApplication.updateAllApplicationServers(unoGame);
         } catch (RemoteException e) {
             e.printStackTrace();
 
@@ -155,7 +158,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         }
 
         try {
-            sqlitecontroller.setScore(score, username);
+            sqlitecontroller.setScoreOnAllDatabases(score, username);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -233,6 +236,10 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
             e.printStackTrace();
         }
     return null;
+    }
+
+    public void setApplicationToApplication(ApplicationToApplication applicationToApplication){
+        this.applicationToApplication = applicationToApplication;
     }
 
 }

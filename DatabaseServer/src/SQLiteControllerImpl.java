@@ -186,7 +186,21 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
     }
 
     @Override
-    public void setScore(int score, String username) throws RemoteException{
+    public void setScoreOnAllDatabases(int score, String username) throws RemoteException{
+        //eerst de score opvragen en dan zetten
+        PreparedStatement prep = null;
+        try {
+            prep = con.prepareStatement("UPDATE uno_player SET score = score + ? WHERE username = ?; ");
+            prep.setInt(1, score);
+            prep.setString(2, username);
+            prep.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        databaseToDatabaseImpl.updateAllDatabases(score, username);
+    }
+
+    public void setScoreSingle(int score, String username) throws RemoteException{
         //eerst de score opvragen en dan zetten
         PreparedStatement prep = null;
         try {
@@ -198,6 +212,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             e.printStackTrace();
         }
     }
+
 
     @Override
     public ArrayList<User> getBestPlayers() throws RemoteException{

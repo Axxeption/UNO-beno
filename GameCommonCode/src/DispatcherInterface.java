@@ -6,5 +6,6 @@ import java.util.List;
  * Created by Benoit on 15/11/17.
  */
 public interface DispatcherInterface extends Remote{
-    public List<Integer> getAllDatabases() throws RemoteException;
+    List<Integer> getAllDatabases() throws RemoteException;
+    List<Integer> getAllApplicationServers() throws RemoteException;
 }

@@ -25,10 +25,18 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
         return databases;
     }
 
+    @Override
+    public List<Integer> getAllApplicationServers() throws RemoteException {
+        return applicationServers;
+    }
+
     public void initialize() {
         startDatabaseServer("9430");
         startDatabaseServer("9431");
+        startDatabaseServer("9432");
         startApplicationServer("7290");
+        startApplicationServer("7291");
+        startApplicationServer("7292");
     }
 
     public void startDatabaseServer(String port){

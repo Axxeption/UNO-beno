@@ -8,4 +8,5 @@ import java.util.List;
 public interface DatabaseToDatabase extends Remote{
     void notifyNewDatabase(Integer port) throws RemoteException;
     void addNewUser(String username, byte[] salt, byte[] hashedpassword) throws RemoteException;
+    void setScore(int score, String username) throws RemoteException;
 }
