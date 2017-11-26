@@ -1,6 +1,5 @@
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,7 +14,6 @@ import java.util.List;
 public class DatabaseServerMain {
 
     private static int portNr;
-    private static List<Integer> otherServers;
 
     public DatabaseServerMain(int portNr) {
         this.portNr = portNr;
@@ -26,21 +24,25 @@ public class DatabaseServerMain {
             // create on port 1099
             Registry registry = LocateRegistry.createRegistry(portNr);
             // create a new service named CounterService
-            registry.rebind("DatabaseServer", new SQLiteControllerImpl());
+            SQLiteControllerImpl sqLiteControllerImpl = new SQLiteControllerImpl(portNr);
+            DatabaseToDatabaseImpl databaseToDatabaseImpl = new DatabaseToDatabaseImpl(sqLiteControllerImpl, portNr);
+            sqLiteControllerImpl.setDatabaseToDatabase(databaseToDatabaseImpl);
+            registry.rebind("DatabaseServer", sqLiteControllerImpl);
+            registry.rebind("DatabaseToDatabase", databaseToDatabaseImpl);
+            databaseToDatabaseImpl.initialize();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Databse is ready");
+        System.out.println("READY.");
     }
     public static void main(String[] args) {
+        for(int i = 0; i < 50; i++) System.out.println();
+        System.out.println("STARTING DATABASE...");
 
-        /*portNr = Integer.parseInt(args[0]);
+        portNr = Integer.parseInt(args[0]);
 
-        for(int i = 1 ; i < args.length; i++) {
-            otherServers.add(Integer.parseInt(args[i]));
-        }*/
-
-        DatabaseServerMain databaseservermain = new DatabaseServerMain(7280);
+        DatabaseServerMain databaseservermain = new DatabaseServerMain(portNr);
         databaseservermain.startServer();
                 
     }

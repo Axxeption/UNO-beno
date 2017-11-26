@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public interface SQLiteController extends Remote{
     public User getUser(String username) throws ClassNotFoundException, SQLException, RemoteException;
     public boolean isLogin(String username, String pass) throws SQLException, ClassNotFoundException, RemoteException;
-    public boolean newUser(String username, byte[] salt, byte[] hashedpassword)throws RemoteException;
+    public boolean addNewUserToAllDatabases(String username, byte[] salt, byte[] hashedpassword)throws RemoteException;
     public void createSessionToken(String username)throws RemoteException;
     public void setScore(int score, String username) throws RemoteException;
     ArrayList<User> getBestPlayers() throws RemoteException;

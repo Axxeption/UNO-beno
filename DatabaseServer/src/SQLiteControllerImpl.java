@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.rmi.RemoteException;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,24 +21,34 @@ import java.util.logging.Logger;
  */
 public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteController {
 
-    public SQLiteControllerImpl() throws RemoteException {
+    private int portNr;
+    private DatabaseToDatabaseImpl databaseToDatabaseImpl;
+
+    public SQLiteControllerImpl(int portNr) throws RemoteException {
+        this.portNr = portNr;
+        try {
+            getdbConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     private static Connection con;
     private static boolean hasData = false;
 
     public void getdbConnection() throws ClassNotFoundException, SQLException {
-        System.out.println("Connect to db");
         Class.forName("org.sqlite.JDBC");
         String path = System.getProperty("user.dir");
         String fileSeparator = System.getProperty("file.separator");
-        con = DriverManager.getConnection("jdbc:sqlite:" + path + fileSeparator + "DatabaseServer" + fileSeparator + "userdb.sqlite"); //name of db make here
+        con = DriverManager.getConnection("jdbc:sqlite:" + path + fileSeparator + "DatabaseServer" + fileSeparator + "userdb" + portNr + ".sqlite"); //name of db make here
+        System.out.println("DatabaseServer established a connection with the DataBase.");
     }
 
     @Override
     public User getUser(String username) throws ClassNotFoundException, SQLException, RemoteException {
         if (con == null) {
-            System.out.println("make connection");
             getdbConnection();
         }
         PreparedStatement prep = null;
@@ -65,6 +77,8 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
 
         }
     }
+
+
 
     @Override
     public boolean isLogin(String username, String pass) throws SQLException, ClassNotFoundException, RemoteException {
@@ -98,8 +112,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
         }
     }
 
-    @Override
-    public boolean newUser(String username, byte[] salt, byte[] hashedpassword) throws RemoteException {
+    public boolean addNewUserSingle(String username, byte[] salt, byte[] hashedpassword){
         try {
             if (con == null) {
                 System.out.println("make connection to db");
@@ -114,6 +127,35 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
             prep.setInt(7, 0);
 
             prep.execute();
+            return true;
+        } catch (SQLException sqle) {
+            System.out.println(sqle);
+            return false;
+        } catch (ClassNotFoundException classe) {
+            System.out.println(classe);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean addNewUserToAllDatabases(String username, byte[] salt, byte[] hashedpassword) throws RemoteException {
+        try {
+            if (con == null) {
+                System.out.println("make connection to db");
+                getdbConnection();
+            }
+            PreparedStatement prep = con.prepareStatement("INSERT INTO uno_player values(?,?,?,?,?,?,?);");
+            prep.setString(2, username);
+            prep.setBytes(3, hashedpassword);
+            prep.setBytes(4, salt);
+            prep.setInt(5, 0);
+            prep.setTimestamp(6, null);
+            prep.setInt(7, 0);
+
+            prep.execute();
+
+            databaseToDatabaseImpl.updateAllDatabases(username, salt, hashedpassword);
+
             return true;
         } catch (SQLException sqle) {
             System.out.println(sqle);
@@ -291,4 +333,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
         return null;
     }
 
+    public void setDatabaseToDatabase(DatabaseToDatabaseImpl databaseToDatabase) {
+        this.databaseToDatabaseImpl = databaseToDatabase;
+    }
 }

@@ -8,7 +8,7 @@ import java.rmi.registry.Registry;
  */
 public class ApplicationServerMain {
 
-    public int portNr;
+    private int portNr;
 
     private void startClientServer() {
         Lobby lobby = new Lobby();
@@ -20,7 +20,7 @@ public class ApplicationServerMain {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("system is ready");
+        System.out.println("READY.");
     }
 
     public ApplicationServerMain(int portNr) {
@@ -28,7 +28,12 @@ public class ApplicationServerMain {
     }
 
     public static void main(String[] args) {
-        ApplicationServerMain clientapp = new ApplicationServerMain(7280);
+        for(int i = 0; i < 50; i++) System.out.println();
+        System.out.println("STARTING APPLICATIONSERVER...");
+
+        int port = Integer.parseInt(args[0]);
+
+        ApplicationServerMain clientapp = new ApplicationServerMain(port);
         clientapp.startClientServer();
     }
 

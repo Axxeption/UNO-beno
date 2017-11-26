@@ -28,11 +28,10 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     private Integer sessionToken;
 
     private void connectDbServer() {
-        System.out.println("Connect from applicationserver to db");
         try {
             databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
-            sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseService");
-            System.out.println("Connected to db");
+            sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseServer");
+            System.out.println("ApplicationServer established a connection with the DatabaseServer.");
         } catch (NotBoundException ex) {
             Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (AccessException ex) {
@@ -45,12 +44,11 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     public ApplicationServerControllerImpl(Lobby lobby) throws RemoteException {
         this.lobby = lobby;
-        System.out.println("Connect from applicationserver to db");
         try {
-            applicationRegistry = LocateRegistry.getRegistry("localhost", 7280);
+            applicationRegistry = LocateRegistry.getRegistry("localhost", 7290);
             databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
-            sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseService");
-            System.out.println("Connected to db");
+            sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseServer");
+            System.out.println("ApplicationServer established a connection with the DatabaseServer.");
         } catch (NotBoundException ex) {
             Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (AccessException ex) {
@@ -76,7 +74,6 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
             saltdb = user.getSalt();
             hashdb = user.getHash();
             Timestamp date = user.getTime();
-            System.out.println(date);
             char[] pass = password.toCharArray();
             if (pswd.isExpectedPassword(pass, saltdb, hashdb)) {
                 sqlitecontroller.createSessionToken(username);
@@ -98,7 +95,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     @Override
     public synchronized int joinGame(Player player, long unoGameId) throws RemoteException {
 
-        System.out.println("A new player joined: " + player.getName());
+        System.out.println("Player " + player.getName() + "joined in on game with id " + unoGameId + ".");
         UnoGame unoGame = lobby.getUnoGame(unoGameId);
         notifyAll();
         return unoGame.addPlayer(player);
@@ -112,7 +109,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     @Override
     public synchronized void addUnoGame(String name, int numberOfPlayers) {
         UnoGame unoGame = new UnoGame(numberOfPlayers, name);
-        System.out.println("We hebben een nieuwe unoGame met id: " + unoGame.getId());
+        System.out.println("New UnoGame created with id " + unoGame.getId() + ".");
         try {
             String nameRemoteObject = "UnoGame" + unoGame.getId();
             applicationRegistry.rebind(nameRemoteObject, new ApplicationServerGameImp(unoGame, this));
@@ -136,12 +133,14 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     public boolean register(String username, String password) throws RemoteException {
-        connectDbServer();
+        if (sqlitecontroller == null) {
+            connectDbServer();
+        }
         char[] pass = password.toCharArray();
         byte[] salt = pswd.getNextSalt();
         byte[] hashedPass = pswd.hash(pass, salt);
         //todo
-        if (sqlitecontroller.newUser(username, salt, hashedPass)) {
+        if (sqlitecontroller.addNewUserToAllDatabases(username, salt, hashedPass)) {
             return true;
         } else {
             return false;
@@ -217,15 +216,12 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         if(this.sessionToken == sessionToken){
             //deze moet het zijn
             Timestamp timestamp1 = new Timestamp(new Date().getTime() + (1000 * 60 * 60 * 24));
-//            Timestamp timestamp1 = new Timestamp(new Date().getTime());
-            System.out.println("nu");
-            System.out.println(timestamp1);
-            System.out.println(user.getTime());
             if(user.getTime().after(timestamp1)){
-                System.out.println("jajjaja tis vanda");
+                return false;
             }
         }
-        return false;
+        return true;
+
     }
 
     @Override
