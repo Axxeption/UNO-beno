@@ -1,0 +1,56 @@
+try to start
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+STARTING DATABASE...
+DatabaseServer established a connection with the DataBase.
+done
+READY.
+A new database connected on port 9432

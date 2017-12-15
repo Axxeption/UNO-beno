@@ -62,7 +62,7 @@ public class gameroomController implements Initializable {
         fileSeparator = System.getProperty("file.separator");
         path =  System.getProperty("user.dir");
         pathToCards =  "Images" + fileSeparator ;
-        //todo name
+        //todo zoeken waar hij ze zet en ze daar ophalen!
         thisPlayer.setText(username);
         thisPlayer.setTextFill(Color.RED);
         cardBack.setImage(new Image(pathToCards + "uno_back.png"));

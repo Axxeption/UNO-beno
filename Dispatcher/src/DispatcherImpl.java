@@ -1,8 +1,6 @@
-import java.io.IOException;
-import java.rmi.NotBoundException;
+
+import java.io.*;
 import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +39,16 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
 
     public void startDatabaseServer(String port){
         try {
-            Process proc = new ProcessBuilder("out/artifacts/DatabaseServer_jar/startDatabaseServer.sh", port).start();
+            System.out.println("start db on port: " + port);
+            String path = System.getProperty("user.dir") + "\\Logs\\Database\\log_" + port + ".txt";
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\DatabaseServer_jar\\DatabaseServer.jar" , port);
+            BufferedWriter pw = new BufferedWriter(new FileWriter(path));
+            File log = new File(path);
+
+            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
+            pb.redirectErrorStream(true);
+            pw.close();
+            pb.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -55,7 +62,16 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
 
     public void startApplicationServer(String port){
         try {
-            Process proc = new ProcessBuilder("out/artifacts/ApplicationServer_jar/startApplicationServer.sh", port).start();
+            System.out.println("Start applicationServer on port: " + port);
+            String path = System.getProperty("user.dir") + "\\Logs\\ApplicationServer\\log_" + port + ".txt";
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\ApplicationServer_jar\\ApplicationServer.jar" , port);
+            BufferedWriter pw = new BufferedWriter(new FileWriter(path));
+            File log = new File(path);
+            pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
+            pb.redirectErrorStream(true);
+            pw.close();
+            pb.start();
+//            Process proc = new ProcessBuilder("out/artifacts/ApplicationServer_jar/startApplicationServer.sh", port).start();
         } catch (IOException e) {
             e.printStackTrace();
         }

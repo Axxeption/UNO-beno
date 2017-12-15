@@ -1,0 +1,55 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+STARTING APPLICATIONSERVER...
+ApplicationServer established a connection with the DatabaseServer.
+READY.
+nieuw spelleke toegekomen bij andere server 7290
+nieuw spelleke toegekomen bij andere server 7290

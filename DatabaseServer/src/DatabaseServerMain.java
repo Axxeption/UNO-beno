@@ -30,13 +30,14 @@ public class DatabaseServerMain {
             registry.rebind("DatabaseServer", sqLiteControllerImpl);
             registry.rebind("DatabaseToDatabase", databaseToDatabaseImpl);
             databaseToDatabaseImpl.initialize();
-
+            System.out.println("done");
         } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("READY.");
     }
     public static void main(String[] args) {
+        System.out.println("try to start");
         for(int i = 0; i < 50; i++) System.out.println();
         System.out.println("STARTING DATABASE...");
 

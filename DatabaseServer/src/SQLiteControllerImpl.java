@@ -1,7 +1,14 @@
+import sun.misc.IOUtils;
+import sun.nio.ch.IOUtil;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
@@ -111,6 +118,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
 
         }
     }
+
 
     public boolean addNewUserSingle(String username, byte[] salt, byte[] hashedpassword){
         try {
@@ -312,6 +320,7 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
 
     @Override
     public ArrayList<Picture> getCards(String event){
+        System.out.println("Download cards to user for time: " );
         if (con == null) {
             System.out.println("make connection");
             try {
