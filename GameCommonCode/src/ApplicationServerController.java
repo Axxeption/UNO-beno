@@ -9,6 +9,8 @@ public interface ApplicationServerController extends Remote {
 
     public boolean login(String username, String password) throws RemoteException;
 
+    int getNrOfGames() throws RemoteException;
+
     public void addUnoGame(String name, int numberOfPlayers) throws RemoteException;
 
     public List<UnoGame> subscribe() throws  RemoteException;

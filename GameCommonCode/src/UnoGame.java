@@ -19,6 +19,8 @@ public class UnoGame implements Serializable
     private ArrayList<Player> myPlayers;
     private int maxNumberOfPlayers;
     private int currentNumberOfPlayers;
+    private ApplicationServerGameInterface applicationServerGameInterface;
+    private ApplicationServerController applicationServerController;
 
     private Player myCurrentPlayer;
     private int myPlayDirection;
@@ -28,16 +30,8 @@ public class UnoGame implements Serializable
         return maxNumberOfPlayers;
     }
 
-    public void setMaxNumberOfPlayers(int maxNumberOfPlayers) {
-        this.maxNumberOfPlayers = maxNumberOfPlayers;
-    }
-
     public int getCurrentNumberOfPlayers() {
         return currentNumberOfPlayers;
-    }
-
-    public void setCurrentNumberOfPlayers(int currentNumberOfPlayers) {
-        this.currentNumberOfPlayers = currentNumberOfPlayers;
     }
 
     public Player checkIfWinner(){
@@ -79,6 +73,7 @@ public class UnoGame implements Serializable
         gameName = name;
         myDeck = new ArrayList<Card>();
         maxNumberOfPlayers = nPlayers;
+        this.applicationServerGameInterface = applicationServerGameInterface;
 
         for (int c = 1; c <= 4; c++) {
             myDeck.add(new ReverseCard(c,this));
@@ -121,12 +116,17 @@ public class UnoGame implements Serializable
         return myPlayers;
     }
 
+    public ApplicationServerGameInterface getApplicationServerGameInterface() {
+        return applicationServerGameInterface;
+    }
+
     public int addPlayer(Player player){
         if(currentNumberOfPlayers >= maxNumberOfPlayers){
             return -1;
         }
         else{
             myPlayers.add(player);
+
             player.setId(currentNumberOfPlayers);
             currentNumberOfPlayers++;
             if(currentNumberOfPlayers == maxNumberOfPlayers){
@@ -220,12 +220,16 @@ public class UnoGame implements Serializable
         }
     }
 
-    public Player getMyCurrentPlayer() {
-        return myCurrentPlayer;
+    public void setApplicationServerGameInterface(ApplicationServerGameInterface applicationServerGameInterface) {
+        this.applicationServerGameInterface = applicationServerGameInterface;
     }
 
-    public void setMyCurrentPlayer(Player myCurrentPlayer) {
-        this.myCurrentPlayer = myCurrentPlayer;
+    public void setApplicationServerController(ApplicationServerController applicationServerController) {
+        this.applicationServerController = applicationServerController;
+    }
+
+    public ApplicationServerController getApplicationServerController() {
+        return applicationServerController;
     }
 
     /**

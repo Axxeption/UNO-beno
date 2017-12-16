@@ -8,13 +8,17 @@ import java.util.List;
  */
 public class Lobby {
     HashMap<Long,UnoGame> unoGameHashMap;
+    List<UnoGame> otherUnoGames;
 
     public Lobby(){
         unoGameHashMap = new HashMap<>();
+        otherUnoGames = new ArrayList<>();
     }
 
     public List<UnoGame> getUnoGameList() {
-        return new ArrayList<>(unoGameHashMap.values());
+        List<UnoGame> games = new ArrayList<>(unoGameHashMap.values());
+        games.addAll(otherUnoGames);
+        return games;
     }
 
     public UnoGame getUnoGame(long id){
@@ -27,5 +31,18 @@ public class Lobby {
 
     public void removeUnoGameFromList(UnoGame unoGame) {
         unoGameHashMap.remove(unoGame.getId());
+    }
+
+    public void addOtherUnoGame(UnoGame unoGame){
+        otherUnoGames.add(unoGame);
+    }
+
+    public void removeOtherUnoGame(long id, ApplicationServerGameInterface applicationServerGameInterface){
+        for (UnoGame u: otherUnoGames
+             ) {
+            if(u.getId() == id && u.getApplicationServerGameInterface().equals(applicationServerGameInterface)){
+                otherUnoGames.remove(u);
+            }
+        }
     }
 }

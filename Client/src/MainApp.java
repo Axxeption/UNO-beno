@@ -12,7 +12,6 @@ import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -20,31 +19,28 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
-import javax.swing.text.StyledEditorKit;
 
 public class MainApp extends Application {
 
     private Stage primaryStage;
     private BorderPane rootLayout;
-    ApplicationServerController applicationServerController;
-    Registry myRegistry;
+    private ApplicationServerController applicationServerController;
+    private int applicationServerPort;
+    private Registry myRegistry;
     private LobbyController lobbyController;
     private gameroomController gameroomController;
     private String username;
     private int playerId;
     private long unoGameId;
-    ApplicationServerGameInterface applicationServerGameInterface;
-    Message stateGame;
-    Integer sessionToken;
-    ArrayList<Picture> cardlist;
+    private ApplicationServerGameInterface applicationServerGameInterface;
+    private Message stateGame;
+    private Integer sessionToken;
+    private ArrayList<Picture> cardlist;
 
 
     @Override
@@ -136,8 +132,8 @@ public class MainApp extends Application {
 
                 try {
                     unoGameId = unoGame.getId();
-                    applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
-                    playerId = applicationServerController.joinGame(new Player(username), unoGameId);
+                    applicationServerGameInterface = unoGame.getApplicationServerGameInterface();
+                    playerId = unoGame.getApplicationServerController().joinGame(new Player(username), unoGameId);
 
                     Task<Boolean> task = new Task<Boolean>() {
                         @Override
@@ -171,48 +167,12 @@ public class MainApp extends Application {
                 lobbyController.sessionExpiredPopup();
                 showLogin();
             }
-        } catch (NotBoundException e) {
-            e.printStackTrace();
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
-
-//    public void showGameroom() {
-//        try {
-//            this.primaryStage.setTitle("UNO game");
-//            gameroomController = new gameroomController(this);
-//            // Load person overview.
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setController(gameroomController);
-//            loader.setLocation(MainApp.class.getResource("Gameroom.fxml"));
-//            AnchorPane gameroompane = (AnchorPane) loader.load();
-//            // Set person overview into the center of root layout.
-//            rootLayout.setCenter(gameroompane);
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-    public void waitForStartMessage(UnoGame unoGame) {
-        try {
-            unoGameId = unoGame.getId();
-            applicationServerGameInterface = (ApplicationServerGameInterface) myRegistry.lookup("UnoGame" + unoGameId);
-            playerId = applicationServerController.joinGame(new Player(username), unoGameId);
-            stateGame = applicationServerGameInterface.startMessage(playerId);
-            gameroomController.setPlayerId(playerId);
-            gameroomController.setUI(stateGame);
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (AccessException e1) {
-            e1.printStackTrace();
-        } catch (RemoteException e1) {
-            e1.printStackTrace();
-        }
     }
 
 
@@ -246,13 +206,34 @@ public class MainApp extends Application {
     }
 
     public void connect() {
+        int count = 0;
+        int maxTries = 3;
         try {
-            this.myRegistry = LocateRegistry.getRegistry("localhost", 7290);
+            Registry dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
+            DispatcherInterface dispatcherInterface = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
+            applicationServerPort = dispatcherInterface.whichApplicationServerToConnect(null);
+            this.myRegistry = LocateRegistry.getRegistry("localhost", applicationServerPort);
             this.applicationServerController = (ApplicationServerController) myRegistry.lookup("ApplicationServer");
 //            System.out.println("TEST " + applicationServerController);
         } catch (Exception e) {
             System.out.println("Error is: " + e);
         }
+    }
+
+    public void connectToApplicationServercontroller(){
+        Registry dispatcherRegistry = null;
+        try {
+            dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
+            DispatcherInterface dispatcherInterface = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
+            applicationServerPort = dispatcherInterface.whichApplicationServerToConnect(applicationServerPort);
+            this.myRegistry = LocateRegistry.getRegistry("localhost", applicationServerPort);
+            this.applicationServerController = (ApplicationServerController) myRegistry.lookup("ApplicationServer");
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (NotBoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public boolean login(String username, String pass) {
@@ -370,6 +351,7 @@ public class MainApp extends Application {
                     );
                 } catch (RemoteException e) {
                     e.printStackTrace();
+                    connectToApplicationServercontroller();
                 }
             }
         }

@@ -19,8 +19,9 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
         this.portNr = portNr;
     }
 
-
-
+    /*@Override
+    public void crashed
+*/
     @Override
     public void notifyNewApplicationServer(Integer port) throws RemoteException {
 
@@ -38,7 +39,13 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
 
     @Override
     public void notifyNewUnoGame(UnoGame unoGame, int portNr) throws RemoteException {
-        System.out.println("nieuw spelleke toegekomen bij andere server " + portNr);
+        System.out.println("New game added on other server: " + portNr + ".");
+        applicationServerController.addOtherUnoGame(unoGame);
+    }
+
+    @Override
+    public void notifyRemoveUnoGame(UnoGame unoGame) throws RemoteException {
+        applicationServerController.removeOtherUnoGame(unoGame);
     }
 
     public void initialize() {
@@ -79,11 +86,23 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
     }
 
     @Override
-    public void updateAllApplicationServers(UnoGame unoGame) {
+    public void addUnoGameOnAllServers(UnoGame unoGame) {
         for (ApplicationToApplication a: applicationToApplicationList
                 ) {
             try {
                 a.notifyNewUnoGame(unoGame, portNr);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    @Override
+    public void removeUnoGameOnAllServers(UnoGame unoGame) {
+        for (ApplicationToApplication a: applicationToApplicationList
+                ) {
+            try {
+                a.notifyRemoveUnoGame(unoGame);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }

@@ -7,5 +7,10 @@ import java.util.List;
  */
 public interface DispatcherInterface extends Remote{
     List<Integer> getAllDatabases() throws RemoteException;
+
     List<Integer> getAllApplicationServers() throws RemoteException;
+
+    Integer whichDatabaseServerToConnect() throws RemoteException;
+
+    Integer whichApplicationServerToConnect(Integer failedServer) throws RemoteException;
 }

@@ -19,38 +19,27 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     private Hashing pswd = new Hashing();
     private SQLiteController sqlitecontroller;
-    private Registry databaseRegistry;
     private Registry applicationRegistry;
+    private DispatcherInterface dispatcher;
     private User user;
     private Lobby lobby;
     private Integer sessionToken;
     private ApplicationToApplication applicationToApplication;
     private int thisApplicationServerPortNr;
-    private int databaseServerPortNr;
 
-    private void connectDbServer() {
-        try {
-            databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
-            sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseServer");
-            System.out.println("ApplicationServer established a connection with the DatabaseServer.");
-        } catch (NotBoundException ex) {
-            Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (AccessException ex) {
-            Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (RemoteException ex) {
-            Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-    }
 
     public ApplicationServerControllerImpl(Lobby lobby, int portNr) throws RemoteException {
         this.lobby = lobby;
         this.thisApplicationServerPortNr = portNr;
         try {
+            Registry dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
+            dispatcher = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
+            int databasePortNr = dispatcher.whichDatabaseServerToConnect();
             applicationRegistry = LocateRegistry.getRegistry("localhost", thisApplicationServerPortNr);
-            databaseRegistry = LocateRegistry.getRegistry("localhost", 9430);
+            Registry databaseRegistry = LocateRegistry.getRegistry("localhost", databasePortNr);
             sqlitecontroller = (SQLiteController) databaseRegistry.lookup("DatabaseServer");
-            System.out.println("ApplicationServer established a connection with the DatabaseServer.");
+            System.out.println("ApplicationServer established a connection with the DatabaseServer " + databasePortNr +".");
         } catch (NotBoundException ex) {
             Logger.getLogger(ApplicationServerMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (AccessException ex) {
@@ -62,9 +51,6 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     @Override
     public boolean login(String username, String password) throws RemoteException {
-        if (sqlitecontroller == null) {
-            connectDbServer();
-        }
         try {
             user = sqlitecontroller.getUser(username);
             if (user == null) {
@@ -93,6 +79,15 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     }
 
+    public synchronized void addOtherUnoGame(UnoGame unoGame){
+        lobby.addOtherUnoGame(unoGame);
+        notifyAll();
+    }
+
+    public synchronized void removeOtherUnoGame(UnoGame unoGame){
+        lobby.removeOtherUnoGame(unoGame.getId(), unoGame.getApplicationServerGameInterface());
+        notifyAll();
+    }
 
     @Override
     public synchronized int joinGame(Player player, long unoGameId) throws RemoteException {
@@ -109,13 +104,21 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     @Override
+    public int getNrOfGames() throws RemoteException{
+        return lobby.getUnoGameList().size();
+    }
+
+    @Override
     public synchronized void addUnoGame(String name, int numberOfPlayers) {
         UnoGame unoGame = new UnoGame(numberOfPlayers, name);
         System.out.println("New UnoGame created with id " + unoGame.getId() + ".");
         try {
             String nameRemoteObject = "UnoGame" + unoGame.getId();
-            applicationRegistry.rebind(nameRemoteObject, new ApplicationServerGameImp(unoGame, this));
-            applicationToApplication.updateAllApplicationServers(unoGame);
+            ApplicationServerGameInterface applicationServerGameInterface = new ApplicationServerGameImp(unoGame, this);
+            applicationRegistry.rebind(nameRemoteObject, applicationServerGameInterface);
+            unoGame.setApplicationServerGameInterface(applicationServerGameInterface);
+            unoGame.setApplicationServerController(this);
+            applicationToApplication.addUnoGameOnAllServers(unoGame);
         } catch (RemoteException e) {
             e.printStackTrace();
 
@@ -136,9 +139,6 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     }
 
     public boolean register(String username, String password) throws RemoteException {
-        if (sqlitecontroller == null) {
-            connectDbServer();
-        }
         char[] pass = password.toCharArray();
         byte[] salt = pswd.getNextSalt();
         byte[] hashedPass = pswd.hash(pass, salt);
@@ -152,10 +152,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     @Override
     public void setScore(int score, String username) throws RemoteException {
-        //verhoog score
-        if (databaseRegistry == null) {
-            connectDbServer();
-        }
+
 
         try {
             sqlitecontroller.setScoreOnAllDatabases(score, username);
@@ -166,9 +163,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     @Override
     public ArrayList<User> getBestPlayers() throws RemoteException {
-        if (databaseRegistry == null) {
-            connectDbServer();
-        }
+
         try {
             return sqlitecontroller.getBestPlayers();
         } catch (RemoteException e) {
@@ -180,6 +175,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     public synchronized void endOfGame(UnoGame unoGame) {
         lobby.removeUnoGameFromList(unoGame);
         try {
+            applicationToApplication.removeUnoGameOnAllServers(unoGame);
             if (applicationRegistry == null) {
                 applicationRegistry.unbind("UnoGame" + unoGame.getId());
             }
