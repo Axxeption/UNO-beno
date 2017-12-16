@@ -261,11 +261,16 @@ public class MainApp extends Application {
         //de mogelijkheid om speciale kaarten toe te voegen rond de kerstdagen zit in de applicationserver
         //daar moet je een string meegeven voor welke periode je de kaarten wilt
         //de datum moet dan ook daar gechecked worden
+        String fileSeparator = System.getProperty("file.separator");
+        String path =  System.getProperty("user.dir");
+        path = path + fileSeparator + "Client" + fileSeparator + "src"  + fileSeparator +  "Images" + fileSeparator;
+        System.out.println(path);
+
         for(Picture p : cardlist){
             BufferedImage image = null;
             try {
                 image = javax.imageio.ImageIO.read(new ByteArrayInputStream(p.getStream()));
-                File outputfile = new File(p.getName());
+                File outputfile = new File(path + p.getName());
                 ImageIO.write(image, "png", outputfile);
             } catch (IOException e) {
                 e.printStackTrace();

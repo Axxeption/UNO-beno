@@ -6,6 +6,8 @@ import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -226,8 +228,16 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     @Override
     public ArrayList<Picture> getCards(){
         //hier kan je checken al het een speciale dag is en dan de juiste kaarten opvragen
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM");
+        LocalDate localDate = LocalDate.now();
+        System.out.println(dtf.format(localDate)); //2016/11/16
         try {
-            return sqlitecontroller.getCards("standard");
+            if(dtf.format(localDate).equals("12")  || dtf.format(localDate).equals("01")){
+                System.out.println("Christmass time baby");
+                return sqlitecontroller.getCards("christmas");        }
+            else{
+                return sqlitecontroller.getCards("standard");
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
