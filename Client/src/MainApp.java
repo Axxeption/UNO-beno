@@ -47,7 +47,7 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("UNO login");
-        connect();
+        connect(null);
         initRootLayout();
 
         showLogin();
@@ -169,6 +169,8 @@ public class MainApp extends Application {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+            connect(applicationServerPort);
+            showGameroom(unoGame);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -183,6 +185,8 @@ public class MainApp extends Application {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+            connect(applicationServerPort);
+            playCard(card);
         }
     }
 
@@ -193,6 +197,8 @@ public class MainApp extends Application {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
+            connect(applicationServerPort);
+            drawCard();
         }
     }
 
@@ -205,36 +211,34 @@ public class MainApp extends Application {
         return primaryStage;
     }
 
-    public void connect() {
+    public void connect(Integer failedServerPort) {
         int count = 0;
         int maxTries = 3;
-        try {
-            Registry dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
-            DispatcherInterface dispatcherInterface = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
-            applicationServerPort = dispatcherInterface.whichApplicationServerToConnect(null);
-            this.myRegistry = LocateRegistry.getRegistry("localhost", applicationServerPort);
-            this.applicationServerController = (ApplicationServerController) myRegistry.lookup("ApplicationServer");
+        while(count < maxTries) {
+            try {
+                Registry dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
+                DispatcherInterface dispatcherInterface = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
+                System.out.println(failedServerPort);
+                applicationServerPort = dispatcherInterface.whichApplicationServerToConnect(failedServerPort);
+                this.myRegistry = LocateRegistry.getRegistry("localhost", applicationServerPort);
+                this.applicationServerController = (ApplicationServerController) myRegistry.lookup("ApplicationServer");
+                System.out.println("Connected to new server on port: " + applicationServerPort);
+                return;
 //            System.out.println("TEST " + applicationServerController);
-        } catch (Exception e) {
-            System.out.println("Error is: " + e);
+
+            } catch (AccessException e) {
+                e.printStackTrace();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            }
+            count++;
         }
+        System.out.println("FATAL");
+        Runtime.getRuntime().exit(0);
     }
 
-    public void connectToApplicationServercontroller(){
-        Registry dispatcherRegistry = null;
-        try {
-            dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
-            DispatcherInterface dispatcherInterface = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
-            applicationServerPort = dispatcherInterface.whichApplicationServerToConnect(applicationServerPort);
-            this.myRegistry = LocateRegistry.getRegistry("localhost", applicationServerPort);
-            this.applicationServerController = (ApplicationServerController) myRegistry.lookup("ApplicationServer");
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        }
-
-    }
 
     public boolean login(String username, String pass) {
         try {
@@ -250,8 +254,9 @@ public class MainApp extends Application {
             } else {
                 return false;
             }
-        } catch (RemoteException ex) {
-            System.out.println(ex);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            connect(applicationServerPort);
         }
         return false;
     }
@@ -287,7 +292,8 @@ public class MainApp extends Application {
             }
 
         } catch (RemoteException ex) {
-            System.out.println("iets fout in register in mainapp:" + ex);
+            ex.printStackTrace();
+            connect(applicationServerPort);
         }
         return false;
     }
@@ -321,6 +327,8 @@ public class MainApp extends Application {
             applicationServerController.addUnoGame(name, i);
         } catch (RemoteException e) {
             e.printStackTrace();
+            connect(applicationServerPort);
+            startGame(i, name);
         }
         //nog overgaan naar het spel nu
     }
@@ -356,7 +364,7 @@ public class MainApp extends Application {
                     );
                 } catch (RemoteException e) {
                     e.printStackTrace();
-                    connectToApplicationServercontroller();
+                    connect(applicationServerPort);
                 }
             }
         }

@@ -13,4 +13,6 @@ public interface ApplicationToApplication extends Remote{
     void addUnoGameOnAllServers(UnoGame unoGame) throws RemoteException;
 
     void removeUnoGameOnAllServers(UnoGame unoGame) throws RemoteException;
+
+    void failedApplicationSever(Integer applicationToApplication) throws RemoteException;
 }

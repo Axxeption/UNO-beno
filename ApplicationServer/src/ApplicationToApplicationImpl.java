@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Benoit on 26/11/17.
  */
 public class ApplicationToApplicationImpl extends UnicastRemoteObject implements ApplicationToApplication {
-    private List<ApplicationToApplication> applicationToApplicationList = new ArrayList<>();
+    private List<Integer> applicationToApplicationList = new ArrayList<>();
     private ApplicationServerControllerImpl applicationServerController;
     private int portNr;
 
@@ -25,15 +25,7 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
     @Override
     public void notifyNewApplicationServer(Integer port) throws RemoteException {
 
-        try {
-            Registry databaseRegistry = LocateRegistry.getRegistry("localhost", port);
-            ApplicationToApplication applicationToApplication = (ApplicationToApplication) databaseRegistry.lookup("ApplicationToApplication");
-            applicationToApplicationList.add(applicationToApplication);
-        } catch (NotBoundException e) {
-            e.printStackTrace();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
+        applicationToApplicationList.add(port);
         System.out.println("A new ApplicationServer connected on port " + port );
     }
 
@@ -62,23 +54,20 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
         for (Integer i: applictionServers
                 ) {
             if(i != portNr) {
-                try {
-                    Registry databaseRegistry = LocateRegistry.getRegistry("localhost", i);
-                    ApplicationToApplication applicationToApplication = (ApplicationToApplication) databaseRegistry.lookup("ApplicationToApplication");
-                    applicationToApplicationList.add(applicationToApplication);
-                } catch (RemoteException e) {
-                    e.printStackTrace();
-                } catch (NotBoundException e) {
-                    e.printStackTrace();
-                }
+                    applicationToApplicationList.add(i);
             }
         }
 
-        for (ApplicationToApplication a: applicationToApplicationList
+        for (Integer a: applicationToApplicationList
                 ) {
             try {
-                a.notifyNewApplicationServer(portNr);
+
+                Registry databaseRegistry = LocateRegistry.getRegistry("localhost", a);
+                ApplicationToApplication applicationToApplication = (ApplicationToApplication) databaseRegistry.lookup("ApplicationToApplication");
+                applicationToApplication.notifyNewApplicationServer(portNr);
             } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
                 e.printStackTrace();
             }
         }
@@ -87,11 +76,16 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
 
     @Override
     public void addUnoGameOnAllServers(UnoGame unoGame) {
-        for (ApplicationToApplication a: applicationToApplicationList
+        for (Integer a: applicationToApplicationList
                 ) {
             try {
-                a.notifyNewUnoGame(unoGame, portNr);
+
+                Registry databaseRegistry = LocateRegistry.getRegistry("localhost", a);
+                ApplicationToApplication applicationToApplication = (ApplicationToApplication) databaseRegistry.lookup("ApplicationToApplication");
+                applicationToApplication.notifyNewUnoGame(unoGame, portNr);
             } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
                 e.printStackTrace();
             }
         }
@@ -99,13 +93,29 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
 
     @Override
     public void removeUnoGameOnAllServers(UnoGame unoGame) {
-        for (ApplicationToApplication a: applicationToApplicationList
+        for (Integer a: applicationToApplicationList
                 ) {
             try {
-                a.notifyRemoveUnoGame(unoGame);
+                Registry databaseRegistry = LocateRegistry.getRegistry("localhost", a);
+                ApplicationToApplication applicationToApplication = (ApplicationToApplication) databaseRegistry.lookup("ApplicationToApplication");
+                applicationToApplication.notifyRemoveUnoGame(unoGame);
             } catch (RemoteException e) {
                 e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
             }
+        }
+    }
+
+    @Override
+    public void failedApplicationSever(Integer applicationToApplication) throws RemoteException {
+        System.out.println("Notification of failed server on port " + applicationToApplication +".");
+        for(Integer applicationToApplication1: applicationToApplicationList){
+            if(applicationToApplication1.equals(applicationToApplication)){
+                applicationToApplicationList.remove(applicationToApplication1);
+
+            }
+
         }
     }
 }

@@ -1,6 +1,9 @@
 
 import java.io.*;
+import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +46,7 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
         try {
             System.out.println("start db on port: " + port);
             String path = System.getProperty("user.dir") + "\\Logs\\Database\\log_" + port + ".txt";
-            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\DatabaseServer_jar\\DatabaseServer.jar" , port);
+            ProcessBuilder pb = new ProcessBuilder("out/artifacts/DatabaseServer_jar/startDatabaseServer.sh", port);
             BufferedWriter pw = new BufferedWriter(new FileWriter(path));
             File log = new File(path);
 
@@ -80,7 +83,7 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
         if(failedServer != null){
             if(checkIfFailedServer(failedServer)){
                 applicationServers.remove(failedServer);
-                System.out.println("remove");
+                System.out.println("A ");
             }
         }
 
@@ -107,7 +110,7 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
         try {
             System.out.println("Start applicationServer on port: " + port);
             String path = System.getProperty("user.dir") + "\\Logs\\ApplicationServer\\log_" + port + ".txt";
-            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\ApplicationServer_jar\\ApplicationServer.jar" , port);
+            ProcessBuilder pb = new ProcessBuilder("out/artifacts/ApplicationServer_jar/startApplicationServer.sh", port);
             BufferedWriter pw = new BufferedWriter(new FileWriter(path));
             File log = new File(path);
             pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
@@ -126,12 +129,32 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
         applicationServers.add(Integer.parseInt(port));
     }
 
+    public void notifyFailedServer(Integer port){
+        for(Integer i : applicationServers){
+
+            Registry databaseRegistry = null;
+            try {
+                databaseRegistry = LocateRegistry.getRegistry("localhost", i);
+                ApplicationToApplication applicationToApplication = (ApplicationToApplication) databaseRegistry.lookup("ApplicationToApplication");
+                applicationToApplication.failedApplicationSever(port);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            } catch (NotBoundException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     public boolean checkIfFailedServer(Integer port){
+        System.out.println("failed server check");
         try {
             Registry registry = LocateRegistry.getRegistry(port);
-            registry.lookup("ApplicationServer");
-        } catch( Exception e){
+            ApplicationServerController applicationServerController =(ApplicationServerController) registry.lookup("ApplicationServer");
+            applicationServerController.getNrOfGames();
+        } catch(Exception e){
             System.out.println(e);
+            notifyFailedServer(port);
             return true;
         }
         return false;
