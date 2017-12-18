@@ -49,77 +49,12 @@
 
 
 STARTING APPLICATIONSERVER...
-ApplicationServer established a connection with the DatabaseServer.
+ApplicationServer established a connection with the DatabaseServer 9431.
 READY.
 A new ApplicationServer connected on port 7291
-A new ApplicationServer connected on port 7292
-[B@33e5c910
+[B@564184f9
 12
 Christmass time baby
-New UnoGame created with id 0.
-Player joined in on game with id 0.
-[B@322975ed
+[B@31abbc9e
 12
-Christmass time baby
-Player joined in on game with id 0.
- draws 5.
-Player  draws card yellow_8.png
-Player  draws card red_3.png
-Player  draws card yellow_7.png
-Player  draws card green_1.png
-Player  draws card green_7.png
- draws 5.
-Player  draws card green_4.png
-Player  draws card red_4.png
-Player  draws card green_5.png
-Player  draws card blue_3.png
-Player  draws card yellow_reverse.png
-Cards are distributed
-The starting card is: yellow_0.png
-A new game is started.
-We verzenden de nieuwe games info!
-We verzenden de nieuwe games info!
-[B@5e78fe9
-12
-Christmass time baby
-[B@577559f1
-12
-Christmass time baby
-New UnoGame created with id 1.
-Player joined in on game with id 1.
-Player joined in on game with id 1.
- draws 5.
-Player  draws card green_4.png
-Player  draws card blue_2.png
-Player  draws card red_9.png
-Player  draws card red_7.png
-Player  draws card blue_skip.png
- draws 5.
-Player  draws card blue_3.png
-Player  draws card red_6.png
-Player  draws card green_5.png
-Player  draws card green_6.png
-Player  draws card red_5.png
-Cards are distributed
-The starting card is: yellow_5.png
-A new game is started.
-We verzenden de nieuwe games info!
-We verzenden de nieuwe games info!
- tries to play card red9
-kaart gevonden in player
-Het is die speler zijn beurt
-We kijken of deze nummerkaart op de bovenste kaart kan.
-false
- tries to play card blue2
-kaart gevonden in player
-Het is die speler zijn beurt
-We kijken of deze nummerkaart op de bovenste kaart kan.
-false
- draws 1.
-Player  draws card blue_6.png
- tries to play card green5
-kaart gevonden in player
-Het is die speler zijn beurt
-We kijken of deze nummerkaart op de bovenste kaart kan.
-false
-card played
+It was cached

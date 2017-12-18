@@ -54,8 +54,3 @@ DatabaseServer established a connection with the DataBase.
 done
 READY.
 A new database connected on port 9431
-A new database connected on port 9432
-Download cards to user
-Download cards to user
-Download cards to user
-Download cards to user

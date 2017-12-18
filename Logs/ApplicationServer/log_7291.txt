@@ -49,8 +49,5 @@
 
 
 STARTING APPLICATIONSERVER...
-ApplicationServer established a connection with the DatabaseServer.
+ApplicationServer established a connection with the DatabaseServer 9430.
 READY.
-A new ApplicationServer connected on port 7292
-nieuw spelleke toegekomen bij andere server 7290
-nieuw spelleke toegekomen bij andere server 7290

@@ -28,12 +28,16 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
     private Integer sessionToken;
     private ApplicationToApplication applicationToApplication;
     private int thisApplicationServerPortNr;
+    private String monthCached;
+    private ArrayList<Picture> cardList;
+
 
 
 
     public ApplicationServerControllerImpl(Lobby lobby, int portNr) throws RemoteException {
         this.lobby = lobby;
         this.thisApplicationServerPortNr = portNr;
+        this.monthCached = "13";
         try {
             Registry dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
             dispatcher = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
@@ -230,13 +234,22 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         //hier kan je checken al het een speciale dag is en dan de juiste kaarten opvragen
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM");
         LocalDate localDate = LocalDate.now();
-        System.out.println(dtf.format(localDate)); //2016/11/16
+        System.out.println("current month:" + dtf.format(localDate)); //2016/11/16
         try {
-            if(dtf.format(localDate).equals("12")  || dtf.format(localDate).equals("01")){
-                System.out.println("Christmass time baby");
-                return sqlitecontroller.getCards("christmas");        }
-            else{
-                return sqlitecontroller.getCards("standard");
+            if(monthCached.equals(dtf.format(localDate))){
+                System.out.println("It was cached");
+                return cardList;
+            }else {
+                if (dtf.format(localDate).equals("12") || dtf.format(localDate).equals("01")) {
+                    System.out.println("Christmass time baby");
+                    cardList = sqlitecontroller.getCards("christmas");
+                    monthCached = dtf.format(localDate);
+                    return cardList;
+                } else {
+                    cardList = sqlitecontroller.getCards("standard");
+                    monthCached = dtf.format(localDate);
+                    return cardList;
+                }
             }
         } catch (RemoteException e) {
             e.printStackTrace();
