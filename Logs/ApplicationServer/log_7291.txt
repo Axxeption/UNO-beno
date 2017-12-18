@@ -52,4 +52,3 @@ STARTING APPLICATIONSERVER...
 ApplicationServer established a connection with the DatabaseServer 9430.
 READY.
 New game added on other server: 7290.
-New game added on other server: 7290.

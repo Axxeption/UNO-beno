@@ -52,66 +52,29 @@ STARTING APPLICATIONSERVER...
 ApplicationServer established a connection with the DatabaseServer 9431.
 READY.
 A new ApplicationServer connected on port 7291
-[B@6d2f521d
+[B@75b483f5
 12
 Christmass time baby
 New UnoGame created with id 0.
-[B@1ad4a0b4
+Player joined in on game with id 0.
+[B@766f29c8
 12
 It was cached
 Player benojoined in on game with id 0.
-[B@18906d73
-12
-It was cached
-Player joined in on game with id 0.
-Player axeljoined in on game with id 0.
-beno draws 5.
-Player beno draws card green_7.png
-Player beno draws card yellow_4.png
-Player beno draws card yellow_9.png
-Player beno draws card blue_4.png
-Player beno draws card yellow_6.png
  draws 5.
-Player  draws card yellow_0.png
-Player  draws card green_2.png
-Player  draws card red_8.png
-Player  draws card yellow_8.png
-Player  draws card red_skip.png
-axel draws 5.
-Player axel draws card red_6.png
-Player axel draws card blue_5.png
-Player axel draws card blue_8.png
-Player axel draws card blue_3.png
-Player axel draws card green_4.png
-Cards are distributed
-The starting card is: green_reverse.png
-A new game is started.
-We verzenden de nieuwe games info!
-We verzenden de nieuwe games info!
-We verzenden de nieuwe games info!
-[B@343b39a4
-12
-It was cached
-New UnoGame created with id 1.
-Player joined in on game with id 1.
-[B@3a723757
-12
-It was cached
-Player axeljoined in on game with id 1.
- draws 5.
-Player  draws card blue_3.png
+Player  draws card green_skip.png
+Player  draws card blue_8.png
 Player  draws card yellow_1.png
-Player  draws card blue_0.png
+Player  draws card blue_5.png
 Player  draws card yellow_2.png
-Player  draws card yellow_5.png
-axel draws 5.
-Player axel draws card red_7.png
-Player axel draws card green_9.png
-Player axel draws card red_5.png
-Player axel draws card green_3.png
-Player axel draws card green_3.png
+beno draws 5.
+Player beno draws card blue_4.png
+Player beno draws card red_0.png
+Player beno draws card yellow_5.png
+Player beno draws card green_4.png
+Player beno draws card yellow_6.png
 Cards are distributed
-The starting card is: green_4.png
+The starting card is: green_9.png
 A new game is started.
 We verzenden de nieuwe games info!
 We verzenden de nieuwe games info!
