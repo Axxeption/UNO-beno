@@ -168,7 +168,7 @@ public class LobbyController implements Initializable {
         if (waitingGames.getSelectionModel().getSelectedItem() != null) {
             UnoGame unoGame = (UnoGame) waitingGames.getSelectionModel().getSelectedItem();
             //go into the gameroom with this selectedgame
-            System.out.println(unoGame);
+//            System.out.println(unoGame);
             mainapp.showGameroom(unoGame);
         }
     }
@@ -179,6 +179,7 @@ public class LobbyController implements Initializable {
     }
 
     public void setLoading() {
+        anchor.getChildren().clear();
 
         ImageView loadergif = new ImageView(new Image("loading.gif"));
         loadergif.setFitHeight(400);

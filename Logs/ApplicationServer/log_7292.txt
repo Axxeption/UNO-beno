@@ -49,7 +49,61 @@
 
 
 STARTING APPLICATIONSERVER...
-ApplicationServer established a connection with the DatabaseServer.
+ApplicationServer established a connection with the DatabaseServer 9431.
 READY.
-nieuw spelleke toegekomen bij andere server 7290
-nieuw spelleke toegekomen bij andere server 7290
+[B@647dfbdc
+12
+Christmass time baby
+[B@32daa65c
+12
+It was cached
+New UnoGame created with id 0.
+Player joined in on game with id 0.
+[B@77e23d9b
+12
+It was cached
+New UnoGame created with id 1.
+Player joined in on game with id 1.
+[B@28340d12
+12
+It was cached
+Player joined in on game with id 1.
+[B@64f96f09
+12
+It was cached
+Player joined in on game with id 1.
+[B@22d2777d
+12
+It was cached
+Player joined in on game with id 1.
+ draws 5.
+Player  draws card green_8.png
+Player  draws card red_6.png
+Player  draws card blue_6.png
+Player  draws card green_2.png
+Player  draws card red_8.png
+ draws 5.
+Player  draws card yellow_8.png
+Player  draws card green_8.png
+Player  draws card yellow_8.png
+Player  draws card yellow_skip.png
+Player  draws card green_skip.png
+ draws 5.
+Player  draws card red_9.png
+Player  draws card blue_0.png
+Player  draws card blue_4.png
+Player  draws card yellow_7.png
+Player  draws card red_3.png
+ draws 5.
+Player  draws card green_3.png
+Player  draws card blue_4.png
+Player  draws card red_2.png
+Player  draws card blue_1.png
+Player  draws card red_5.png
+Cards are distributed
+The starting card is: green_7.png
+A new game is started.
+We verzenden de nieuwe games info!
+We verzenden de nieuwe games info!
+We verzenden de nieuwe games info!
+We verzenden de nieuwe games info!

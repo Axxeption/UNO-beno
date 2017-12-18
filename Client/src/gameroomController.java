@@ -82,6 +82,42 @@ public class gameroomController implements Initializable {
         this.playerId = playerId;
     }
 
+    public void setLoading(){
+        backgroundBox.getChildren().clear();
+        cardBack.setImage(new Image("loading.gif"));
+        cardBack.setFitHeight(400);
+        cardBack.setFitWidth(400);
+        cardBack.setLayoutX(400);
+        cardBack.setLayoutY(200);
+    }
+
+    public void stopLoading(){
+        cardBack.setImage(new Image(pathToCards + "uno_back.png"));
+        cardBack.setLayoutX(600);
+        cardBack.setLayoutY(325);
+        cardBack.setFitWidth(100);
+//        cardBack.setFitHeight(200);
+    }
+
+
+//    public void setLoading() {
+//        anchor.getChildren().clear();
+//
+//        ImageView loadergif = new ImageView(new Image("loading.gif"));
+//        loadergif.setFitHeight(400);
+//        loadergif.setFitWidth(400);
+//        VBox secondaryLayout = new VBox(10);
+//        secondaryLayout.getChildren().addAll(loadergif);
+//
+//        //set "popup" if clicked on new game...
+//        secondScene = new Scene(secondaryLayout, 400, 400);
+//        secondStage = new Stage();
+//        secondStage.setTitle("Initiate game");
+//        secondStage.setScene(secondScene);
+//        secondStage.show();
+//    }
+
+
     public void setUI(Message gameState){
         backgroundBox.getChildren().clear();
         backgroundBox.setSpacing(-40);

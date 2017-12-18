@@ -116,7 +116,7 @@ public class MainApp extends Application {
     public void showGameroom(UnoGame unoGame) {
         try {
             //check als de user is een sessiontoken heeft die niet vervallen is
-            if(applicationServerController.checkSession(sessionToken, username)) {
+            if (applicationServerController.checkSession(sessionToken, username)) {
                 this.primaryStage.setTitle("UNO game");
 
                 gameroomController = new gameroomController(this);
@@ -150,7 +150,8 @@ public class MainApp extends Application {
                         gameroomController.setPlayerId(playerId);
                         gameroomController.setUI(stateGame);
                         startThreadGameState();
-                        lobbyController.stopLoading();
+                        gameroomController.stopLoading();
+//                        lobbyController.stopLoading();
                     });
                     new Thread(task).start();
                 } catch (AccessException e1) {
@@ -159,9 +160,9 @@ public class MainApp extends Application {
                     e1.printStackTrace();
                 }
                 System.out.println("komt erin!");
-                lobbyController.setLoading();
-            }
-            else{
+                gameroomController.setLoading();
+//                lobbyController.setLoading();
+            } else {
                 //log hem uit en zeg sorry...
                 applicationServerController.logout(username);
                 lobbyController.sessionExpiredPopup();
@@ -214,7 +215,7 @@ public class MainApp extends Application {
     public void connect(Integer failedServerPort) {
         int count = 0;
         int maxTries = 3;
-        while(count < maxTries) {
+        while (count < maxTries) {
             try {
                 Registry dispatcherRegistry = LocateRegistry.getRegistry("localhost", 9450);
                 DispatcherInterface dispatcherInterface = (DispatcherInterface) dispatcherRegistry.lookup("Dispatcher");
@@ -267,11 +268,11 @@ public class MainApp extends Application {
         //daar moet je een string meegeven voor welke periode je de kaarten wilt
         //de datum moet dan ook daar gechecked worden
         String fileSeparator = System.getProperty("file.separator");
-        String path =  System.getProperty("user.dir");
-        path = path + fileSeparator + "Client" + fileSeparator + "src"  + fileSeparator +  "Images" + fileSeparator;
+        String path = System.getProperty("user.dir");
+        path = path + fileSeparator + "Client" + fileSeparator + "src" + fileSeparator + "Images" + fileSeparator;
         System.out.println(path);
 
-        for(Picture p : cardlist){
+        for (Picture p : cardlist) {
             BufferedImage image = null;
             try {
                 image = javax.imageio.ImageIO.read(new ByteArrayInputStream(p.getStream()));
@@ -405,7 +406,7 @@ public class MainApp extends Application {
         }
     };
 
-    public void logout() throws RemoteException{
+    public void logout() throws RemoteException {
         applicationServerController.logout(username);
         showLogin();
     }
