@@ -46,8 +46,8 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
         try {
             System.out.println("start db on port: " + port);
             String path = System.getProperty("user.dir") + "\\Logs\\Database\\log_" + port + ".txt";
-            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\DatabaseServer_jar\\DatabaseServer.jar" , port);
-//            ProcessBuilder pb = new ProcessBuilder("out/artifacts/DatabaseServer_jar/startDatabaseServer.sh", port);
+            //ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\DatabaseServer_jar\\DatabaseServer.jar" , port);
+            ProcessBuilder pb = new ProcessBuilder("out/artifacts/DatabaseServer_jar/startDatabaseServer.sh", port);
             BufferedWriter pw = new BufferedWriter(new FileWriter(path));
             File log = new File(path);
 
@@ -112,7 +112,8 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
         try {
             System.out.println("Start applicationServer on port: " + port);
             String path = System.getProperty("user.dir") + "\\Logs\\ApplicationServer\\log_" + port + ".txt";
-            ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\ApplicationServer_jar\\ApplicationServer.jar" , port);//            ProcessBuilder pb = new ProcessBuilder("out/artifacts/ApplicationServer_jar/startApplicationServer.sh", port);
+            //ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\ApplicationServer_jar\\ApplicationServer.jar" , port);
+            ProcessBuilder pb = new ProcessBuilder("out/artifacts/ApplicationServer_jar/startApplicationServer.sh", port);
             BufferedWriter pw = new BufferedWriter(new FileWriter(path));
             File log = new File(path);
             pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));

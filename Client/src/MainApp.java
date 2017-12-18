@@ -238,6 +238,10 @@ public class MainApp extends Application {
         Runtime.getRuntime().exit(0);
     }
 
+    private void crash(Integer failedServerPort){
+        showLogin();
+        connect(failedServerPort);
+    }
 
     public boolean login(String username, String pass) {
         try {
