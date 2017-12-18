@@ -51,41 +51,59 @@
 STARTING APPLICATIONSERVER...
 ApplicationServer established a connection with the DatabaseServer 9431.
 READY.
-[B@33e5c910
+[B@647dfbdc
 12
 Christmass time baby
-[B@412455ab
-12
-It was cached
-[B@1b20e4d4
+[B@32daa65c
 12
 It was cached
 New UnoGame created with id 0.
-[B@236ae3db
+Player joined in on game with id 0.
+[B@77e23d9b
 12
 It was cached
-Player joined in on game with id 0.
-Player axeljoined in on game with id 0.
+New UnoGame created with id 1.
+Player joined in on game with id 1.
+[B@28340d12
+12
+It was cached
+Player joined in on game with id 1.
+[B@64f96f09
+12
+It was cached
+Player joined in on game with id 1.
+[B@22d2777d
+12
+It was cached
+Player joined in on game with id 1.
  draws 5.
+Player  draws card green_8.png
+Player  draws card red_6.png
+Player  draws card blue_6.png
 Player  draws card green_2.png
-Player  draws card green_5.png
+Player  draws card red_8.png
+ draws 5.
+Player  draws card yellow_8.png
+Player  draws card green_8.png
+Player  draws card yellow_8.png
+Player  draws card yellow_skip.png
+Player  draws card green_skip.png
+ draws 5.
+Player  draws card red_9.png
+Player  draws card blue_0.png
 Player  draws card blue_4.png
+Player  draws card yellow_7.png
+Player  draws card red_3.png
+ draws 5.
+Player  draws card green_3.png
+Player  draws card blue_4.png
+Player  draws card red_2.png
+Player  draws card blue_1.png
 Player  draws card red_5.png
-Player  draws card red_4.png
-axel draws 5.
-Player axel draws card red_7.png
-Player axel draws card green_9.png
-Player axel draws card green_6.png
-Player axel draws card blue_5.png
-Player axel draws card green_1.png
 Cards are distributed
-The starting card is: red_reverse.png
+The starting card is: green_7.png
 A new game is started.
 We verzenden de nieuwe games info!
 We verzenden de nieuwe games info!
- tries to play card red5
-kaart gevonden in player
-Het is die speler zijn beurt
-We kijken of deze nummerkaart op de bovenste kaart kan.
-true
-card played
+We verzenden de nieuwe games info!
+We verzenden de nieuwe games info!
