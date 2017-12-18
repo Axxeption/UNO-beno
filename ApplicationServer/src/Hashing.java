@@ -71,7 +71,7 @@ public class Hashing {
      * otherwise
      */ 
     public static boolean isExpectedPassword(char[] password, byte[] salt, byte[] expectedHash) {
-        System.out.println(salt);
+//        System.out.println(salt);
         byte[] pwdHash = hash(password, salt);
         Arrays.fill(password, Character.MIN_VALUE);
         if (pwdHash.length != expectedHash.length) {
