@@ -178,27 +178,6 @@ public class LobbyController implements Initializable {
         waitingGames.setItems(currentUnoGames);
     }
 
-    public void setLoading() {
-        anchor.getChildren().clear();
-
-        ImageView loadergif = new ImageView(new Image("loading.gif"));
-        loadergif.setFitHeight(400);
-        loadergif.setFitWidth(400);
-        VBox secondaryLayout = new VBox(10);
-        secondaryLayout.getChildren().addAll(loadergif);
-
-        //set "popup" if clicked on new game...
-        secondScene = new Scene(secondaryLayout, 400, 400);
-        secondStage = new Stage();
-        secondStage.setTitle("Initiate game");
-        secondStage.setScene(secondScene);
-        secondStage.show();
-    }
-
-    public void stopLoading(){
-        secondStage.close();
-    }
-
     public void logout() throws RemoteException{
         mainapp.logout();
     }

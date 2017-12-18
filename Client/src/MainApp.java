@@ -151,7 +151,6 @@ public class MainApp extends Application {
                         gameroomController.setUI(stateGame);
                         startThreadGameState();
                         gameroomController.stopLoading();
-//                        lobbyController.stopLoading();
                     });
                     new Thread(task).start();
                 } catch (AccessException e1) {
@@ -161,7 +160,6 @@ public class MainApp extends Application {
                 }
                 System.out.println("komt erin!");
                 gameroomController.setLoading();
-//                lobbyController.setLoading();
             } else {
                 //log hem uit en zeg sorry...
                 applicationServerController.logout(username);
