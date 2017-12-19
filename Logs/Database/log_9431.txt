@@ -53,4 +53,3 @@ STARTING DATABASE...
 DatabaseServer established a connection with the DataBase.
 done
 READY.
-Download cards to user for time: 

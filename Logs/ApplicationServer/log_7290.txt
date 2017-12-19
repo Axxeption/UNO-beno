@@ -52,6 +52,3 @@ STARTING APPLICATIONSERVER...
 ApplicationServer established a connection with the DatabaseServer 9431.
 READY.
 A new ApplicationServer connected on port 7291
-[B@6d2f521d
-12
-Christmass time baby

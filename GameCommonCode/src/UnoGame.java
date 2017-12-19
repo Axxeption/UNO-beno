@@ -260,7 +260,7 @@ public class UnoGame implements Serializable {
         // Everyone draws five cards to start
         for (Player p : myPlayers) {
 
-            draw(p, 1);
+            draw(p, 5);
         }
         System.out.println("Cards are distributed");
         // turn over the top card

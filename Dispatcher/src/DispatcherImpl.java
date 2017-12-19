@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,9 +46,11 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
     public void startDatabaseServer(String port){
         try {
             System.out.println("start db on port: " + port);
-            String path = System.getProperty("user.dir") + "\\Logs\\Database\\log_" + port + ".txt";
-            //ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\DatabaseServer_jar\\DatabaseServer.jar" , port);
-            ProcessBuilder pb = new ProcessBuilder("out/artifacts/DatabaseServer_jar/startDatabaseServer.sh", port);
+            String userDir = System.getProperty("user.dir");
+            String fileSeparator = System.getProperty("file.separator");
+            String path = userDir + fileSeparator +  "Logs" + fileSeparator + "Database" + fileSeparator + "log_" + port + ".txt";
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", userDir + fileSeparator + "out" + fileSeparator + "artifacts" + fileSeparator + "DatabaseServer_jar" + fileSeparator + "DatabaseServer.jar" , port);
+            //ProcessBuilder pb = new ProcessBuilder("out/artifacts/DatabaseServer_jar/startDatabaseServer.sh", port);
             BufferedWriter pw = new BufferedWriter(new FileWriter(path));
             File log = new File(path);
 
@@ -112,9 +115,11 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
     public void startApplicationServer(String port){
         try {
             System.out.println("Start applicationServer on port: " + port);
-            String path = System.getProperty("user.dir") + "\\Logs\\ApplicationServer\\log_" + port + ".txt";
-            //ProcessBuilder pb = new ProcessBuilder("java", "-jar", "C:\\Users\\vulst\\Documents\\School 4elict\\Gedistribueerde systemen\\UNO-beno\\out\\artifacts\\ApplicationServer_jar\\ApplicationServer.jar" , port);
-            ProcessBuilder pb = new ProcessBuilder("out/artifacts/ApplicationServer_jar/startApplicationServer.sh", port);
+            String userDir = System.getProperty("user.dir");
+            String fileSeparator = System.getProperty("file.separator");
+            String path = userDir + fileSeparator +  "Logs" + fileSeparator + "ApplicationServer" + fileSeparator + "log_" + port + ".txt";
+            ProcessBuilder pb = new ProcessBuilder("java", "-jar", userDir + fileSeparator + "out" + fileSeparator + "artifacts" + fileSeparator + "ApplicationServer_jar" + fileSeparator + "ApplicationServer.jar" , port);
+            //ProcessBuilder pb = new ProcessBuilder("out/artifacts/ApplicationServer_jar/startApplicationServer.sh", port);
             BufferedWriter pw = new BufferedWriter(new FileWriter(path));
             File log = new File(path);
             pb.redirectOutput(ProcessBuilder.Redirect.appendTo(log));
