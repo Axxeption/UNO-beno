@@ -25,3 +25,6 @@ hs_err_pid*
 *.iml
 out
 /TestClient/nbproject/private/
+DatabaseServer/userdb9430.sqlite
+DatabaseServer/userdb9430.sqlite
+DatabaseServer/userdb9431.sqlite
