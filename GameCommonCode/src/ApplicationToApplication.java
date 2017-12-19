@@ -1,5 +1,6 @@
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.List;
 
 /**
  * Created by Benoit on 26/11/17.
@@ -15,4 +16,6 @@ public interface ApplicationToApplication extends Remote{
     void removeUnoGameOnAllServers(UnoGame unoGame) throws RemoteException;
 
     void failedApplicationSever(Integer applicationToApplication) throws RemoteException;
+
+    List<UnoGame> getOwnUnoGames() throws RemoteException;
 }

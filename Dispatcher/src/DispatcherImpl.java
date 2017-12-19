@@ -86,6 +86,7 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
             if(checkIfFailedServer(failedServer)){
                 applicationServers.remove(failedServer);
                 System.out.println("A ");
+                notifyFailedServer(failedServer);
             }
         }
 
@@ -96,7 +97,7 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
             Registry registry = LocateRegistry.getRegistry("localhost", i);
             try {
                 ApplicationServerController applicationServerController = (ApplicationServerController) registry.lookup("ApplicationServer");
-                int newMin = applicationServerController.getNrOfGames();
+                int newMin = applicationServerController.getNrOfOwnGames();
                 if(newMin <= MAXUNOGAMES) return i;
 
             } catch (NotBoundException e) {
@@ -150,14 +151,12 @@ public class DispatcherImpl extends UnicastRemoteObject implements DispatcherInt
     }
 
     public boolean checkIfFailedServer(Integer port){
-        System.out.println("failed server check");
         try {
             Registry registry = LocateRegistry.getRegistry(port);
             ApplicationServerController applicationServerController =(ApplicationServerController) registry.lookup("ApplicationServer");
-            applicationServerController.getNrOfGames();
+            applicationServerController.getNrOfOwnGames();
         } catch(Exception e){
-            System.out.println(e);
-            notifyFailedServer(port);
+            e.printStackTrace();
             return true;
         }
         return false;

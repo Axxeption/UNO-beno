@@ -1,7 +1,10 @@
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DialogEvent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 public class gameroomController implements Initializable {
@@ -174,54 +178,29 @@ public class gameroomController implements Initializable {
 
     }
 
-    public void endGameWinner() {
+    public void endGameWinner(UnoGame unoGame) {
         //je hebt het spel gewonnen
-        Label won = new Label("Congratulations, you won this game!");
-        won.setFont(Font.font("Verdana", 20));
-        won.setTextFill(Color.FORESTGREEN);
-
-        //Button
-        Button okButton = new Button("Let's play another game!");
-        okButton.setOnAction(e -> {
-            mainApp.showLobby();
-            secondStage.close();
-        });
-
-        //layout
-        VBox secondaryLayout = new VBox(10);
-        secondaryLayout.getChildren().addAll(won, okButton);
-
-        secondScene = new Scene(secondaryLayout, 400, 100);
-        secondStage = new Stage();
-        secondStage.setTitle("You won!");
-        secondStage.setScene(secondScene);
-        secondStage.show();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Winner!");
+        alert.setHeaderText(null);
+        alert.setContentText("Congratulations! You won this game!");
+        mainApp.showLobby();
+        alert.showAndWait();
+        try {
+            unoGame.getApplicationServerController().endOfGame(unoGame);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         
     }
 
     public void endGameLoser(String winner) {
-        //je hebt het spel verloren
-
-        Label lost = new Label("  " + winner + " just won the game!");
-        lost.setFont(Font.font("Verdana", 20));
-        lost.setTextFill(Color.DARKRED);
-
-        //Button
-        Button okButton = new Button(" Let's try again!");
-        okButton.setOnAction(e -> {
-            mainApp.showLobby();
-            secondStage.close();
-        });
-
-        //layout
-        VBox secondaryLayout = new VBox(10);
-        secondaryLayout.getChildren().addAll(lost, okButton);
-
-        secondScene = new Scene(secondaryLayout, 400, 100);
-        secondStage = new Stage();
-        secondStage.setTitle("You lost");
-        secondStage.setScene(secondScene);
-        secondStage.show();
-
+        //je hebt het spel gewonnen
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Try again...");
+        alert.setHeaderText(null);
+        alert.setContentText("You lost this game!");
+        mainApp.showLobby();
+        alert.showAndWait();
     }
 }

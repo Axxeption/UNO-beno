@@ -7,17 +7,26 @@ import java.util.List;
  * Created by Benoit on 2/11/17.
  */
 public class Lobby {
-    HashMap<Long,UnoGame> unoGameHashMap;
-    List<UnoGame> otherUnoGames;
+    private HashMap<Long,UnoGame> unoGameHashMap;
+    private List<UnoGame> otherUnoGames;
 
     public Lobby(){
         unoGameHashMap = new HashMap<>();
         otherUnoGames = new ArrayList<>();
     }
 
-    public List<UnoGame> getUnoGameList() {
+    public void addOtherUnoGames(List<UnoGame> unoGames){
+        otherUnoGames.addAll(unoGames);
+    }
+
+    public List<UnoGame> getAllUnoGameList() {
         List<UnoGame> games = new ArrayList<>(unoGameHashMap.values());
         games.addAll(otherUnoGames);
+        return games;
+    }
+
+    public List<UnoGame> getUnoGameList() {
+        List<UnoGame> games = new ArrayList<>(unoGameHashMap.values());
         return games;
     }
 

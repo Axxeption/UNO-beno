@@ -49,7 +49,7 @@ public class ApplicationServerGameImp extends UnicastRemoteObject implements App
         if(unoGame.checkIfWinner() != null){
             message.setWinner(unoGame.checkIfWinner().getId());
             message.setPoints(unoGame);
-            applicationServerControllerImpl.endOfGame(unoGame);
+            //applicationServerControllerImpl.endOfGame(unoGame);
         }
         return message;
     }

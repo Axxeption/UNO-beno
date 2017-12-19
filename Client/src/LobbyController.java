@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -131,7 +132,7 @@ public class LobbyController implements Initializable {
         //layout
         VBox secondaryLayout = new VBox(10);
         secondaryLayout.getChildren().addAll(aantalSpelerLabel, two, three, four, nameinputLabel, nameGameInput, chosenButton);
-
+        secondaryLayout.setPadding(new Insets(10,10,10,10));
         //set "popup" if clicked on new game...
         secondScene = new Scene(secondaryLayout, 300, 250);
         secondStage = new Stage();
@@ -139,28 +140,19 @@ public class LobbyController implements Initializable {
         secondStage.setScene(secondScene);
         secondStage.show();
 
-        two.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                three.setSelected(false);
-                four.setSelected(false);
-            }
+        two.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            three.setSelected(false);
+            four.setSelected(false);
         });
 
-        three.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                two.setSelected(false);
-                four.setSelected(false);
-            }
+        three.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            two.setSelected(false);
+            four.setSelected(false);
         });
 
-        four.selectedProperty().addListener(new ChangeListener<Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                three.setSelected(false);
-                two.setSelected(false);
-            }
+        four.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            three.setSelected(false);
+            two.setSelected(false);
         });
     }
 

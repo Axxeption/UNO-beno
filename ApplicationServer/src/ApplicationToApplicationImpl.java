@@ -40,6 +40,11 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
         applicationServerController.removeOtherUnoGame(unoGame);
     }
 
+    @Override
+    public List<UnoGame> getOwnUnoGames() throws RemoteException{
+        return applicationServerController.getOwnUnoGames();
+    }
+
     public void initialize() {
         List<Integer> applictionServers = null;
         try {
@@ -65,6 +70,7 @@ public class ApplicationToApplicationImpl extends UnicastRemoteObject implements
                 Registry databaseRegistry = LocateRegistry.getRegistry("localhost", a);
                 ApplicationToApplication applicationToApplication = (ApplicationToApplication) databaseRegistry.lookup("ApplicationToApplication");
                 applicationToApplication.notifyNewApplicationServer(portNr);
+                applicationServerController.addOtherUnoGames(applicationToApplication.getOwnUnoGames());
             } catch (RemoteException e) {
                 e.printStackTrace();
             } catch (NotBoundException e) {

@@ -106,12 +106,20 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
 
     @Override
     public List<UnoGame> getAllUnoGames() throws RemoteException {
+        return lobby.getAllUnoGameList();
+    }
+
+    public List<UnoGame> getOwnUnoGames(){
         return lobby.getUnoGameList();
     }
 
     @Override
-    public int getNrOfGames() throws RemoteException{
+    public int getNrOfOwnGames() throws RemoteException{
         return lobby.getUnoGameList().size();
+    }
+
+    public void addOtherUnoGames(List<UnoGame> unoGames){
+        lobby.addOtherUnoGames(unoGames);
     }
 
     @Override
@@ -140,7 +148,7 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return lobby.getUnoGameList();
+        return lobby.getAllUnoGameList();
 
     }
 
@@ -178,8 +186,10 @@ public class ApplicationServerControllerImpl extends UnicastRemoteObject impleme
         return null;
     }
 
-    public synchronized void endOfGame(UnoGame unoGame) {
+    @Override
+    public synchronized void endOfGame(UnoGame unoGame) throws RemoteException{
         lobby.removeUnoGameFromList(unoGame);
+        notifyAll();
         try {
             applicationToApplication.removeUnoGameOnAllServers(unoGame);
             if (applicationRegistry == null) {

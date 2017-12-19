@@ -9,7 +9,7 @@ public interface ApplicationServerController extends Remote {
 
     public boolean login(String username, String password) throws RemoteException;
 
-    int getNrOfGames() throws RemoteException;
+    int getNrOfOwnGames() throws RemoteException;
 
     public void addUnoGame(String name, int numberOfPlayers) throws RemoteException;
 
@@ -23,6 +23,8 @@ public interface ApplicationServerController extends Remote {
 
     void setScore(int score, String username) throws RemoteException;
     ArrayList<User> getBestPlayers() throws RemoteException;
+
+    void endOfGame(UnoGame unoGame) throws RemoteException;
 
     public void logout(String username) throws RemoteException;
 

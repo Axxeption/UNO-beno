@@ -1,5 +1,6 @@
 
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -19,6 +20,7 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -41,6 +43,7 @@ public class MainApp extends Application {
     private Message stateGame;
     private Integer sessionToken;
     private ArrayList<Picture> cardlist;
+    private UnoGame unoGame;
 
 
     @Override
@@ -134,7 +137,7 @@ public class MainApp extends Application {
                     unoGameId = unoGame.getId();
                     applicationServerGameInterface = unoGame.getApplicationServerGameInterface();
                     playerId = unoGame.getApplicationServerController().joinGame(new Player(username), unoGameId);
-
+                    this.unoGame = unoGame;
                     Task<Boolean> task = new Task<Boolean>() {
                         @Override
                         public Boolean call() throws RemoteException {
@@ -170,8 +173,7 @@ public class MainApp extends Application {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
-            connect(applicationServerPort);
-            showGameroom(unoGame);
+            crash(applicationServerPort);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -186,8 +188,7 @@ public class MainApp extends Application {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
-            connect(applicationServerPort);
-            playCard(card);
+            crash(applicationServerPort);
         }
     }
 
@@ -198,8 +199,7 @@ public class MainApp extends Application {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
-            connect(applicationServerPort);
-            drawCard();
+            crash(applicationServerPort);
         }
     }
 
@@ -241,8 +241,17 @@ public class MainApp extends Application {
     }
 
     private void crash(Integer failedServerPort){
-        showLogin();
         connect(failedServerPort);
+        loginWithError();
+    }
+
+    private void loginWithError() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("A server crashed.");
+        alert.setContentText("Please log in.");
+        alert.show();
+        showLogin();
     }
 
     public boolean login(String username, String pass) {
@@ -261,7 +270,7 @@ public class MainApp extends Application {
             }
         } catch (RemoteException e) {
             e.printStackTrace();
-            connect(applicationServerPort);
+            crash(applicationServerPort);
         }
         return false;
     }
@@ -298,7 +307,7 @@ public class MainApp extends Application {
 
         } catch (RemoteException ex) {
             ex.printStackTrace();
-            connect(applicationServerPort);
+            crash(applicationServerPort);
         }
         return false;
     }
@@ -332,8 +341,7 @@ public class MainApp extends Application {
             applicationServerController.addUnoGame(name, i);
         } catch (RemoteException e) {
             e.printStackTrace();
-            connect(applicationServerPort);
-            startGame(i, name);
+            crash(applicationServerPort);
         }
         //nog overgaan naar het spel nu
     }
@@ -368,8 +376,13 @@ public class MainApp extends Application {
                             }
                     );
                 } catch (RemoteException e) {
-                    e.printStackTrace();
+                    Platform.runLater(
+                            () -> {
+                                loginWithError();
+                            }
+                    );
                     connect(applicationServerPort);
+                    e.printStackTrace();
                 }
             }
         }
@@ -382,17 +395,18 @@ public class MainApp extends Application {
                 try {
                     stateGame = applicationServerGameInterface.subscribe(playerId);
                     System.out.println("something new happend! --> game updaten");
-                    //deze thread kan de thread die die ui regelt niet oproepen
+                    //deze thread kan de thread die ui regelt niet oproepen
                     if (stateGame.getWinner() != null) {
                         if (stateGame.getWinner() == playerId) {
                             applicationServerController.setScore(stateGame.getPoints(), username);
                             //anders zet deze thread de GUI
                             Platform.runLater(() -> {
-                                gameroomController.endGameWinner();
+                                gameroomController.endGameWinner(unoGame);
                             });
                         } else {
                             List<String> usernames = stateGame.getNames();
                             Platform.runLater(() -> {
+                                System.out.println("loser.");
                                 gameroomController.endGameLoser(usernames.get(stateGame.getWinner()));
                             });
                         }
@@ -405,13 +419,19 @@ public class MainApp extends Application {
 
                 } catch (RemoteException e) {
                     e.printStackTrace();
+                    crash(applicationServerPort);
                 }
             }
         }
     };
 
-    public void logout() throws RemoteException {
-        applicationServerController.logout(username);
+    public void logout(){
+        try {
+            applicationServerController.logout(username);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            crash(applicationServerPort);
+        }
         showLogin();
     }
 
