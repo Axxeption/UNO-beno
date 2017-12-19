@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -138,6 +139,8 @@ public class LobbyController implements Initializable {
         secondStage = new Stage();
         secondStage.setTitle("Initiate game");
         secondStage.setScene(secondScene);
+        secondStage.initModality(Modality.APPLICATION_MODAL);
+        secondStage.initOwner(mainapp.getPrimaryStage());
         secondStage.show();
 
         two.selectedProperty().addListener((observable, oldValue, newValue) -> {

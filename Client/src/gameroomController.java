@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -184,6 +185,8 @@ public class gameroomController implements Initializable {
         alert.setTitle("Winner!");
         alert.setHeaderText(null);
         alert.setContentText("Congratulations! You won this game!");
+        alert.initModality(Modality.APPLICATION_MODAL); /* *** */
+        alert.initOwner(mainApp.getPrimaryStage());
         mainApp.showLobby();
         alert.showAndWait();
         try {
@@ -200,6 +203,8 @@ public class gameroomController implements Initializable {
         alert.setTitle("Try again...");
         alert.setHeaderText(null);
         alert.setContentText("You lost this game!");
+        alert.initModality(Modality.APPLICATION_MODAL); /* *** */
+        alert.initOwner(mainApp.getPrimaryStage());
         mainApp.showLobby();
         alert.showAndWait();
     }
