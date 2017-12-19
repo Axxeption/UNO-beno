@@ -85,41 +85,6 @@ public class SQLiteControllerImpl extends UnicastRemoteObject implements SQLiteC
         }
     }
 
-
-
-    @Override
-    public boolean isLogin(String username, String pass) throws SQLException, ClassNotFoundException, RemoteException {
-        if (con == null) {
-            getdbConnection();
-            System.out.println("geen connectie...");
-        }
-
-        PreparedStatement prep = null;
-        ResultSet res = null;
-        String query = "SELECT * FROM uno_player where username = ? and password = ?";
-
-        try {
-            prep = con.prepareStatement(query);
-            prep.setString(1, username);
-            prep.setString(2, pass);
-            res = prep.executeQuery();
-
-            if (res.next()) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-            return false;
-        } finally {
-            prep.close();
-            res.close();
-
-        }
-    }
-
-
     public boolean addNewUserSingle(String username, byte[] salt, byte[] hashedpassword){
         try {
             if (con == null) {
