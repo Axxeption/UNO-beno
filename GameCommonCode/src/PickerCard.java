@@ -12,8 +12,11 @@ public class PickerCard extends Card {
 
     @Override
     public void playCard(){
-        unoGame.draw(unoGame.getNextPlayer(), 2);
         unoGame.goToNextPlayer();
+        Player player = unoGame.getCurrentPlayer();
+        System.out.println("Player how will pick two: " + player);
+        unoGame.draw(player, 2);
+        System.out.println("Player how picked two: " + player);
     }
 
     @Override

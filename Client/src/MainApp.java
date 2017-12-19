@@ -250,9 +250,9 @@ public class MainApp extends Application {
         alert.setTitle("Error");
         alert.setHeaderText("A server crashed.");
         alert.setContentText("Please log in.");
-        alert.show();
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(primaryStage);
+        alert.show();
         showLogin();
     }
 
