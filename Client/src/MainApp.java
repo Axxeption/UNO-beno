@@ -23,6 +23,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
@@ -44,7 +45,6 @@ public class MainApp extends Application {
     private Integer sessionToken;
     private ArrayList<Picture> cardlist;
     private UnoGame unoGame;
-
 
     @Override
     public void start(Stage primaryStage) {
@@ -251,6 +251,8 @@ public class MainApp extends Application {
         alert.setHeaderText("A server crashed.");
         alert.setContentText("Please log in.");
         alert.show();
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(primaryStage);
         showLogin();
     }
 

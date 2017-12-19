@@ -9,8 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author Malcolm Ryan
  * @version 23 September 2011
  */
-public class UnoGame implements Serializable
-{
+public class UnoGame implements Serializable {
     static final AtomicLong NEXT_ID = new AtomicLong(0);
     private final long id = NEXT_ID.getAndIncrement();
 
@@ -34,23 +33,23 @@ public class UnoGame implements Serializable
         return currentNumberOfPlayers;
     }
 
-    public Player checkIfWinner(){
-        for (Player p: myPlayers){
-            if(p.getCards().size()==0){
+    public Player checkIfWinner() {
+        for (Player p : myPlayers) {
+            if (p.getCards().size() == 0) {
                 return p;
             }
         }
         return null;
     }
 
-    public Card getTopCard(){
+    public Card getTopCard() {
         return myPile.get(myPile.size() - 1);
     }
 
-    public boolean playCard(Card card, Player player){
+    public boolean playCard(Card card, Player player) {
         System.out.println(player.getName() + " tries to play card " + card.getId());
         Card realCard = player.findPlayersCard(card);
-        if(myCurrentPlayer.equals(player)) {
+        if (myCurrentPlayer.equals(player)) {
             System.out.println("Het is die speler zijn beurt");
             if (card.canPlayOn(getTopCard()) && realCard != null) {
                 myPile.add(realCard);
@@ -60,8 +59,7 @@ public class UnoGame implements Serializable
                 goToNextPlayer();
                 return true;
             }
-        }
-        else{
+        } else {
             System.out.println("Cards don't match or it isn't this players turn");
             return false;
         }
@@ -75,18 +73,17 @@ public class UnoGame implements Serializable
         maxNumberOfPlayers = nPlayers;
         this.applicationServerGameInterface = applicationServerGameInterface;
 
-        for (int c = 1; c <= 4; c++) {
-            myDeck.add(new ReverseCard(c,this));
-            myDeck.add(new SkipCard(c, this));
-            for (int i = 0; i <= 9; i++) {
-                myDeck.add(new NumberCard(c, i));
+        for(int k = 0; k < 2; k++) {
+            for (int c = 1; c <= 4; c++) {
+                myDeck.add(new ReverseCard(c, this));
+                myDeck.add(new SkipCard(c, this));
+                myDeck.add(new PickerCard(c, this));
+                for (int i = 0; i <= 9; i++) {
+                    myDeck.add(new NumberCard(c, i));
+                }
             }
         }
-        for (int c = 1; c <= 4; c++) {
-            for (int i = 1; i <= 9; i++) {
-                myDeck.add(new NumberCard(c, i));
-            }
-        }
+
         Collections.shuffle(myDeck);
 
         // Pile is initially empty;
@@ -120,20 +117,19 @@ public class UnoGame implements Serializable
         return applicationServerGameInterface;
     }
 
-    public int addPlayer(Player player){
-        if(currentNumberOfPlayers >= maxNumberOfPlayers){
+    public int addPlayer(Player player) {
+        if (currentNumberOfPlayers >= maxNumberOfPlayers) {
             return -1;
-        }
-        else{
+        } else {
             myPlayers.add(player);
 
             player.setId(currentNumberOfPlayers);
             currentNumberOfPlayers++;
-            if(currentNumberOfPlayers == maxNumberOfPlayers){
+            if (currentNumberOfPlayers == maxNumberOfPlayers) {
                 startGame();
                 System.out.println("A new game is started.");
             }
-            return  player.getId();
+            return player.getId();
         }
     }
 
@@ -189,9 +185,9 @@ public class UnoGame implements Serializable
 
     /**
      * Draw cards from the deck into the hand of the given player.
-     *
-     * If the deck does not contain enough cards, the pile will be shuffled into the deck 
-     * (except for the top card). If this still doesn't provide enough cards, draw as many 
+     * <p>
+     * If the deck does not contain enough cards, the pile will be shuffled into the deck
+     * (except for the top card). If this still doesn't provide enough cards, draw as many
      * cards as are available and stop.
      *
      * @param player The player who is drawing
@@ -204,6 +200,7 @@ public class UnoGame implements Serializable
             if (myDeck.size() == 0 && myPile.size() > 0) {
                 // The deck is empty, shuffle in the pile
                 // but keep the top card
+
                 Card keep = myPile.get(0);
                 myDeck.addAll(myPile.subList(1, myPile.size()));
                 myPile.clear();
@@ -218,6 +215,30 @@ public class UnoGame implements Serializable
 
             player.gainCard(myDeck.remove(0));
         }
+    }
+
+    public Card drawSingleCard(Player player, int nCards) {
+        System.out.println(player + " draws " + nCards + ".");
+
+        if (myDeck.size() == 0 && myPile.size() > 0) {
+            // The deck is empty, shuffle in the pile
+            // but keep the top card
+            Card keep = myPile.get(0);
+            myDeck.addAll(myPile.subList(1, myPile.size()));
+            myPile.clear();
+            myPile.add(keep);
+            Collections.shuffle(myDeck);
+        }
+
+        if (myDeck.size() == 0) {
+            System.out.println("Geen kaarten meer te verdelen.");
+            return null;
+        }
+
+        Card card = myDeck.remove(0);
+        player.gainCard(card);
+        return card;
+
     }
 
     public void setApplicationServerGameInterface(ApplicationServerGameInterface applicationServerGameInterface) {
@@ -262,9 +283,11 @@ public class UnoGame implements Serializable
     }
 
     public boolean drawAndMaybeGoToNextPlayer(Player player) {
-        if(player.equals(myCurrentPlayer)){
-            draw(player,1);
-            goToNextPlayer();
+        if (player.equals(myCurrentPlayer)) {
+            Card card = drawSingleCard(player, 1);
+            if(!card.canPlayOn(getTopCard())) {
+                goToNextPlayer();
+            }
             return true;
         }
         return false;
@@ -272,12 +295,11 @@ public class UnoGame implements Serializable
 
     public int calculatePoints() {
         int score = 0;
-        for(Player p: myPlayers){
-            for(Card c: p.getCards()){
-                if(c instanceof NumberCard){
+        for (Player p : myPlayers) {
+            for (Card c : p.getCards()) {
+                if (c instanceof NumberCard) {
                     score += ((NumberCard) c).getNumber();
-                }
-                else{
+                } else {
                     score += 20;
                 }
             }
